@@ -16,12 +16,11 @@ namespace progarkspill
     /// </summary>
     public class Game : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        Renderer renderer;
 
         public Game()
         {
-            graphics = new GraphicsDeviceManager(this);
+            renderer = new Renderer(new GraphicsDeviceManager(this));
             Content.RootDirectory = "Content";
         }
 
@@ -45,7 +44,6 @@ namespace progarkspill
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -81,7 +79,7 @@ namespace progarkspill
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            renderer.preRender();
 
             // TODO: Add your drawing code here
             
