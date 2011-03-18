@@ -9,7 +9,7 @@ namespace progarkspill
     /**
      * This defines a mapping from some space to screen-space
      */
-    class Viewport
+    public class Viewport
     {
         public Viewport(Vector2 corner, Vector2 size)
         {

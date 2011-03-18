@@ -6,10 +6,16 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill
 {
-    public interface IGameState
+    interface IGameState
     {
+<<<<<<< HEAD
         void render(Renderer r);
-        
+
         void tick(GameTime timedelta);
+=======
+        public void render(Renderer r);
+        
+        public void tick(GameTime timedelta);
+>>>>>>> a2e72d84911ed75f98034836b761b49e16223279
     }
 }

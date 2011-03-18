@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill
 {
-    interface IRenderable
+    public interface IRenderable
     {
         Vector2 getPosition();
     }
