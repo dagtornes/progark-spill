@@ -9,9 +9,7 @@ namespace progarkspill
     interface IGameState
     {
         public void render(Renderer r);
-
+        
         public void tick(GameTime timedelta);
-
-        public IGameState nextState();
     }
 }

@@ -7,5 +7,6 @@ namespace progarkspill
 {
     class Entity
     {
+
     }
 }

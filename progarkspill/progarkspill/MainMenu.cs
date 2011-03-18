@@ -8,6 +8,12 @@ namespace progarkspill
 {
     class MainMenu : IGameState
     {
+        private GameStateStack states;
+        
+        public MainMenu(GameStateStack gamestates)
+        {
+            states = gamestates;
+        }
         public void render(Renderer r) {
             
         }
@@ -16,9 +22,5 @@ namespace progarkspill
 
         }
 
-        public IGameState nextState()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
