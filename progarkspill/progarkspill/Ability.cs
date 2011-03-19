@@ -12,6 +12,7 @@ namespace progarkspill
     {
         String id;
         int cooldown;
+        int level;
 
         public Ability(String name, EventQueue eq) // Probably add Event effect and stuff later on
         {
@@ -23,5 +24,9 @@ namespace progarkspill
 
         }
 
+        public void levelUp() // Increment some attribute on the ability by something
+        {
+
+        }
     }
 }

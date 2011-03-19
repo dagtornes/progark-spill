@@ -8,6 +8,6 @@ namespace progarkspill
 {
     public interface IRenderable
     {
-        Vector2 getPosition();
+        Vector2 Position { get; }
     }
 }

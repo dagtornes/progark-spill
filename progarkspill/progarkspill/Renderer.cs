@@ -30,7 +30,7 @@ namespace progarkspill
 
         public void renderMe(IRenderable entity)
         {
-            Vector2 render_position = currentspace.mapTo(entity.getPosition(), screenspace);
+            Vector2 render_position = currentspace.mapTo(entity.Position, screenspace);
         }
 
         private GraphicsDeviceManager gdm;

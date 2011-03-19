@@ -10,13 +10,14 @@ namespace progarkspill
     class Player
     {
         PlayerIndex control;
-        Entity hero; // Probably want a specialized type subclassed from Entity here?
+        Ship hero; 
         Buttons action = Buttons.A;
         Dictionary<Buttons, Ability> actions; // Where to get this from?
        
-        public Player(PlayerIndex controller, Entity hero)
+        public Player(PlayerIndex controller)
         {
             control = controller;
+            hero = new Ship();
         }
 
         public void update(GameTime timedelta, EventQueue eq, GameStateStack states)
@@ -41,7 +42,9 @@ namespace progarkspill
 
         public void setHeading(GamePadState controller)
         {
-            hero.Velocity = controller.ThumbSticks.Left; // May want to multiply or whatever
+            hero.Velocity = controller.ThumbSticks.Left;
+            hero.Velocity.X *= hero.maxSpeed;
+            hero.Velocity.Y *= hero.maxSpeed;
         }
 
         public void selectAction(GamePadState controller)

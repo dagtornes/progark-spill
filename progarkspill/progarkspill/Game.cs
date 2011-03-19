@@ -17,6 +17,7 @@ namespace progarkspill
     public class Game : Microsoft.Xna.Framework.Game
     {
         Renderer renderer;
+        IGameState ingame = new GameState();
 
         public Game()
         {
@@ -71,6 +72,7 @@ namespace progarkspill
             // TODO: Add your update logic here
 
             base.Update(gameTime);
+            ingame.tick(gameTime);
         }
 
         /// <summary>
@@ -84,6 +86,7 @@ namespace progarkspill
             // TODO: Add your drawing code here
             
             base.Draw(gameTime);
+            ingame.render(renderer);
         }
     }
 }
