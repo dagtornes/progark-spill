@@ -18,11 +18,16 @@ namespace progarkspill
     {
         Renderer renderer;
         IGameState ingame = new GameState();
+        Sprite test;
+        GraphicsDeviceManager gdm;
+        Viewport view;
 
         public Game()
         {
-            renderer = new Renderer(new GraphicsDeviceManager(this));
             Content.RootDirectory = "Content";
+            gdm = new GraphicsDeviceManager(this);
+            view = new Viewport(Vector2.Zero,
+                                new Vector2(2f * gdm.PreferredBackBufferWidth, 2f * gdm.PreferredBackBufferHeight));
         }
 
         /// <summary>
@@ -34,7 +39,8 @@ namespace progarkspill
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            
+            renderer = new Renderer(gdm);
             base.Initialize();
         }
 
@@ -45,7 +51,8 @@ namespace progarkspill
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-
+           
+            test = new Sprite(Content.Load<Texture2D>("ship9km"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -82,9 +89,9 @@ namespace progarkspill
         protected override void Draw(GameTime gameTime)
         {
             renderer.preRender();
-
+            renderer.begin(view);
             // TODO: Add your drawing code here
-            
+            renderer.renderMe(test);
             base.Draw(gameTime);
             ingame.render(renderer);
         }

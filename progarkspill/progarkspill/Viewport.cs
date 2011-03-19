@@ -25,6 +25,11 @@ namespace progarkspill
             return other.size * ((from - corner) / size) + other.corner;
         }
 
-        Vector2 corner, size;
+        public Vector2 scaleTo(Viewport other)
+        {
+            return other.size / size;
+        }
+
+        public Vector2 corner, size;
     }
 }

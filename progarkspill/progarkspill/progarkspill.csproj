@@ -108,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ability.cs" />
+    <Compile Include="EventQueue.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Sprite.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EventQueue.cs" />
     <Compile Include="Game.cs" />
