@@ -12,21 +12,46 @@ namespace progarkspill
         public Sprite(Texture2D texture)
         {
             this.texture = texture;
+            this.position = Vector2.Zero;
+            this.angle = 0.0f;
+            this.origin = new Vector2(0.5f * texture.Width, 0.5f * texture.Height);
         }
 
         public Vector2 Position
         {
-            get
-            {
-                return new Vector2(100, 100);
+            get;
+            set;
+        }
+
+        public float Angle
+        {
+            get;
+            set;
+        }
+
+        public Vector2 Direction
+        {
+            set {
+                angle = (float) Math.Atan2(value.Y, value.X);
             }
         }
 
-        public Texture2D getTexture()
+        public Texture2D Texture
         {
-            return this.texture;
+            get
+            {
+                return texture;
+            }
         }
 
+        public Vector2 Origin
+        {
+            get { return this.origin; }
+        }
+
+        private Vector2 origin;
+        private Vector2 position;
+        private float angle;
         private Texture2D texture;
     }
 }

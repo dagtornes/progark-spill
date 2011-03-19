@@ -31,13 +31,19 @@ namespace progarkspill
             currentspace = view;
         }
 
-        public void renderMe(IRenderable entity)
+        public void render(IRenderable entity, Vector2 pos, Vector2 dir)
         {
-            Vector2 render_position = currentspace.mapTo(entity.Position, screenspace);
-            Vector2 scale = currentspace.scaleTo(screenspace);
+            float angle = (float)Math.Atan2(dir.Y, dir.X);
+            render(entity, pos, angle);
+        }
 
+        public void render(IRenderable entity, Vector2 pos, float angle)
+        {
+            Vector2 render_position = currentspace.mapTo(pos, screenspace);
+            Vector2 scale = currentspace.scaleTo(screenspace);
+            
             sb.Begin();
-            sb.Draw(entity.getTexture(), render_position, null, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+            sb.Draw(entity.Texture, render_position, null, Color.White, angle, entity.Origin, scale, SpriteEffects.None, 0.0f);
             sb.End();
         }
 

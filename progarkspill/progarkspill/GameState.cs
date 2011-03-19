@@ -18,9 +18,7 @@ namespace progarkspill
         public void render(Renderer r)
         {
             foreach (Entity gameObject in gameObjects)
-                if (gameObject is IRenderable)
-                    r.renderMe((IRenderable) gameObject);
-
+                gameObject.render(r);
         }
 
         public void tick(GameTime timedelta) 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace progarkspill
 {
@@ -11,6 +12,7 @@ namespace progarkspill
     {
         public Vector2 Velocity;
         public Vector2 position;
+        private Sprite sprite;
 
         public Vector2 Position
         {
@@ -20,8 +22,9 @@ namespace progarkspill
             }
         }
 
-        public Entity(Vector2 position, Vector2 velocity)
+        public Entity(Vector2 position, Vector2 velocity, Texture2D texture)
         {
+            sprite = new Sprite(texture);
             Velocity = velocity;
             this.position = position;
         }
@@ -30,6 +33,11 @@ namespace progarkspill
         {
             Velocity = new Vector2(0, 0);
             position = new Vector2(0, 0);
+        }
+
+        public void render(Renderer renderer)
+        {
+            renderer.render(sprite, position, Velocity);
         }
 
         public void move(GameTime timedelta)
