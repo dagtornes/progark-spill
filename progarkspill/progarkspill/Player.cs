@@ -42,9 +42,7 @@ namespace progarkspill
 
         public void setHeading(GamePadState controller)
         {
-            hero.Velocity = controller.ThumbSticks.Left;
-            hero.Velocity.X *= hero.maxSpeed;
-            hero.Velocity.Y *= hero.maxSpeed;
+            hero.setHeading(controller.ThumbSticks.Left);
         }
 
         public void selectAction(GamePadState controller)
