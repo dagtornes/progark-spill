@@ -27,9 +27,6 @@ namespace progarkspill
         {
             Content.RootDirectory = "Content";
             gdm = new GraphicsDeviceManager(this);
-            Vector2 v = new Vector2(gdm.PreferredBackBufferWidth, gdm.PreferredBackBufferHeight);
-            view = new Viewport(Vector2.Zero, v);
-            
         }
 
         /// <summary>
@@ -54,11 +51,15 @@ namespace progarkspill
         {
             // Create a new SpriteBatch, which can be used to draw textures.
            
-            ent = new Entity(Vector2.Zero, Vector2.One, Content.Load<Texture2D>("ship9km"));
+            Texture2D tex = Content.Load<Texture2D>("ship9km");
+            ent = new Entity(Vector2.Zero, Vector2.One, tex);
             Player playerOne = new Player(state, PlayerIndex.One);
             playerOne.Hero = ent;
+            Player two = new Player(state, PlayerIndex.Two);
+            two.Hero = new Entity(new Vector2(100, 0), Vector2.Zero, tex);
             players = new List<Player>();
             players.Add(playerOne);
+            players.Add(two);
             state.Players = players;
             // TODO: use this.Content to load your game content here
         }
@@ -96,9 +97,8 @@ namespace progarkspill
         protected override void Draw(GameTime gameTime)
         {
             renderer.preRender();
-            renderer.begin(view);
             // TODO: Add your drawing code here
-            ent.render(renderer);
+            
             base.Draw(gameTime);
             state.render(renderer);
         }

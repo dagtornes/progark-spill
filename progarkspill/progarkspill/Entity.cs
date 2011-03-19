@@ -8,12 +8,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace progarkspill
 {
-    class Entity
+    public class Entity
     {
         public Vector2 Velocity;
         public Vector2 position;
         private Sprite sprite;
-        private float maxSpeed = 20;
+        private float maxSpeed = 200;
 
         public Vector2 Position
         {

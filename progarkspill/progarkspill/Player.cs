@@ -13,7 +13,7 @@ namespace progarkspill
         Entity hero; 
         Buttons action = Buttons.A;
         GameState game;
-        Dictionary<Buttons, Ability> actions; // Where to get this from?
+        Dictionary<Buttons, Ability> actions = new Dictionary<Buttons,Ability>(); // Where to get this from?
 
         public Player(GameState game, PlayerIndex controller)
         {
@@ -58,7 +58,7 @@ namespace progarkspill
 
         public void setHeading(GamePadState controller)
         {
-            hero.setHeading(controller.ThumbSticks.Left);
+            hero.setHeading(new Vector2(1, -1) * controller.ThumbSticks.Left);
         }
 
         public void selectAction(GamePadState controller)

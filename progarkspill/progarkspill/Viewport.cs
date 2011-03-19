@@ -30,6 +30,38 @@ namespace progarkspill
             return other.size / size;
         }
 
+        public void fit(Entity ent)
+        {
+            float aspect = Aspect;
+
+            float dx = 0.0f, dy = 0.0f;
+            if (ent.Position.X < corner.X) dx = ent.Position.X - corner.X;
+            if (ent.Position.Y < corner.Y) dy = ent.Position.Y - corner.Y;
+
+            corner += new Vector2(dx, dy);
+            size += new Vector2(dx, dy);
+
+            if (ent.Position.X > (corner + size).X) dx = ent.Position.X - (corner + size).X;
+            if (ent.Position.Y > (corner + size).Y) dy = ent.Position.Y - (corner + size).Y;
+
+            size += new Vector2(dx, dy);
+
+            preserveAspect(aspect);
+        }
+
+        public void preserveAspect(float aspect)
+        {
+            if (size.X / size.Y > aspect)
+                size.Y = (size.X / aspect);
+            else
+                size.X = size.Y / aspect;
+        }
+
+        public float Aspect
+        {
+            get { return size.X / size.Y; }
+        }
+
         public Vector2 corner, size;
     }
 }
