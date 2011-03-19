@@ -14,9 +14,12 @@ namespace progarkspill
             this.texture = texture;
         }
 
-        public Vector2 getPosition()
+        public Vector2 Position
         {
-            return new Vector2(100.0f, 100.0f);
+            get
+            {
+                return new Vector2(100, 100);
+            }
         }
 
         public Texture2D getTexture()

@@ -108,7 +108,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ability.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="EventQueue.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Sprite.cs" />
+    <Compile Include="Viewport.cs" />
+>>>>>>> b66c96ac20c179d17f03d2b1ea23d4591c201e42
     <Compile Include="Entity.cs" />
     <Compile Include="EventQueue.cs" />
     <Compile Include="Game.cs" />

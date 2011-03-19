@@ -6,9 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill
 {
-    class Ship : Entity, IRenderable
+    class Ship : Entity
     {
         public float maxSpeed = 2;
+        
 
 
         public void setHeading(Vector2 direction)
