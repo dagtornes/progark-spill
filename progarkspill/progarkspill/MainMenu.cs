@@ -19,7 +19,7 @@ namespace progarkspill
             
         }
 
-        public void tick(GameTime timedelta) {
+        public void tick(float timedelta) {
 
         }
 

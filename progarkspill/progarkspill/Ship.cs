@@ -6,16 +6,11 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill
 {
-    class Ship : Entity
+    // For all bookkeeping details related to the ship of a Hero - intended
+    // to be set on an Entity in Player
+    class Ship
     {
-        public float maxSpeed = 2;
-        
 
-
-        public void setHeading(Vector2 direction)
-        {
-            Velocity = direction * maxSpeed;
-        }
     }
 
 }

@@ -13,6 +13,7 @@ namespace progarkspill
         public Vector2 Velocity;
         public Vector2 position;
         private Sprite sprite;
+        private float maxSpeed = 20;
 
         public Vector2 Position
         {
@@ -40,12 +41,16 @@ namespace progarkspill
             renderer.render(sprite, position, Velocity);
         }
 
-        public void move(GameTime timedelta)
+        public void move(float timedelta)
         {
-            position.X += Velocity.X * timedelta.ElapsedGameTime.Milliseconds;
-            position.Y += Velocity.Y * timedelta.ElapsedGameTime.Milliseconds;
+            position += Velocity * timedelta;
         }
 
+        public void setHeading(Vector2 direction)
+        {
+            System.Console.WriteLine("setHeading is called.");
+            Velocity = direction * maxSpeed;
+        }
         
     }
 }

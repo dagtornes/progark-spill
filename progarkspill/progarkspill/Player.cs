@@ -10,17 +10,28 @@ namespace progarkspill
     class Player
     {
         PlayerIndex control;
-        Ship hero; 
+        Entity hero; 
         Buttons action = Buttons.A;
+        GameState game;
         Dictionary<Buttons, Ability> actions; // Where to get this from?
-       
+
+        public Player(GameState game, PlayerIndex controller)
+        {
+            this.control = controller;
+            this.game = game;
+        }
         public Player(PlayerIndex controller)
         {
             control = controller;
-            hero = new Ship();
         }
 
-        public void update(GameTime timedelta, EventQueue eq, GameStateStack states)
+        public Entity Hero
+        {
+            get { return hero; }
+            set { hero = value; }
+        }
+
+        public void update(float timedelta, EventQueue eq, GameStateStack states)
         {
             // Verify connection status
             GamePadState controller = GamePad.GetState(control);
@@ -36,6 +47,11 @@ namespace progarkspill
                 if (actions.TryGetValue(action, out triggered))
                     // Player aims with right trigger
                     triggered.triggerIt(controller.ThumbSticks.Right, eq, hero); 
+            }
+
+            if (controller.IsButtonDown(Buttons.RightShoulder))
+            {
+                // Shoot in direction ship is facing
             }
             setHeading(controller);
         }
@@ -59,7 +75,7 @@ namespace progarkspill
         }
         public void pauseDisconnect(GameStateStack states)
         {
-
+            System.Console.WriteLine("Controlled is disconnected.");
         }
     }
 }

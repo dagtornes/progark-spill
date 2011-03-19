@@ -17,10 +17,11 @@ namespace progarkspill
     public class Game : Microsoft.Xna.Framework.Game
     {
         Renderer renderer;
-        IGameState ingame = new GameState();
+        GameState state = new GameState(); // TODO: Factor out into GameStateStack
         GraphicsDeviceManager gdm;
         Viewport view;
         Entity ent;
+        List<Player> players = new List<Player>();
 
         public Game()
         {
@@ -54,6 +55,11 @@ namespace progarkspill
             // Create a new SpriteBatch, which can be used to draw textures.
            
             ent = new Entity(Vector2.Zero, Vector2.One, Content.Load<Texture2D>("ship9km"));
+            Player playerOne = new Player(state, PlayerIndex.One);
+            playerOne.Hero = ent;
+            players = new List<Player>();
+            players.Add(playerOne);
+            state.Players = players;
             // TODO: use this.Content to load your game content here
         }
 
@@ -79,7 +85,8 @@ namespace progarkspill
 
             // TODO: Add your update logic here
             base.Update(gameTime);
-            ingame.tick(gameTime);
+            float seconds = gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
+            state.tick(seconds);
         }
 
         /// <summary>
@@ -93,7 +100,7 @@ namespace progarkspill
             // TODO: Add your drawing code here
             ent.render(renderer);
             base.Draw(gameTime);
-            ingame.render(renderer);
+            state.render(renderer);
         }
     }
 }

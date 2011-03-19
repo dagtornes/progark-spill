@@ -13,7 +13,7 @@ namespace progarkspill
             push(new MainMenu(this));
         }
 
-        public void tick(GameTime timedelta)
+        public void tick(float timedelta)
         {
             IGameState state = pop();
             state.tick(timedelta);
@@ -28,6 +28,11 @@ namespace progarkspill
             IGameState state = gamestates.First.Value;
             gamestates.RemoveFirst();
             return state;
+        }
+
+        public void render(Renderer r)
+        {
+            gamestates.First.Value.render(r);
         }
     }
 }

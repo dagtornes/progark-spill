@@ -10,6 +10,6 @@ namespace progarkspill
     {
         void render(Renderer r);
         
-        void tick(GameTime timedelta);
+        void tick(float timedelta);
     }
 }
