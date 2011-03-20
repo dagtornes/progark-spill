@@ -55,8 +55,10 @@ namespace progarkspill
             ent = new Entity(Vector2.Zero, Vector2.One, tex);
             Player playerOne = new Player(state, PlayerIndex.One);
             playerOne.Hero = ent;
+            ent.Collidable = new HitCircle(tex.Width);
             Player two = new Player(state, PlayerIndex.Two);
             two.Hero = new Entity(new Vector2(100, 0), Vector2.Zero, tex);
+            two.Hero.Collidable = new HitCircle(tex.Width);
             players = new List<Player>();
             players.Add(playerOne);
             players.Add(two);

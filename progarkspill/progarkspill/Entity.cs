@@ -14,12 +14,24 @@ namespace progarkspill
         public Vector2 position;
         private Sprite sprite;
         private float maxSpeed = 200;
+        private ICollidable collidable = new Noncollidable();
 
         public Vector2 Position
         {
             get
             {
                 return position;
+            }
+        }
+        public ICollidable Collidable
+        {
+            get
+            {
+                return collidable;
+            }
+            set
+            {
+                collidable = value;
             }
         }
 

@@ -75,7 +75,7 @@ namespace progarkspill
         }
         public void pauseDisconnect(GameStateStack states)
         {
-            System.Console.WriteLine("Controlled is disconnected.");
+
         }
     }
 }
