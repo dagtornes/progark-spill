@@ -107,7 +107,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ability.cs" />
+    <Compile Include="IActive.cs" />
+    <Compile Include="CombatStats.cs" />
+    <Compile Include="HitCircle.cs" />
+    <Compile Include="ICollidable.cs" />
+    <Compile Include="Noncollidable.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EventQueue.cs" />

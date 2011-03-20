@@ -54,13 +54,20 @@ namespace progarkspill
            
             Texture2D tex = Content.Load<Texture2D>("ship9km");
             Texture2D tex2 = Content.Load<Texture2D>("bullet");
-            ent = new Entity(Vector2.Zero, Vector2.One, tex);
+            CombatStats default_ship = CombatStats.defaultShip();
+            state.BulletSprite = tex2;
+            ent = new Entity(new Vector2(200, 200), Vector2.One * 5, tex);
+            ent.MaxSpeed = 200;
             Player playerOne = new Player(state, PlayerIndex.One);
             playerOne.Hero = ent;
+            playerOne.Hero.CombatState = default_ship;
             ent.Collidable = new HitCircle(tex.Width);
+            
             Player two = new Player(state, PlayerIndex.Two);
             two.Hero = new Entity(new Vector2(100, 0), Vector2.Zero, tex2);
+            two.Hero.MaxSpeed = 200;
             two.Hero.Collidable = new HitCircle(tex.Width);
+            two.Hero.CombatState = CombatStats.defaultShip();
             players = new List<Player>();
             players.Add(playerOne);
             players.Add(two);

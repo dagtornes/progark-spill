@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill
 {
-    interface ICollidable
+    public interface ICollidable
     {
         bool contains(Entity me, Vector2 point);
         bool intersects(Entity me, Entity other);

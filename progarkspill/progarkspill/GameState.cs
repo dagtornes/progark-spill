@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace progarkspill
 {
@@ -12,6 +14,7 @@ namespace progarkspill
         private List<Player> players = new List<Player>(); // These are objects that need updating to let player control
         private GameStateStack stack;
         private Viewport view;
+        public Texture2D BulletSprite { get; set; }
 
         public List<Player> Players
         {
@@ -34,7 +37,15 @@ namespace progarkspill
             this.stack = stack;
             this.view = new Viewport(Vector2.Zero, Vector2.One);
         }
-
+        public void addGameObject(Entity gameObject)
+        {
+            gameObjects.Add(gameObject);
+        }
+        public void addProjectile(Entity projectile)
+        {
+            gameObjects.Add(projectile);
+            projectile.sprite = new Sprite(BulletSprite);
+        }
         public void render(Renderer r)
         {
             r.begin(view);
@@ -44,14 +55,25 @@ namespace progarkspill
 
         public void tick(float timedelta) 
         {
-
+            List<Entity> deActivate = new List<Entity>();
             foreach (Entity gameObject in gameObjects)
             {
                 view.fit(gameObject);
                 gameObject.move(timedelta);
+                if (!gameObject.Status.isAlive(gameObject))
+                {
+                    deActivate.Add(gameObject);
+                }
             }
             foreach (Player p in Players)
+            {
                 p.update(timedelta, null, stack);
+                Vector2 direction = new Vector2(1, 1);
+                direction.Normalize();
+                p.shoot(direction, null);
+            }
+            foreach (Entity dead in deActivate)
+                gameObjects.Remove(dead);
         }
 
 

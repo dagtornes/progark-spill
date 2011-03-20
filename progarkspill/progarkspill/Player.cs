@@ -13,7 +13,6 @@ namespace progarkspill
         Entity hero; 
         Buttons action = Buttons.A;
         GameState game;
-        Dictionary<Buttons, Ability> actions = new Dictionary<Buttons,Ability>(); // Where to get this from?
 
         public Player(GameState game, PlayerIndex controller)
         {
@@ -40,22 +39,42 @@ namespace progarkspill
                 pauseDisconnect(states); // May want to remember which player that paused game
                 return;
             }
+            Hero.CombatState.CurrentCooldown -= timedelta;
+
             selectAction(controller);
             if (controller.IsButtonDown(Buttons.LeftTrigger))
             {
-                Ability triggered;
-                if (actions.TryGetValue(action, out triggered))
-                    // Player aims with right trigger
-                    triggered.triggerIt(controller.ThumbSticks.Right, eq, hero); 
+                // Trigger selected action here 
             }
 
-            if (controller.IsButtonDown(Buttons.RightShoulder))
+            if (controller.IsButtonDown(Buttons.LeftThumbstickDown))
             {
                 // Shoot in direction ship is facing
+                Vector2 direction = controller.ThumbSticks.Left;
+                shoot(direction, eq);
             }
             setHeading(controller);
         }
 
+        public void shoot(Vector2 direction, EventQueue eq)
+        {
+            // TODO: Make this use EventQueue instead of GameState directly when it's done?
+            if (Hero.CombatState.CurrentCooldown <= 0)
+            {
+                Hero.CombatState.CurrentCooldown = Hero.CombatState.Cooldown;
+                Entity bullet = new Entity();
+                bullet.MaxSpeed = Hero.CombatState.ProjectileVelocity;
+
+                bullet.setHeading(direction * new Vector2(1, -1));
+                System.Console.WriteLine("Sent projectile towards " + direction + " MaxSpeed is " + bullet.MaxSpeed);
+                bullet.Status = new Entity.InsideMap();
+                bullet.Collidable = new HitCircle(10);
+                bullet.Position = Hero.Position;
+                
+                game.addProjectile(bullet);
+            }
+            
+        }
         public void setHeading(GamePadState controller)
         {
             hero.setHeading(new Vector2(1, -1) * controller.ThumbSticks.Left);

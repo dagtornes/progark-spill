@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace progarkspill
 {
-    class Sprite : IRenderable
+    public class Sprite : IRenderable
     {
         public Sprite(Texture2D texture)
         {

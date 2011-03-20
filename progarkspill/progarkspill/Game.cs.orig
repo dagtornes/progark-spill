@@ -17,20 +17,16 @@ namespace progarkspill
     public class Game : Microsoft.Xna.Framework.Game
     {
         Renderer renderer;
-<<<<<<< HEAD
-        IGameState ingame = new GameState();
-=======
-        Sprite test;
+        GameState state = new GameState(); // TODO: Factor out into GameStateStack
         GraphicsDeviceManager gdm;
         Viewport view;
->>>>>>> b66c96ac20c179d17f03d2b1ea23d4591c201e42
+        Entity ent;
+        List<Player> players = new List<Player>();
 
         public Game()
         {
             Content.RootDirectory = "Content";
             gdm = new GraphicsDeviceManager(this);
-            view = new Viewport(Vector2.Zero,
-                                new Vector2(2f * gdm.PreferredBackBufferWidth, 2f * gdm.PreferredBackBufferHeight));
         }
 
         /// <summary>
@@ -54,8 +50,24 @@ namespace progarkspill
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-           
-            test = new Sprite(Content.Load<Texture2D>("ship9km"));
+
+            Texture2D tex = Content.Load<Texture2D>("ship9km");
+            Texture2D tex2 = Content.Load<Texture2D>("bullet");
+            ent = new Entity(Vector2.Zero, Vector2.One, tex);
+            Player playerOne = new Player(state, PlayerIndex.One);
+            playerOne.Hero = ent;
+            ent.Collidable = new HitCircle(tex.Width);
+            Player two = new Player(state, PlayerIndex.Two);
+<<<<<<< HEAD
+            two.Hero = new Entity(new Vector2(100, 0), Vector2.Zero, tex);
+            two.Hero.Collidable = new HitCircle(tex.Width);
+=======
+            two.Hero = new Entity(new Vector2(100, 0), Vector2.Zero, tex2);
+>>>>>>> 4039d8afca2b17740cffabb613747bac51705a21
+            players = new List<Player>();
+            players.Add(playerOne);
+            players.Add(two);
+            state.Players = players;
             // TODO: use this.Content to load your game content here
         }
 
@@ -80,9 +92,9 @@ namespace progarkspill
                 this.Exit();
 
             // TODO: Add your update logic here
-
             base.Update(gameTime);
-            ingame.tick(gameTime);
+            float seconds = gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
+            state.tick(seconds);
         }
 
         /// <summary>
@@ -92,11 +104,10 @@ namespace progarkspill
         protected override void Draw(GameTime gameTime)
         {
             renderer.preRender();
-            renderer.begin(view);
             // TODO: Add your drawing code here
-            renderer.renderMe(test);
+            
             base.Draw(gameTime);
-            ingame.render(renderer);
+            state.render(renderer);
         }
     }
 }
