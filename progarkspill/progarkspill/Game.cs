@@ -50,14 +50,16 @@ namespace progarkspill
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
+
            
             Texture2D tex = Content.Load<Texture2D>("ship9km");
+            Texture2D tex2 = Content.Load<Texture2D>("bullet");
             ent = new Entity(Vector2.Zero, Vector2.One, tex);
             Player playerOne = new Player(state, PlayerIndex.One);
             playerOne.Hero = ent;
             ent.Collidable = new HitCircle(tex.Width);
             Player two = new Player(state, PlayerIndex.Two);
-            two.Hero = new Entity(new Vector2(100, 0), Vector2.Zero, tex);
+            two.Hero = new Entity(new Vector2(100, 0), Vector2.Zero, tex2);
             two.Hero.Collidable = new HitCircle(tex.Width);
             players = new List<Player>();
             players.Add(playerOne);
