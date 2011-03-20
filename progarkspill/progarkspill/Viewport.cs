@@ -39,7 +39,7 @@ namespace progarkspill
             if (ent.Position.Y < corner.Y) dy = ent.Position.Y - corner.Y;
 
             corner += new Vector2(dx, dy);
-            size += new Vector2(dx, dy);
+            size -= new Vector2(dx, dy);
 
             if (ent.Position.X > (corner + size).X) dx = ent.Position.X - (corner + size).X;
             if (ent.Position.Y > (corner + size).Y) dy = ent.Position.Y - (corner + size).Y;
@@ -54,7 +54,7 @@ namespace progarkspill
             if (size.X / size.Y > aspect)
                 size.Y = (size.X / aspect);
             else
-                size.X = size.Y / aspect;
+                size.X = aspect * size.Y;
         }
 
         public float Aspect
