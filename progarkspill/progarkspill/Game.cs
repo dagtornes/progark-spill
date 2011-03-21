@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using progarkspill.GameObjects;
+using SharedContent;
 
 namespace progarkspill
 {
@@ -24,6 +25,8 @@ namespace progarkspill
         Entity ent;
         List<Player> players = new List<Player>();
         Entity corner;
+        Stats statsTests;
+
 
         public Game()
         {
@@ -53,6 +56,8 @@ namespace progarkspill
         {
             // Create a new SpriteBatch, which can be used to draw textures.
 
+            statsTests = Content.Load<Stats>("InitialCombatStats");
+            System.Console.WriteLine(statsTests.Armor);
            
             Texture2D tex = Content.Load<Texture2D>("ship9km");
             Texture2D tex2 = Content.Load<Texture2D>("bullet");
