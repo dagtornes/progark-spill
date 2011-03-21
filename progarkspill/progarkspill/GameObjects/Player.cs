@@ -7,30 +7,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace progarkspill.GameObjects
 {
-    public class Player
+    public class Player : IBehaviour
     {
         PlayerIndex control;
-        Entity hero; 
         Buttons action = Buttons.A;
-        GameState game;
 
-        public Player(GameState game, PlayerIndex controller)
-        {
-            this.control = controller;
-            this.game = game;
-        }
         public Player(PlayerIndex controller)
         {
             control = controller;
         }
 
-        public Entity Hero
-        {
-            get { return hero; }
-            set { hero = value; }
-        }
-
-        public void update(float timedelta, EventQueue eq, GameStateStack states)
+        public void decide(Entity me, GameState environment, float timedelta, GameStateStack states, EventQueue eq)
         {
             // Verify connection status
             GamePadState controller = GamePad.GetState(control);
@@ -39,7 +26,7 @@ namespace progarkspill.GameObjects
                 pauseDisconnect(states); // May want to remember which player that paused game
                 return;
             }
-            Hero.CombatState.CurrentCooldown -= timedelta;
+            me.CombatStats.CurrentCooldown -= timedelta; // Auto-attack cooldown
 
             selectAction(controller);
             if (controller.IsButtonDown(Buttons.LeftTrigger))
@@ -49,35 +36,23 @@ namespace progarkspill.GameObjects
 
             if (controller.IsButtonDown(Buttons.RightTrigger))
             {
-                // Shoot in direction ship is facing
-                Vector2 direction = controller.ThumbSticks.Left;
-                shoot(direction, eq);
+                shoot(me, eq);
             }
-            setHeading(controller);
+            setHeading(me, controller);
         }
 
-        public void shoot(Vector2 direction, EventQueue eq)
+        public void shoot(Entity me, EventQueue eq)
         {
             // TODO: Make this use EventQueue instead of GameState directly when it's done?
-            if (Hero.CombatState.CurrentCooldown <= 0)
+            if (me.CombatStats.CurrentCooldown <= 0)
             {
-                Hero.CombatState.CurrentCooldown = Hero.CombatState.Cooldown;
-                Entity bullet = new Entity();
-                bullet.MaxSpeed = Hero.CombatState.ProjectileVelocity;
-
-                bullet.setHeading(direction * new Vector2(1, -1));
-                System.Console.WriteLine("Sent projectile towards " + direction + " MaxSpeed is " + bullet.MaxSpeed);
-                bullet.Status = new Entity.InsideMap();
-                bullet.Collidable = new HitCircle(10);
-                bullet.Position = Hero.Position;
-                
-                game.addProjectile(bullet);
+                Vector2 direction = me.Physics.Orientation;
             }
             
         }
-        public void setHeading(GamePadState controller)
+        public void setHeading(Entity me, GamePadState controller)
         {
-            hero.setHeading(new Vector2(1, -1) * controller.ThumbSticks.Left);
+            me.Physics.Velocity = (new Vector2(1, -1) * controller.ThumbSticks.Left);
         }
 
         public void selectAction(GamePadState controller)
