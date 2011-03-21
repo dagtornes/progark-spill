@@ -12,9 +12,12 @@ namespace progarkspill
     public class GameState : IGameState
     {
         private List<Entity> gameObjects = new List<Entity>(); // These are objects with velocities and the like
-       private GameStateStack stack;
+        private GameStateStack stack;
         private Viewport view;
         public Texture2D BulletSprite { get; set; }
+
+        public bool tickDown { get { return false; } }
+        public bool renderDown { get { return false; } }
 
         public GameState()
         {
