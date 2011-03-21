@@ -30,6 +30,11 @@ namespace progarkspill
         {
             gameObjects.Add(gameObject);
         }
+        public void addProjectile(Entity projectile)
+        {
+            gameObjects.Add(projectile);
+            projectile.Renderable = new Sprite(BulletSprite);
+        }
         public void render(Renderer r)
         {
             r.begin(view);
