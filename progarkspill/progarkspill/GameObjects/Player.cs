@@ -21,12 +21,14 @@ namespace progarkspill.GameObjects
         {
             // Verify connection status
             GamePadState controller = GamePad.GetState(control);
+
+            me.CombatStats.CurrentCooldown -= timedelta; // Auto-attack cooldown
+
             if (!controller.IsConnected)
             {
                 pauseDisconnect(states); // May want to remember which player that paused game
                 return;
             }
-            me.CombatStats.CurrentCooldown -= timedelta; // Auto-attack cooldown
 
             selectAction(controller);
             if (controller.IsButtonDown(Buttons.LeftTrigger))
@@ -47,11 +49,12 @@ namespace progarkspill.GameObjects
             // TODO: Make this use EventQueue instead of GameState directly when it's done?
             if (me.CombatStats.CurrentCooldown <= 0)
             {
-                Vector2 direction = me.Physics.Orientation;
                 Entity projectile = new Entity();
                 projectile.Source = me;
                 projectile.Physics.Speed = me.CombatStats.ProjectileVelocity;
-                projectile.Physics.Velocity = direction;
+                projectile.Physics.Velocity = me.Physics.Orientation;
+                projectile.Physics.Position = me.Physics.Position;
+                projectile.Behavior = new BulletBehaviour();
                 environment.addProjectile(projectile);
                 me.CombatStats.CurrentCooldown = me.CombatStats.Cooldown;
             }

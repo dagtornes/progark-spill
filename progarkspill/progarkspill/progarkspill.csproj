@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameObjects\BulletBehaviour.cs" />
     <Compile Include="GameObjects\IBehaviour.cs" />
     <Compile Include="GameObjects\ICollisionHandler.cs" />
     <Compile Include="GameObjects\Entity.cs" />

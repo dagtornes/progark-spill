@@ -15,6 +15,7 @@ namespace progarkspill
         private GameStateStack stack;
         private Viewport view;
         public Texture2D BulletSprite { get; set; }
+        private List<Entity> newObjects = new List<Entity>();
 
         public bool tickDown { get { return false; } }
         public bool renderDown { get { return false; } }
@@ -35,7 +36,7 @@ namespace progarkspill
         }
         public void addProjectile(Entity projectile)
         {
-            gameObjects.Add(projectile);
+            newObjects.Add(projectile);
             projectile.Renderable = new Sprite(BulletSprite);
         }
         public void render(Renderer r)
@@ -49,6 +50,7 @@ namespace progarkspill
 
         public void tick(float timedelta) 
         {
+            newObjects = new List<Entity>();
             // Behaviour pass
             foreach (Entity gameObject in gameObjects)
             {
@@ -69,6 +71,9 @@ namespace progarkspill
                     deActivate.Add(gameObject);
             foreach (Entity dead in deActivate)
                 gameObjects.Remove(dead);
+            foreach (Entity obj in newObjects)
+                gameObjects.Add(obj);
+
         }
 
 

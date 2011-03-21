@@ -17,7 +17,7 @@ namespace progarkspill.GameObjects
         {
             Position = new Vector2(0, 0);
             Velocity = new Vector2(0, 0);
-            Orientation = new Vector2(0, 0);
+            Orientation = Vector2.UnitX;
             this.Speed = Speed;
         }
     }
