@@ -42,6 +42,7 @@ namespace progarkspill
             corner += new Vector2(dx, dy);
             size -= new Vector2(dx, dy);
 
+            dx = 0; dy = 0;
             if (ent.Physics.Position.X > (corner + size).X) dx = ent.Physics.Position.X - (corner + size).X;
             if (ent.Physics.Position.Y > (corner + size).Y) dy = ent.Physics.Position.Y - (corner + size).Y;
 

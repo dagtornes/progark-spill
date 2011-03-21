@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using progarkspill.GameObjects;
 
 namespace progarkspill
 {
@@ -32,6 +33,11 @@ namespace progarkspill
         public void begin(Viewport view)
         {
             currentspace = view;
+        }
+
+        public void render(IRenderable renderable, Physics transform)
+        {
+            render(renderable, transform.Position, transform.Orientation);
         }
 
         public void render(IRenderable entity, Vector2 pos, Vector2 dir)
