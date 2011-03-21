@@ -79,7 +79,7 @@ namespace progarkspill.GameObjects
         }
         public void pauseDisconnect(GameStateStack states)
         {
-
+            states.push(new PauseMenu(states, control));
         }
     }
 }

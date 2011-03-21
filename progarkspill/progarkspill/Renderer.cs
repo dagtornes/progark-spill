@@ -8,7 +8,7 @@ using progarkspill.GameObjects;
 
 namespace progarkspill
 {
-    public class Renderer
+    public class Renderer : IDisposable
     {
         private Texture2D pixel;
 
@@ -41,7 +41,7 @@ namespace progarkspill
          */
         public void render(IRenderable renderable, Physics transform)
         {
-            render(renderable, transform.Position, transform.Orientation);
+            render(renderable, transform.Position, transform.Angle);
         }
 
         private void render(IRenderable entity, Vector2 pos, Vector2 dir)
@@ -81,9 +81,21 @@ namespace progarkspill
 
         }
 
+        public Viewport Screenspace { get { return screenspace; } }
+
         private GraphicsDeviceManager gdm;
         private Viewport screenspace;
         private Viewport currentspace;
         private SpriteBatch sb;
+
+        public void Dispose()
+        {
+            sb.Dispose();
+        }
+
+        internal void end()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
