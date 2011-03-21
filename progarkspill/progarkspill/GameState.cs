@@ -17,9 +17,12 @@ namespace progarkspill
         public Texture2D BulletSprite { get; set; }
         private List<Entity> newObjects = new List<Entity>();
 
+        public bool tickDown { get { return false; } }
+        public bool renderDown { get { return false; } }
+
         public GameState()
         {
-            this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + Vector2.UnitX));
+            this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
         }
 
         public GameState(GameStateStack stack)
@@ -41,7 +44,7 @@ namespace progarkspill
             r.begin(view);
             foreach (Entity gameObject in gameObjects)
             {
-                r.render(gameObject.Renderable, gameObject.Physics.Position, gameObject.Physics.Orientation);
+                r.render(gameObject.Renderable, gameObject.Physics);
             }
         }
 

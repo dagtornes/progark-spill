@@ -11,5 +11,8 @@ namespace progarkspill
         void render(Renderer r);
         
         void tick(float timedelta);
+
+        bool renderDown { get; }
+        bool tickDown { get; }
     }
 }

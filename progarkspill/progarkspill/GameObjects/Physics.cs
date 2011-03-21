@@ -9,8 +9,13 @@ namespace progarkspill.GameObjects
     public class Physics
     {
         public Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; } 
-        public Vector2 Orientation { get; set; }
+        public Vector2 Velocity { get; set; }
+        public Vector2 Orientation
+        {
+            get { return orientation; }
+            set { this.orientation = value; this.orientation.Normalize(); angle = (float) Math.Atan2(value.Y, value.X); }
+        }
+        public float Angle { get { return angle; } }
         public float Speed { get; set; }
 
         public Physics(float Speed)
@@ -20,5 +25,8 @@ namespace progarkspill.GameObjects
             Orientation = Vector2.UnitX;
             this.Speed = Speed;
         }
+
+        private float angle;
+        private Vector2 orientation;
     }
 }
