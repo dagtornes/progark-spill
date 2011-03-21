@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "progarkspill", "progarkspil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "progarkspillContent", "progarkspill\progarkspillContent\progarkspillContent.contentproj", "{C1A68E04-413C-485D-B95C-5171BBF08FFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedContent", "SharedContent\SharedContent.csproj", "{8BCCF985-24D6-4D2A-8C4C-91C338FE00BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -33,6 +35,10 @@ Global
 		{C1A68E04-413C-485D-B95C-5171BBF08FFF}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{C1A68E04-413C-485D-B95C-5171BBF08FFF}.Release|x86.ActiveCfg = Release|x86
 		{C1A68E04-413C-485D-B95C-5171BBF08FFF}.Release|Xbox 360.ActiveCfg = Release|x86
+		{8BCCF985-24D6-4D2A-8C4C-91C338FE00BE}.Debug|x86.ActiveCfg = Debug|x86
+		{8BCCF985-24D6-4D2A-8C4C-91C338FE00BE}.Debug|x86.Build.0 = Debug|x86
+		{8BCCF985-24D6-4D2A-8C4C-91C338FE00BE}.Release|x86.ActiveCfg = Release|x86
+		{8BCCF985-24D6-4D2A-8C4C-91C338FE00BE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
