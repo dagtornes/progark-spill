@@ -18,7 +18,7 @@ namespace progarkspill
 
         public GameState()
         {
-            this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667*Vector2.UnitX));
+            this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
         }
 
         public GameState(GameStateStack stack)
