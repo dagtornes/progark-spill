@@ -23,8 +23,10 @@ namespace progarkspill.GameObjects
             // Kill projectile after it's hit a creep
             me.CombatStats.Health = -1;
             if (hostile.CombatStats.Health < 0)
-                // TODO: hostile killed by source, need some bookkeeping
+            {
                 me.Stats.Kills += 1;
+                hostile.Status.kill(hostile, me);
+            }
         }
     }
 }
