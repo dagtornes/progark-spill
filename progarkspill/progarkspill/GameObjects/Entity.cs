@@ -17,6 +17,13 @@ namespace progarkspill.GameObjects
         public Physics Physics { get; set; }
         public Entity Source { get; set; }
 
+        public Entity()
+        {
+            CombatStats = new CombatStats();
+            Status = new Status();
+            Collidable = new Noncollidable();
+            Physics = new Physics(200);
+        }
         public void move(float timedelta)
         {
             Physics.Position += Physics.Velocity * Physics.Speed * timedelta;

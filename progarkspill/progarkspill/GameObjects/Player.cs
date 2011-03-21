@@ -37,17 +37,23 @@ namespace progarkspill.GameObjects
 
             if (controller.IsButtonDown(Buttons.RightTrigger))
             {
-                shoot(me, eq);
+                shoot(me, environment, eq);
             }
             setHeading(me, controller);
         }
 
-        public void shoot(Entity me, EventQueue eq)
+        public void shoot(Entity me, GameState environment, EventQueue eq)
         {
             // TODO: Make this use EventQueue instead of GameState directly when it's done?
             if (me.CombatStats.CurrentCooldown <= 0)
             {
                 Vector2 direction = me.Physics.Orientation;
+                Entity projectile = new Entity();
+                projectile.Source = me;
+                projectile.Physics.Speed = me.CombatStats.ProjectileVelocity;
+                projectile.Physics.Velocity = direction;
+                environment.addProjectile(projectile);
+                me.CombatStats.CurrentCooldown = me.CombatStats.Cooldown;
             }
             
         }
