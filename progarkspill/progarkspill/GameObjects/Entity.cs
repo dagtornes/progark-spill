@@ -16,6 +16,7 @@ namespace progarkspill.GameObjects
         public ICollisionHandler CollisionHandler { get; set; }
         public Physics Physics { get; set; }
         public Entity Source { get; set; }
+        public Statistics Stats { get; set; }
 
         public Entity()
         {
@@ -23,6 +24,7 @@ namespace progarkspill.GameObjects
             Status = new Status();
             Collidable = new Noncollidable();
             Physics = new Physics(200);
+            Stats = new Statistics();
         }
         public void move(float timedelta)
         {
@@ -33,5 +35,7 @@ namespace progarkspill.GameObjects
                 Physics.Orientation.Normalize();
             }
         }
+
+
     }
 }

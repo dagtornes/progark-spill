@@ -8,5 +8,7 @@ namespace progarkspill.GameObjects
     public interface IStatus
     {
         bool isAlive(Entity me);
+        void kill(Entity me, Entity murderer);
+        Entity getKiller();
     }
 }

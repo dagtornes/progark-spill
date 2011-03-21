@@ -35,18 +35,22 @@ namespace progarkspill
             currentspace = view;
         }
 
+        /*
+         * Renders the renderable to screen.
+         * Gets position and rotation from the transform.
+         */
         public void render(IRenderable renderable, Physics transform)
         {
             render(renderable, transform.Position, transform.Orientation);
         }
 
-        public void render(IRenderable entity, Vector2 pos, Vector2 dir)
+        private void render(IRenderable entity, Vector2 pos, Vector2 dir)
         {
             float angle = (float)Math.Atan2(dir.Y, dir.X);
             render(entity, pos, angle);
         }
 
-        public void render(IRenderable entity, Vector2 pos, float angle)
+        private void render(IRenderable entity, Vector2 pos, float angle)
         {
             Vector2 render_position = currentspace.mapTo(pos, screenspace);
             Vector2 scale = currentspace.scaleTo(screenspace);

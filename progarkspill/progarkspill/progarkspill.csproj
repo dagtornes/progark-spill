@@ -108,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameObjects\BulletBehaviour.cs" />
+    <Compile Include="GameObjects\BulletCollider.cs" />
+    <Compile Include="GameObjects\BulletStatus.cs" />
     <Compile Include="GameObjects\IBehaviour.cs" />
     <Compile Include="GameObjects\ICollisionHandler.cs" />
     <Compile Include="GameObjects\Entity.cs" />
@@ -120,6 +122,7 @@
     <Compile Include="GameObjects\Sprite.cs" />
     <Compile Include="EventQueue.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameObjects\Statistics.cs" />
     <Compile Include="GameObjects\Status.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="GameStateStack.cs" />

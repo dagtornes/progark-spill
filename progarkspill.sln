@@ -9,16 +9,32 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedContent", "SharedCont
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		Debug|Xbox 360 = Debug|Xbox 360
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
+		Release|Xbox 360 = Release|Xbox 360
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Debug|x86.ActiveCfg = Debug|x86
 		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Debug|x86.Build.0 = Debug|x86
+		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Debug|Xbox 360.ActiveCfg = Debug|x86
+		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Debug|Xbox 360.Build.0 = Debug|x86
+		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Release|Mixed Platforms.Build.0 = Release|x86
 		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Release|x86.ActiveCfg = Release|x86
 		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Release|x86.Build.0 = Release|x86
+		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Release|Xbox 360.ActiveCfg = Release|x86
+		{A0FAC9C9-8C17-4CD7-B892-A3509C09CE1D}.Release|Xbox 360.Build.0 = Release|x86
+		{C1A68E04-413C-485D-B95C-5171BBF08FFF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{C1A68E04-413C-485D-B95C-5171BBF08FFF}.Debug|x86.ActiveCfg = Debug|x86
+		{C1A68E04-413C-485D-B95C-5171BBF08FFF}.Debug|Xbox 360.ActiveCfg = Debug|x86
+		{C1A68E04-413C-485D-B95C-5171BBF08FFF}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{C1A68E04-413C-485D-B95C-5171BBF08FFF}.Release|x86.ActiveCfg = Release|x86
+		{C1A68E04-413C-485D-B95C-5171BBF08FFF}.Release|Xbox 360.ActiveCfg = Release|x86
 		{8BCCF985-24D6-4D2A-8C4C-91C338FE00BE}.Debug|x86.ActiveCfg = Debug|x86
 		{8BCCF985-24D6-4D2A-8C4C-91C338FE00BE}.Debug|x86.Build.0 = Debug|x86
 		{8BCCF985-24D6-4D2A-8C4C-91C338FE00BE}.Release|x86.ActiveCfg = Release|x86
