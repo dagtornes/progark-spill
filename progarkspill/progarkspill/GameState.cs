@@ -18,7 +18,7 @@ namespace progarkspill
 
         public GameState()
         {
-            this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + Vector2.UnitX));
+            this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667*Vector2.UnitX));
         }
 
         public GameState(GameStateStack stack)
@@ -35,7 +35,7 @@ namespace progarkspill
             r.begin(view);
             foreach (Entity gameObject in gameObjects)
             {
-                r.render(gameObject.Renderable, gameObject.Physics.Position, gameObject.Physics.Orientation);
+                r.render(gameObject.Renderable, gameObject.Physics);
             }
         }
 
