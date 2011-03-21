@@ -45,13 +45,15 @@ namespace progarkspill
         public void addProjectile(Entity projectile)
         {
             gameObjects.Add(projectile);
-            projectile.sprite = new Sprite(BulletSprite);
+            projectile.Renderable = new Sprite(BulletSprite);
         }
         public void render(Renderer r)
         {
             r.begin(view);
             foreach (Entity gameObject in gameObjects)
-                gameObject.render(r);
+            {
+                r.render(gameObject.Renderable, gameObject.Physics.Position, gameObject.Physics.Orientation);
+            }
         }
 
         public void tick(float timedelta) 

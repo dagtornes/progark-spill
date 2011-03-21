@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using progarkspill.GameObjects;
 
 namespace progarkspill
 {
@@ -35,14 +36,14 @@ namespace progarkspill
             float aspect = Aspect;
 
             float dx = 0.0f, dy = 0.0f;
-            if (ent.Position.X < corner.X) dx = ent.Position.X - corner.X;
-            if (ent.Position.Y < corner.Y) dy = ent.Position.Y - corner.Y;
+            if (ent.Physics.Position.X < corner.X) dx = ent.Physics.Position.X - corner.X;
+            if (ent.Physics.Position.Y < corner.Y) dy = ent.Physics.Position.Y - corner.Y;
 
             corner += new Vector2(dx, dy);
             size -= new Vector2(dx, dy);
 
-            if (ent.Position.X > (corner + size).X) dx = ent.Position.X - (corner + size).X;
-            if (ent.Position.Y > (corner + size).Y) dy = ent.Position.Y - (corner + size).Y;
+            if (ent.Physics.Position.X > (corner + size).X) dx = ent.Physics.Position.X - (corner + size).X;
+            if (ent.Physics.Position.Y > (corner + size).Y) dy = ent.Physics.Position.Y - (corner + size).Y;
 
             size += new Vector2(dx, dy);
 

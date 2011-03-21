@@ -115,6 +115,7 @@
     <Compile Include="GameObjects\HitCircle.cs" />
     <Compile Include="GameObjects\ICollidable.cs" />
     <Compile Include="GameObjects\Noncollidable.cs" />
+    <Compile Include="GameObjects\Physics.cs" />
     <Compile Include="GameObjects\Sprite.cs" />
     <Compile Include="EventQueue.cs" />
     <Compile Include="Game.cs" />

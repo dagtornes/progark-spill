@@ -17,7 +17,7 @@ namespace progarkspill.GameObjects
 
         public bool contains(Entity me, Vector2 point)
         {
-            Vector2 difference = me.Position - point;
+            Vector2 difference = me.Physics.Position - point;
             return difference.LengthSquared() < this.Radius * this.Radius;
         }
 
@@ -25,7 +25,7 @@ namespace progarkspill.GameObjects
         {
             if (other.Collidable is HitCircle)
             {
-                Vector2 difference = me.Position - other.Position;
+                Vector2 difference = me.Physics.Position - other.Physics.Position;
                 return difference.LengthSquared() < this.Radius * this.Radius +
                     other.Collidable.Radius * other.Collidable.Radius;
             }
