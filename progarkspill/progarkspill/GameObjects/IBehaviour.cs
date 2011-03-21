@@ -7,6 +7,6 @@ namespace progarkspill.GameObjects
 {
     public interface IBehaviour
     {
-        void decide(Entity me, GameState environment);
+        void decide(Entity me, GameState environment, float timedelta, GameStateStack states, EventQueue eq);
     }
 }
