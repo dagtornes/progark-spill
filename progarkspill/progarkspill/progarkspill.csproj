@@ -130,6 +130,7 @@
     <Compile Include="GameObjects\IRenderable.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="PauseMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Renderer.cs" />
