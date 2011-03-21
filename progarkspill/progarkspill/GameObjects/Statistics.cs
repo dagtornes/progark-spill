@@ -5,7 +5,7 @@ using System.Text;
 
 namespace progarkspill.GameObjects
 {
-    class Statistics
+    public class Statistics
     {
         public int Experience { get; set; }
         public int Level { get; set; }
