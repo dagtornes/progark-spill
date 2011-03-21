@@ -68,6 +68,7 @@
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\SharedContent\SharedContent.csproj">
       <Project>{8BCCF985-24D6-4D2A-8C4C-91C338FE00BE}</Project>
       <Name>SharedContent</Name>
