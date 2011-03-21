@@ -5,10 +5,11 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using progarkspill.GameObjects;
 
 namespace progarkspill
 {
-    class GameState : IGameState
+    public class GameState : IGameState
     {
         private List<Entity> gameObjects = new List<Entity>(); // These are objects with velocities and the like
         private List<Player> players = new List<Player>(); // These are objects that need updating to let player control

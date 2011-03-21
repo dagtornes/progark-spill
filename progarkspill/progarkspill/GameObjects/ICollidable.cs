@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace progarkspill
+namespace progarkspill.GameObjects
 {
     public interface ICollidable
     {

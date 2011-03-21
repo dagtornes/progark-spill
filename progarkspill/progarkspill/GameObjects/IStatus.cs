@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace progarkspill
+namespace progarkspill.GameObjects
 {
-    public class EventQueue
+    public interface IStatus
     {
+        bool isAlive(Entity me);
     }
 }

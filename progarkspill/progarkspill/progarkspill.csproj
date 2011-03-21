@@ -107,21 +107,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IActive.cs" />
-    <Compile Include="CombatStats.cs" />
-    <Compile Include="HitCircle.cs" />
-    <Compile Include="ICollidable.cs" />
-    <Compile Include="Noncollidable.cs" />
-    <Compile Include="Sprite.cs" />
-    <Compile Include="Entity.cs" />
+    <Compile Include="GameObjects\IBehaviour.cs" />
+    <Compile Include="GameObjects\ICollisionHandler.cs" />
+    <Compile Include="GameObjects\Entity.cs" />
+    <Compile Include="GameObjects\IStatus.cs" />
+    <Compile Include="GameObjects\CombatStats.cs" />
+    <Compile Include="GameObjects\HitCircle.cs" />
+    <Compile Include="GameObjects\ICollidable.cs" />
+    <Compile Include="GameObjects\Noncollidable.cs" />
+    <Compile Include="GameObjects\Sprite.cs" />
     <Compile Include="EventQueue.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="GameStateStack.cs" />
     <Compile Include="IGameState.cs" />
-    <Compile Include="IRenderable.cs" />
+    <Compile Include="GameObjects\IRenderable.cs" />
     <Compile Include="MainMenu.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="GameObjects\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Renderer.cs" />

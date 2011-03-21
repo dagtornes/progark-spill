@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace progarkspill
+namespace progarkspill.GameObjects
 {
-    public interface IActive
+    public interface ICollisionHandler
     {
-        bool isAlive(Entity me);
     }
 }

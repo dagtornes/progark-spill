@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace progarkspill
+namespace progarkspill.GameObjects
 {   // Special collidable essentially for noncollidables
     class Noncollidable : ICollidable
     {

@@ -7,8 +7,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace progarkspill
-{
-    public class Entity
+
+    public class EntityOld
     {
         public Vector2 Velocity;
         public Vector2 position;
@@ -20,16 +20,16 @@ namespace progarkspill
             set;
         }
         public float MaxSpeed { get; set; }
-        public IActive Status { get; set; }
+        public IStatus Status { get; set; }
 
-        public class Alive : IActive
+        public class Alive : IStatus
         {
             public bool isAlive(Entity me)
             {
                 return me.CombatState.Health > 1;
             }
         }
-        public class InsideMap : IActive
+        public class InsideMap : IStatus
         {
             public bool isAlive(Entity me)
             {
