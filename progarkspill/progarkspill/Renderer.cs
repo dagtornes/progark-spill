@@ -61,6 +61,8 @@ namespace progarkspill
             sb.Begin();
             sb.Draw(this.pixel, topleft, null, color, 0.0f, Vector2.Zero, new Vector2(r - l, 1), SpriteEffects.None, 0.0f);
             sb.Draw(this.pixel, topleft + new Vector2(0, b - t), null, color, 0.0f, Vector2.Zero, new Vector2(r - l, 1), SpriteEffects.None, 0.0f);
+            sb.Draw(this.pixel, topleft, null, color, 0.0f, Vector2.Zero, new Vector2(1, b - t), SpriteEffects.None, 0.0f);
+            sb.Draw(this.pixel, topleft + new Vector2(r - l, 0), null, color, 0.0f, Vector2.Zero, new Vector2(1, b - t), SpriteEffects.None, 0.0f);
             sb.End();
         }
 
