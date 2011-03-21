@@ -47,7 +47,7 @@ namespace progarkspill
                 // Trigger selected action here 
             }
 
-            if (controller.IsButtonDown(Buttons.LeftThumbstickDown))
+            if (controller.IsButtonDown(Buttons.RightTrigger))
             {
                 // Shoot in direction ship is facing
                 Vector2 direction = controller.ThumbSticks.Left;

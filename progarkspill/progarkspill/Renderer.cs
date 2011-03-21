@@ -9,9 +9,12 @@ namespace progarkspill
 {
     public class Renderer
     {
-        public Renderer(GraphicsDeviceManager gdm)
+        private Texture2D pixel;
+
+        public Renderer(GraphicsDeviceManager gdm, Texture2D pixel)
         {
             this.gdm = gdm;
+            this.pixel = pixel;
             Vector2 screensize = new Vector2(gdm.PreferredBackBufferWidth, gdm.PreferredBackBufferHeight);
             screenspace = new Viewport(Vector2.Zero, screensize);
             sb = new SpriteBatch(gdm.GraphicsDevice);
@@ -45,6 +48,25 @@ namespace progarkspill
             sb.Begin();
             sb.Draw(entity.Texture, render_position, null, Color.White, angle, entity.Origin, scale, SpriteEffects.None, 0.0f);
             sb.End();
+        }
+
+        public void renderRect(Vector2 topleft, Vector2 bottomright, Color color)
+        {
+            topleft = currentspace.mapTo(topleft, screenspace);
+            bottomright = currentspace.mapTo(bottomright, screenspace);
+
+            float l = topleft.X, r = bottomright.X;
+            float t = topleft.Y, b = bottomright.Y;
+
+            sb.Begin();
+            sb.Draw(this.pixel, topleft, null, color, 0.0f, Vector2.Zero, new Vector2(r - l, 1), SpriteEffects.None, 0.0f);
+            sb.Draw(this.pixel, topleft + new Vector2(0, b - t), null, color, 0.0f, Vector2.Zero, new Vector2(r - l, 1), SpriteEffects.None, 0.0f);
+            sb.End();
+        }
+
+        public void postRender()
+        {
+
         }
 
         private GraphicsDeviceManager gdm;

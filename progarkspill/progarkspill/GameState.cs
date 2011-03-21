@@ -70,7 +70,6 @@ namespace progarkspill
                 p.update(timedelta, null, stack);
                 Vector2 direction = new Vector2(1, 1);
                 direction.Normalize();
-                p.shoot(direction, null);
             }
             foreach (Entity dead in deActivate)
                 gameObjects.Remove(dead);

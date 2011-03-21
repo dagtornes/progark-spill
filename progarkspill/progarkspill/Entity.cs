@@ -34,7 +34,7 @@ namespace progarkspill
             public bool isAlive(Entity me)
             {
                 // TODO: These numbers need to come from somewhere
-                return me.Position.X <= 500 && me.Position.Y < 500 &&
+                return me.Position.X <= 2000 && me.Position.Y < 2000 &&
                     me.Position.X >= 0 && me.Position.Y >= 0;
             }
         }

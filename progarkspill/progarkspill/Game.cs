@@ -22,6 +22,7 @@ namespace progarkspill
         Viewport view;
         Entity ent;
         List<Player> players = new List<Player>();
+        Entity corner;
 
         public Game()
         {
@@ -39,7 +40,7 @@ namespace progarkspill
         {
             // TODO: Add your initialization logic here
             
-            renderer = new Renderer(gdm);
+            renderer = new Renderer(gdm, Content.Load<Texture2D>("whitepixel"));
             base.Initialize();
         }
 
@@ -72,6 +73,8 @@ namespace progarkspill
             players.Add(playerOne);
             players.Add(two);
             state.Players = players;
+
+            corner = new Entity(500 * Vector2.One, Vector2.Zero, tex2);
             // TODO: use this.Content to load your game content here
         }
 
@@ -109,9 +112,9 @@ namespace progarkspill
         {
             renderer.preRender();
             // TODO: Add your drawing code here
-            
             base.Draw(gameTime);
             state.render(renderer);
+            renderer.renderRect(Vector2.Zero, 500 * Vector2.One, Color.Beige);
         }
     }
 }
