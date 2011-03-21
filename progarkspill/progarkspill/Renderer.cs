@@ -5,17 +5,20 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using progarkspill.GameObjects;
+using Microsoft.Xna.Framework.Content;
 
 namespace progarkspill
 {
     public class Renderer : IDisposable
     {
         private Texture2D pixel;
+        private SpriteFont font;
 
-        public Renderer(GraphicsDeviceManager gdm, Texture2D pixel)
+        public Renderer(GraphicsDeviceManager gdm, ContentManager content)
         {
             this.gdm = gdm;
-            this.pixel = pixel;
+            this.pixel = content.Load<Texture2D>("whitepixel");
+            this.font = content.Load<SpriteFont>("default");
             Vector2 screensize = new Vector2(gdm.PreferredBackBufferWidth, gdm.PreferredBackBufferHeight);
             screenspace = new Viewport(Vector2.Zero, screensize);
             sb = new SpriteBatch(gdm.GraphicsDevice);
@@ -27,12 +30,17 @@ namespace progarkspill
         }
 
         /*
-         * Sets the current Viewport, which will affect all renerMe() calls until a following end().
+         * Sets the current Viewport, which will affect all render() calls until a following end().
          * Viewports are mappings from a game-specific space to screen-space.
          */
         public void begin(Viewport view)
         {
             currentspace = view;
+        }
+
+        public void beginScreen()
+        {
+            begin(screenspace);
         }
 
         /*
@@ -76,6 +84,16 @@ namespace progarkspill
             sb.End();
         }
 
+        public void renderText(string text, Vector2 position, Color color, bool centered = true)
+        {
+            sb.Begin();
+            Vector2 origin = Vector2.Zero;
+            if (centered)
+                origin = 0.5f * new Vector2(0, 0);
+            sb.DrawString(this.font, text, position, color, 0.0f, origin, Vector2.One, SpriteEffects.None, 0.0f);
+            sb.End();
+        }
+
         public void postRender()
         {
 
@@ -93,9 +111,9 @@ namespace progarkspill
             sb.Dispose();
         }
 
-        internal void end()
+        public void end()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

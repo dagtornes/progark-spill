@@ -20,15 +20,15 @@ namespace progarkspill
 
         public void render(Renderer r)
         {
-            r.begin(r.Screenspace);
-
+            r.beginScreen();
+            r.renderText("Player X paused the game.", 0.5f * Vector2.One, Color.White, false);
             r.end();
         }
 
         public void tick(float timedelta)
         {
             GamePadState inputstate = GamePad.GetState(initiated);
-            if (inputstate.IsButtonDown(Buttons.Back))
+            if (inputstate.IsButtonDown(Buttons.Start))
             {
                 owner.pop();
             }

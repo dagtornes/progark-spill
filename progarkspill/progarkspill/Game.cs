@@ -18,7 +18,7 @@ namespace progarkspill
     public class Game : Microsoft.Xna.Framework.Game
     {
         Renderer renderer;
-        GameState state = new GameState(); // TODO: Factor out into GameStateStack
+        GameStateStack states = new GameStateStack();
         GraphicsDeviceManager gdm;
         Viewport view;
         Entity ent;
@@ -28,6 +28,7 @@ namespace progarkspill
         public Game()
         {
             Content.RootDirectory = "Content";
+            states.push(new GameState(states));
             gdm = new GraphicsDeviceManager(this);
         }
 
@@ -41,7 +42,7 @@ namespace progarkspill
         {
             // TODO: Add your initialization logic here
             
-            renderer = new Renderer(gdm, Content.Load<Texture2D>("whitepixel"));
+            renderer = new Renderer(gdm, Content);
             base.Initialize();
         }
 
@@ -60,7 +61,7 @@ namespace progarkspill
             // Behaviour for Entities
             Player playerOne = new Player(PlayerIndex.One);
             Player playerTwo = new Player(PlayerIndex.Two);
-            state.BulletSprite = tex2;
+            ((GameState) states.peek()).BulletSprite = tex2;
 
             Entity p1 = new Entity();
             p1.Behavior = playerOne;
@@ -69,7 +70,7 @@ namespace progarkspill
             p1.Renderable = new Sprite(tex);
             p1.Status = new Status();
 
-            state.addGameObject(p1);
+            ((GameState) states.peek()).addGameObject(p1);
 
             corner = new Entity();
             corner.Physics = new Physics(0);
@@ -94,13 +95,13 @@ namespace progarkspill
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (states.isEmpty())
                 this.Exit();
 
             // TODO: Add your update logic here
             base.Update(gameTime);
             float seconds = gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
-            state.tick(seconds);
+            states.tick(seconds);
         }
 
         /// <summary>
@@ -112,8 +113,7 @@ namespace progarkspill
             renderer.preRender();
             // TODO: Add your drawing code here
             base.Draw(gameTime);
-            state.render(renderer);
-            renderer.renderRect(Vector2.Zero, 500 * Vector2.One, Color.Beige);
+            states.render(renderer);
         }
     }
 }

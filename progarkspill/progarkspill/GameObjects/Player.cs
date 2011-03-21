@@ -42,6 +42,10 @@ namespace progarkspill.GameObjects
                 shoot(me, environment, eq);
             }
             setHeading(me, controller);
+
+            // Pause menu:
+            if (controller.IsButtonDown(Buttons.Start)) pauseDisconnect(states);
+            if (controller.IsButtonDown(Buttons.Back)) states.pop();
         }
 
         public void shoot(Entity me, GameState environment, EventQueue eq)

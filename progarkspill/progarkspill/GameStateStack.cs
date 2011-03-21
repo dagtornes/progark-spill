@@ -10,11 +10,13 @@ namespace progarkspill
 
         public GameStateStack()
         {
-            push(new MainMenu(this));
+            //push(new MainMenu(this));
         }
 
         public void tick(float timedelta)
         {
+            if (isEmpty()) return;
+
             gamestates[gamestates.Count - 1].tick(timedelta);
 
             int next = 2;
@@ -25,12 +27,25 @@ namespace progarkspill
             }
         }
 
+        public IGameState peek()
+        {
+            return gamestates[gamestates.Count - 1];
+        }
+
         public void push(IGameState state)
         {
             gamestates.Add(state);
         }
+
+        public bool isEmpty()
+        {
+            return gamestates.Count <= 0;
+        }
+
         public IGameState pop()
         {
+            if (isEmpty()) return null;
+
             IGameState state = gamestates[gamestates.Count-1];
             gamestates.RemoveAt(gamestates.Count-1);
             return state;
@@ -38,6 +53,8 @@ namespace progarkspill
 
         public void render(Renderer r)
         {
+            if (isEmpty()) return;
+
             gamestates[gamestates.Count - 1].render(r);
 
             int next = 2;

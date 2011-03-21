@@ -28,7 +28,7 @@ namespace progarkspill
         public GameState(GameStateStack stack)
         {
             this.stack = stack;
-            this.view = new Viewport(Vector2.Zero, Vector2.One);
+            this.view = new Viewport(Vector2.Zero, 500 * (Vector2.One + 0.667f * Vector2.UnitX));
         }
         public void addGameObject(Entity gameObject)
         {
@@ -54,7 +54,7 @@ namespace progarkspill
             // Behaviour pass
             foreach (Entity gameObject in gameObjects)
             {
-                gameObject.Behavior.decide(gameObject, this, timedelta, null, null);
+                gameObject.Behavior.decide(gameObject, this, timedelta, stack, null);
             }
 
             // Physics pass
