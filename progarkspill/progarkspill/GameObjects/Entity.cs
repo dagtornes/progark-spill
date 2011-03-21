@@ -15,6 +15,7 @@ namespace progarkspill.GameObjects
         public ICollidable Collidable { get; set; }
         public ICollisionHandler CollisionHandler { get; set; }
         public Physics Physics { get; set; }
+        public Entity Source { get; set; }
 
         public void move(float timedelta)
         {

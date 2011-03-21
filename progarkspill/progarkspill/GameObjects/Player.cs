@@ -32,6 +32,7 @@ namespace progarkspill.GameObjects
             if (controller.IsButtonDown(Buttons.LeftTrigger))
             {
                 // Trigger selected action here 
+                // Crosshair is located at me.Source.Physics
             }
 
             if (controller.IsButtonDown(Buttons.RightTrigger))

@@ -119,6 +119,7 @@
     <Compile Include="GameObjects\Sprite.cs" />
     <Compile Include="EventQueue.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameObjects\Status.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="GameStateStack.cs" />
     <Compile Include="IGameState.cs" />

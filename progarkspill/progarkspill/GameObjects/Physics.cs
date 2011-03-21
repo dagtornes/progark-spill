@@ -12,5 +12,13 @@ namespace progarkspill.GameObjects
         public Vector2 Velocity { get; set; } 
         public Vector2 Orientation { get; set; }
         public float Speed { get; set; }
+
+        public Physics(float Speed)
+        {
+            Position = new Vector2(0, 0);
+            Velocity = new Vector2(0, 0);
+            Orientation = new Vector2(0, 0);
+            this.Speed = Speed;
+        }
     }
 }

@@ -56,26 +56,24 @@ namespace progarkspill
            
             Texture2D tex = Content.Load<Texture2D>("ship9km");
             Texture2D tex2 = Content.Load<Texture2D>("bullet");
-            CombatStats default_ship = CombatStats.defaultShip();
-            state.BulletSprite = tex2;
-            ent = new Entity(new Vector2(200, 200), Vector2.One * 5, tex);
-            ent.MaxSpeed = 200;
-            Player playerOne = new Player(state, PlayerIndex.One);
-            playerOne.Hero = ent;
-            playerOne.Hero.CombatState = default_ship;
-            ent.Collidable = new HitCircle(tex.Width);
-            
-            Player two = new Player(state, PlayerIndex.Two);
-            two.Hero = new Entity(new Vector2(100, 0), Vector2.Zero, tex2);
-            two.Hero.MaxSpeed = 200;
-            two.Hero.Collidable = new HitCircle(tex.Width);
-            two.Hero.CombatState = CombatStats.defaultShip();
-            players = new List<Player>();
-            players.Add(playerOne);
-            players.Add(two);
-            state.Players = players;
 
-            corner = new Entity(500 * Vector2.One, Vector2.Zero, tex2);
+            // Behaviour for Entities
+            Player playerOne = new Player(PlayerIndex.One);
+            Player playerTwo = new Player(PlayerIndex.Two);
+            state.BulletSprite = tex2;
+
+            Entity p1 = new Entity();
+            p1.Behavior = playerOne;
+            p1.CombatStats = CombatStats.defaultShip();
+            p1.Physics = new Physics(200);
+            p1.Renderable = new Sprite(tex);
+            p1.Status = new Status();
+
+            state.addGameObject(p1);
+
+            corner = new Entity();
+            corner.Physics = new Physics(0);
+            corner.Physics.Position = new Vector2(0,0);
             // TODO: use this.Content to load your game content here
         }
 
