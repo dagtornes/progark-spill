@@ -7,5 +7,6 @@ namespace progarkspill.GameObjects
 {
     public interface ICollisionHandler
     {
+        void collide(Entity me, Entity other);
     }
 }

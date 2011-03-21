@@ -64,6 +64,21 @@ namespace progarkspill
                 gameObject.move(timedelta);
             }
 
+            // Collision pass
+            foreach (Entity gameObject in gameObjects)
+            {
+                if (gameObject.Collidable != null)
+                {
+                    foreach (Entity other in gameObjects)
+                    {
+                        if (other == gameObject)
+                            continue;
+                        if (gameObject.Collidable.intersects(gameObject, other))
+                            gameObject.CollisionHandler.collide(gameObject, other);
+                    }
+                }
+            }
+
             // Status pass
             List<Entity> deActivate = new List<Entity>();
             foreach (Entity gameObject in gameObjects)

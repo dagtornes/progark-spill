@@ -55,6 +55,9 @@ namespace progarkspill.GameObjects
                 projectile.Physics.Velocity = me.Physics.Orientation;
                 projectile.Physics.Position = me.Physics.Position;
                 projectile.Behavior = new BulletBehaviour();
+                projectile.Collidable = new HitCircle(15);
+                projectile.CollisionHandler = new BulletCollider();
+                projectile.CombatStats = me.CombatStats;
                 environment.addProjectile(projectile);
                 me.CombatStats.CurrentCooldown = me.CombatStats.Cooldown;
             }
