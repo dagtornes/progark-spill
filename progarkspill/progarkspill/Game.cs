@@ -75,7 +75,7 @@ namespace progarkspill
             p1.Renderable = new Sprite(tex);
             p1.Status = new Status();
 
-            ((GameState) states.peek()).addGameObject(p1);
+            ((GameState)states.peek()).addPlayer(p1);
 
             corner = new Entity();
             corner.Physics = new Physics(0);

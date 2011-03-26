@@ -120,7 +120,6 @@
     <Compile Include="GameObjects\Noncollidable.cs" />
     <Compile Include="GameObjects\Physics.cs" />
     <Compile Include="GameObjects\Sprite.cs" />
-    <Compile Include="EventQueue.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameObjects\Statistics.cs" />
     <Compile Include="GameObjects\Status.cs" />

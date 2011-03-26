@@ -17,7 +17,7 @@ namespace progarkspill.GameObjects
             control = controller;
         }
 
-        public void decide(Entity me, GameState environment, float timedelta, GameStateStack states, EventQueue eq)
+        public void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
         {
             // Verify connection status
             GamePadState controller = GamePad.GetState(control);
@@ -39,7 +39,7 @@ namespace progarkspill.GameObjects
 
             if (controller.IsButtonDown(Buttons.RightTrigger))
             {
-                shoot(me, environment, eq);
+                shoot(me, environment);
             }
             setHeading(me, controller);
 
@@ -48,7 +48,7 @@ namespace progarkspill.GameObjects
             if (controller.IsButtonDown(Buttons.Back)) states.pop();
         }
 
-        public void shoot(Entity me, GameState environment, EventQueue eq)
+        public void shoot(Entity me, GameState environment)
         {
             // TODO: Make this use EventQueue instead of GameState directly when it's done?
             if (me.CombatStats.CurrentCooldown <= 0)
@@ -63,7 +63,8 @@ namespace progarkspill.GameObjects
                 projectile.Collidable = new HitCircle(15);
                 projectile.CollisionHandler = new BulletCollider();
                 projectile.CombatStats = me.CombatStats;
-                environment.addProjectile(projectile);
+                projectile.Renderable = new Sprite(environment.BulletSprite);
+                environment.addGameObject(projectile);
                 me.CombatStats.CurrentCooldown = me.CombatStats.Cooldown;
             }
             
