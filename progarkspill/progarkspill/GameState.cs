@@ -42,6 +42,7 @@ namespace progarkspill
             objective.CombatStats.Health = 1000;
             objective.Physics.Speed = 0;
             Entity spawner = new Entity();
+            nonInteractives.Add(spawner);
             spawner.Physics.Position = new Vector2(750, 750);
             spawner.CombatStats.Cooldown = 10;
             Entity standardCreep = new Entity();
