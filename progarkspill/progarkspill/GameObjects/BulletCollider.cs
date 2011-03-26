@@ -10,7 +10,7 @@ namespace progarkspill.GameObjects
         public void collide(Entity me, Entity hostile)
         {
             // Turn off friendly fire
-            if (me.Behavior is Player && hostile.Behavior is Player)
+            if (me.Behaviour is Player && hostile.Behaviour is Player)
                 return;
             // TODO: Disable friendly fire for creeps too
             int armor;

@@ -15,7 +15,7 @@ namespace progarkspill
         private List<Entity> projectiles = new List<Entity>(); // Playerside projectiles
         private List<Entity> players = new List<Entity>(); // Players
         private List<Entity> nonInteractives = new List<Entity>(); // Events and creep spawners and the like
-        private Entity gameObjective; // Work this one out somewhere
+        private List<Entity> gameObjectives = new List<Entity>(); // Work this one out somewhere
 
         private GameStateStack stack;
         private Viewport view;
@@ -34,6 +34,30 @@ namespace progarkspill
         public GameState()
         {
             this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
+            // This needs to be fetched from data and tweaked loads 
+            gameObjectives.Add(new Entity());
+            Entity objective = gameObjectives[0];
+            objective.Renderable = new Sprite(BulletSprite);
+            objective.Physics.Position = new Vector2(250, 250);
+            objective.CombatStats.Health = 1000;
+            objective.Physics.Speed = 0;
+            Entity spawner = new Entity();
+            spawner.Physics.Position = new Vector2(750, 750);
+            spawner.CombatStats.Cooldown = 10;
+            Entity standardCreep = new Entity();
+            standardCreep.CombatStats = CombatStats.defaultShip(); // Sanify
+            standardCreep.Collidable = new HitCircle(BulletSprite.Width);
+            standardCreep.Renderable = new Sprite(BulletSprite);
+            standardCreep.CollisionHandler = new DamageCollisionHandler();
+            standardCreep.Behaviour = new CreepBehaviour();
+           
+            spawner.Behaviour = new CreepSpawnBehaviour(standardCreep);
+            
+        }
+
+        public Entity gameObjective()
+        {
+            return gameObjectives[0];
         }
 
         private void behaviourTick(float timedelta)
@@ -51,7 +75,7 @@ namespace progarkspill
             newObjects = new List<Entity>();
             foreach (Entity gameObject in gameObjects)
             {
-                gameObject.Behavior.decide(gameObject, this, timedelta, stack);
+                gameObject.Behaviour.decide(gameObject, this, timedelta, stack);
             }
             foreach (Entity newObject in newObjects)
                 destination.Add(newObject);
@@ -68,7 +92,9 @@ namespace progarkspill
         private void physicsTick(float timedelta, List<Entity> gameObjects)
         {
             foreach (Entity ent in gameObjects)
+            {
                 ent.move(timedelta);
+            }
         }
 
         public GameState(GameStateStack stack)
@@ -97,6 +123,8 @@ namespace progarkspill
         public void render(Renderer r)
         {
             r.begin(view);
+            view.fit(players);
+            view.fit(hostiles);
             render(r, projectiles);
             render(r, hostiles);
             render(r, nonInteractives);

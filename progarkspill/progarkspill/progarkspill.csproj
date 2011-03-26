@@ -110,6 +110,8 @@
     <Compile Include="GameObjects\BulletBehaviour.cs" />
     <Compile Include="GameObjects\BulletCollider.cs" />
     <Compile Include="GameObjects\BulletStatus.cs" />
+    <Compile Include="GameObjects\CreepBehaviour.cs" />
+    <Compile Include="GameObjects\CreepSpawnBehaviour.cs" />
     <Compile Include="GameObjects\IBehaviour.cs" />
     <Compile Include="GameObjects\ICollisionHandler.cs" />
     <Compile Include="GameObjects\Entity.cs" />

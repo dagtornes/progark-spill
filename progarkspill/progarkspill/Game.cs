@@ -69,7 +69,7 @@ namespace progarkspill
             ((GameState) states.peek()).BulletSprite = tex2;
 
             Entity p1 = new Entity();
-            p1.Behavior = playerOne;
+            p1.Behaviour = playerOne;
             p1.CombatStats = CombatStats.defaultShip();
             p1.Physics = new Physics(200);
             p1.Renderable = new Sprite(tex);

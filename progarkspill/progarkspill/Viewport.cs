@@ -50,6 +50,11 @@ namespace progarkspill
 
             preserveAspect(aspect);
         }
+        public void fit(List<Entity> entities)
+        {
+            foreach (Entity ent in entities)
+                fit(ent);
+        }
 
         public void preserveAspect(float aspect)
         {

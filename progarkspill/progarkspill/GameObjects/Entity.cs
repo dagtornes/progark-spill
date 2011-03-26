@@ -8,7 +8,7 @@ namespace progarkspill.GameObjects
 {
     public class Entity
     {
-        public IBehaviour Behavior { get; set; }
+        public IBehaviour Behaviour { get; set; }
         public CombatStats CombatStats { get; set; }
         public IRenderable Renderable { get; set; }
         public IStatus Status { get; set; }
