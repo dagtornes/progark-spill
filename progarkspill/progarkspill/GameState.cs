@@ -21,6 +21,7 @@ namespace progarkspill
         private Viewport view;
         public Texture2D BulletSprite { get; set; }
         private List<Entity> newObjects = new List<Entity>();
+        private Sprite bgRenderable;
 
         public List<Entity> Players
         {
@@ -42,6 +43,7 @@ namespace progarkspill
         {
             this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
             // This needs to be fetched from data and tweaked loads 
+            
             gameObjectives.Add(new Entity());
             Entity objective = gameObjectives[0];
             Texture2D tex = Resources.getRes("bullet");
@@ -82,6 +84,7 @@ namespace progarkspill
         private void behaviourTick(List<Entity> gameObjects, float timedelta, List<Entity> destination)
         {
             newObjects = new List<Entity>();
+            r.render(bgRenderable, new Physics(0));
             foreach (Entity gameObject in gameObjects)
             {
                 gameObject.Behaviour.decide(gameObject, this, timedelta, stack);
