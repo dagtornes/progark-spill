@@ -84,7 +84,6 @@ namespace progarkspill
         private void behaviourTick(List<Entity> gameObjects, float timedelta, List<Entity> destination)
         {
             newObjects = new List<Entity>();
-            r.render(bgRenderable, new Physics(0));
             foreach (Entity gameObject in gameObjects)
             {
                 gameObject.Behaviour.decide(gameObject, this, timedelta, stack);
