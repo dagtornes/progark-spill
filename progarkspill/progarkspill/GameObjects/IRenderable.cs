@@ -11,5 +11,7 @@ namespace progarkspill
     {
         Vector2 Origin { get; }
         Texture2D Texture { get; }
+        float Depth { get; set; }
+        bool Tiled { get; set; }
     }
 }

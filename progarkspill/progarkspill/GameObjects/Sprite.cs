@@ -15,7 +15,12 @@ namespace progarkspill.GameObjects
             this.position = Vector2.Zero;
             this.angle = 0.0f;
             this.origin = new Vector2(0.5f * texture.Width, 0.5f * texture.Height);
+            this.depth = 0.0f;
+            this.tiled = false;
         }
+
+        public bool Tiled { get; set; }
+        public float Depth { get; set; }
 
         public Vector2 Position
         {
@@ -49,6 +54,8 @@ namespace progarkspill.GameObjects
             get { return this.origin; }
         }
 
+        private bool tiled;
+        private float depth;
         private Vector2 origin;
         private Vector2 position;
         private float angle;

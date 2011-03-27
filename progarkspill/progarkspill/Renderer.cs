@@ -39,6 +39,21 @@ namespace progarkspill
             currentspace = view;
         }
 
+        private void renderTiled(IRenderable renderable, Vector2 position, float angle, Vector2 scale)
+        {
+            // sb.Draw(renderable.Texture, rpos + new Vector2(x, y) * scale * delta, null, Color.White, angle, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+            Vector2 delta = scale * new Vector2(renderable.Texture.Width, renderable.Texture.Height);
+            Vector2 cnt = screenspace.size / delta + 2*Vector2.One;
+
+            int xx = (int)position.X / (int)delta.X + 1;
+            int yy = (int)position.Y / (int)delta.Y + 1;
+            Vector2 off = - new Vector2(xx * delta.X, yy * delta.Y);
+
+            for (int x = 0; x != (int) cnt.X; ++x)
+                for (int y = 0; y != (int) cnt.Y; ++y)
+                    sb.Draw(renderable.Texture, off + position + new Vector2(x, y) * delta, null, Color.White, angle, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+        }
+
         public void beginScreen()
         {
             begin(screenspace);
@@ -50,13 +65,17 @@ namespace progarkspill
          */
         public void render(IRenderable renderable, Physics transform)
         {
+            sb.Begin();
             render(renderable, transform.Position, transform.Angle);
+            sb.End();
         }
 
         private void render(IRenderable entity, Vector2 pos, Vector2 dir)
         {
+            sb.Begin();
             float angle = (float)Math.Atan2(dir.Y, dir.X);
             render(entity, pos, angle);
+            sb.End();
         }
 
         private void render(IRenderable entity, Vector2 pos, float angle)
@@ -64,9 +83,10 @@ namespace progarkspill
             Vector2 render_position = currentspace.mapTo(pos, screenspace);
             Vector2 scale = currentspace.scaleTo(screenspace);
             
-            sb.Begin();
-            sb.Draw(entity.Texture, render_position, null, Color.White, angle, entity.Origin, scale, SpriteEffects.None, 0.0f);
-            sb.End();
+            if (entity.Tiled)
+                renderTiled(entity, render_position, angle, scale);
+            else
+                sb.Draw(entity.Texture, render_position, null, Color.White, angle, entity.Origin, scale, SpriteEffects.None, 0.0f);
         }
 
         public void renderRect(Vector2 topleft, Vector2 bottomright, Color color)

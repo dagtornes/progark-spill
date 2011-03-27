@@ -31,6 +31,13 @@ namespace progarkspill
             return other.size / size;
         }
 
+        public void shrink(float amnt)
+        {
+            Vector2 delta = amnt * size;
+            corner -= 0.5f * delta;
+            size += delta;
+        }
+
         public void fit(Entity ent)
         {
             float aspect = Aspect;
@@ -58,10 +65,13 @@ namespace progarkspill
 
         public void preserveAspect(float aspect)
         {
+            Vector2 oldsize = size;
             if (size.X / size.Y > aspect)
                 size.Y = (size.X / aspect);
             else
                 size.X = aspect * size.Y;
+            Vector2 delta = size - oldsize;
+            corner -= 0.5f * delta;
         }
 
         public float Aspect

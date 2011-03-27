@@ -36,6 +36,8 @@ namespace progarkspill
             : this()
         {
             this.stack = stack;
+            this.bgRenderable = new Sprite(Resources.getRes("starfield"));
+            this.bgRenderable.Tiled = true;
             this.view = new Viewport(Vector2.Zero, 500 * (Vector2.One + 0.667f * Vector2.UnitX));
         }
 
@@ -129,11 +131,12 @@ namespace progarkspill
 
         public void render(Renderer r)
         {
+            view.fit(players);
+            view.fit(hostiles);
             nonInteractives[0].Renderable = new Sprite(BulletSprite);
             r.begin(view);
             r.renderRect(-10 * Vector2.One, 10 * Vector2.One, Color.White);
-            view.fit(players);
-            view.fit(hostiles);
+            r.render(bgRenderable, new Physics(0.0f));
             render(r, projectiles);
             render(r, hostiles);
             render(r, nonInteractives);
@@ -144,7 +147,7 @@ namespace progarkspill
         {
             behaviourTick(timedelta);
             physicsTick(timedelta);
-            
+            view.shrink(-0.1f * timedelta);
             // Collision pass
             // Status pass
 
