@@ -31,7 +31,6 @@ namespace progarkspill
         public Game()
         {
             Content.RootDirectory = "Content";
-            states.push(new GameState(states));
             gdm = new GraphicsDeviceManager(this);
         }
 
@@ -44,7 +43,9 @@ namespace progarkspill
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
+
+            Resources.init(Content);
+            states.push(new GameState(states));
             renderer = new Renderer(gdm, Content);
             base.Initialize();
         }

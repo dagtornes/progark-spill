@@ -17,7 +17,8 @@ namespace progarkspill
         public Renderer(GraphicsDeviceManager gdm, ContentManager content)
         {
             this.gdm = gdm;
-            this.pixel = content.Load<Texture2D>("whitepixel");
+            //this.pixel = content.Load<Texture2D>("whitepixel");
+            this.pixel = Resources.getRes("whitepixel");
             this.font = content.Load<SpriteFont>("default");
             Vector2 screensize = new Vector2(gdm.PreferredBackBufferWidth, gdm.PreferredBackBufferHeight);
             screenspace = new Viewport(Vector2.Zero, screensize);

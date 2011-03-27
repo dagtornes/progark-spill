@@ -16,7 +16,7 @@ namespace progarkspill.GameObjects
                 me.CombatStats.CurrentCooldown = me.CombatStats.Cooldown;
             }
 
-            Vector2 direction = environment.gameObjective().Physics.Position - me.Physics.Position;
+            Vector2 direction = me.Physics.Position - environment.gameObjective().Physics.Position;
             direction.Normalize();
             me.Physics.Velocity = direction;
         }

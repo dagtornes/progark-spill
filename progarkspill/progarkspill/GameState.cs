@@ -31,24 +31,32 @@ namespace progarkspill
         public bool tickDown { get { return false; } }
         public bool renderDown { get { return false; } }
 
+        public GameState(GameStateStack stack)
+            : this()
+        {
+            this.stack = stack;
+            this.view = new Viewport(Vector2.Zero, 500 * (Vector2.One + 0.667f * Vector2.UnitX));
+        }
+
         public GameState()
         {
             this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
             // This needs to be fetched from data and tweaked loads 
             gameObjectives.Add(new Entity());
             Entity objective = gameObjectives[0];
-            objective.Renderable = new Sprite(BulletSprite);
+            Texture2D tex = Resources.getRes("bullet");
+            objective.Renderable = new Sprite(tex);
             objective.Physics.Position = new Vector2(250, 250);
             objective.CombatStats.Health = 1000;
             objective.Physics.Speed = 0;
             Entity spawner = new Entity();
             nonInteractives.Add(spawner);
-            spawner.Physics.Position = new Vector2(750, 750);
+            spawner.Physics.Position = new Vector2(0, 0);
             spawner.CombatStats.Cooldown = 10;
             Entity standardCreep = new Entity();
             standardCreep.CombatStats = CombatStats.defaultShip(); // Sanify
-            standardCreep.Collidable = new HitCircle(BulletSprite.Width);
-            standardCreep.Renderable = new Sprite(BulletSprite);
+            standardCreep.Collidable = new HitCircle(tex.Width);
+            standardCreep.Renderable = new Sprite(tex);
             standardCreep.CollisionHandler = new DamageCollisionHandler();
             standardCreep.Behaviour = new CreepBehaviour();
            
@@ -98,11 +106,7 @@ namespace progarkspill
             }
         }
 
-        public GameState(GameStateStack stack)
-        {
-            this.stack = stack;
-            this.view = new Viewport(Vector2.Zero, 500 * (Vector2.One + 0.667f * Vector2.UnitX));
-        }
+
  
         public void addGameObject(Entity gameObject)
         {
@@ -123,7 +127,9 @@ namespace progarkspill
 
         public void render(Renderer r)
         {
+            nonInteractives[0].Renderable = new Sprite(BulletSprite);
             r.begin(view);
+            r.renderRect(-10 * Vector2.One, 10 * Vector2.One, Color.White);
             view.fit(players);
             view.fit(hostiles);
             render(r, projectiles);
