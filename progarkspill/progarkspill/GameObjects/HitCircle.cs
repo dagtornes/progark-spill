@@ -37,7 +37,15 @@ namespace progarkspill.GameObjects
         // Implement check: Does ray (Direction vector) coming from origin hit me?
         public bool rayTrace(Entity me, Vector2 origin, Vector2 ray)
         {
-            return false;
+            float c;
+            Vector2.Dot(ref origin, ref origin, out c);
+            c -= Radius * Radius;
+            float b;
+            Vector2.Dot(ref origin, ref ray, out b);
+            float a;
+            Vector2.Dot(ref ray, ref ray, out a);
+
+            return b * b - 4 * a * c >= 0.0f;
         }
     }
 }

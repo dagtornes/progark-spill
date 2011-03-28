@@ -158,8 +158,14 @@ namespace progarkspill
 
         public void render(Renderer r)
         {
+<<<<<<< Updated upstream
+            view.fit(players);
+            view.fit(hostiles);
             view.fit(gameObjectives);
             view.fit(nonInteractives);
+=======
+            nonInteractives[0].Renderable = new Sprite(BulletSprite);
+>>>>>>> Stashed changes
             r.begin(view);
             r.renderRect(-10 * Vector2.One, 10 * Vector2.One, Color.White);
             r.render(bgRenderable, new Physics(0.0f));
@@ -191,9 +197,15 @@ namespace progarkspill
         {
             behaviourTick(timedelta);
             physicsTick(timedelta);
+<<<<<<< Updated upstream
+            view.shrink(-0.1f * timedelta);
+            collisionTick();
+=======
             if (!(view.fit(players) || view.fit(hostiles)))
                 view.shrink(-0.1f * timedelta);
-            collisionTick();
+            // Collision pass
+            // Status pass
+>>>>>>> Stashed changes
 
             statusCheck(hostiles); // Returns list of dead hostiles
             statusCheck(projectiles);

@@ -10,6 +10,7 @@ namespace progarkspill.GameObjects
     {
         public void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
         {
+            me.CombatStats.CurrentCooldown -= timedelta;
             if (me.CombatStats.CurrentCooldown <= 0)
             {
                 // Find closest player and shoot, if in range

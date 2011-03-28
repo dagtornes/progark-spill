@@ -138,6 +138,7 @@
     <Compile Include="Renderer.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="Ship.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="Viewport.cs" />
   </ItemGroup>
   <ItemGroup>

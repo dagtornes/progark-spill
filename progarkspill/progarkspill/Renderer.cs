@@ -43,7 +43,7 @@ namespace progarkspill
         {
             // sb.Draw(renderable.Texture, rpos + new Vector2(x, y) * scale * delta, null, Color.White, angle, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
             Vector2 delta = scale * new Vector2(renderable.Texture.Width, renderable.Texture.Height);
-            Vector2 cnt = screenspace.size / delta + 2*Vector2.One;
+            Vector2 cnt = screenspace.Size / delta + 3*Vector2.One;
 
             int xx = (int)position.X / (int)delta.X + 1;
             int yy = (int)position.Y / (int)delta.Y + 1;
