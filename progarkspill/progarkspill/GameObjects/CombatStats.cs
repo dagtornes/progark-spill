@@ -38,7 +38,7 @@ namespace progarkspill.GameObjects
             ship.DamageType = 0;
             ship.Damage = 8;
             ship.ProjectileVelocity = 500;
-            return ship;
+            return ship.copy();
         }
     }
 }

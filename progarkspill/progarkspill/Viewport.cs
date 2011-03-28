@@ -80,7 +80,7 @@ namespace progarkspill
         {
             bool didFit = false;
             foreach (Entity ent in entities)
-                didFit = didFit || fit(ent);
+                didFit = fit(ent) || didFit;
             return didFit;
         }
 

@@ -18,7 +18,7 @@ namespace progarkspill.GameObjects
             Entity p1 = new Entity();
             Texture2D tex = Resources.getRes("ship9km");
             p1.Behaviour = new Player(PlayerIndex.One);
-            p1.CombatStats = CombatStats.defaultShip();
+            p1.CombatStats = CombatStats.defaultShip().copy();
             p1.CombatStats.Damage = 50;
             p1.CombatStats.Health = 50;
             p1.CombatStats.MaxHealth = 50;
@@ -80,7 +80,7 @@ namespace progarkspill.GameObjects
                 projectile.Behaviour = new BulletBehaviour();
                 projectile.Collidable = new HitCircle(15);
                 projectile.CollisionHandler = new BulletCollider();
-                projectile.CombatStats = me.CombatStats;
+                projectile.CombatStats = me.CombatStats.copy();
                 projectile.Renderable = new Sprite(environment.BulletSprite);
                 environment.addGameObject(projectile);
                 me.CombatStats.CurrentCooldown = me.CombatStats.Cooldown;
