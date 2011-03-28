@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace progarkspill.GameObjects
 {
@@ -11,6 +12,22 @@ namespace progarkspill.GameObjects
     {
         PlayerIndex control;
         Buttons action = Buttons.A;
+
+        public static Entity createPlayer(PlayerIndex who)
+        {
+            Entity p1 = new Entity();
+            Texture2D tex = Resources.getRes("ship9km");
+            p1.Behaviour = new Player(PlayerIndex.One);
+            p1.CombatStats = CombatStats.defaultShip();
+            p1.CombatStats.Damage = 50;
+            p1.CombatStats.Health = 4;
+            p1.Physics = new Physics(200);
+            p1.Renderable = new Sprite(tex);
+            p1.Status = new Status();
+            p1.Collidable = new HitCircle(tex.Width / 2);
+
+            return p1;
+        }
 
         public Player(PlayerIndex controller)
         {

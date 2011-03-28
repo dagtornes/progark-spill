@@ -54,6 +54,11 @@ namespace progarkspill.GameObjects
             get { return this.origin; }
         }
 
+        public Vector2 Size
+        {
+            get { return new Vector2(Texture.Width, Texture.Height); }
+        }
+
         private bool tiled;
         private float depth;
         private Vector2 origin;

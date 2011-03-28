@@ -45,10 +45,12 @@ namespace progarkspill
         {
             this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
             // This needs to be fetched from data and tweaked loads 
-            
+            addPlayer(Player.createPlayer(PlayerIndex.One));
+
             gameObjectives.Add(new Entity());
             Entity objective = gameObjectives[0];
             Texture2D tex = Resources.getRes("bullet");
+            this.BulletSprite = tex;
             objective.Renderable = new Sprite(Resources.getRes("objective"));
             objective.Physics.Position = new Vector2(250, 250);
             objective.CombatStats.Health = 1000;
@@ -158,16 +160,33 @@ namespace progarkspill
 
         public void render(Renderer r)
         {
-            view.fit(gameObjectives);
-            view.fit(nonInteractives);
             r.begin(view);
-            r.renderRect(-10 * Vector2.One, 10 * Vector2.One, Color.White);
             r.render(bgRenderable, new Physics(0.0f));
             render(r, projectiles);
             render(r, hostiles);
             render(r, nonInteractives);
             render(r, players);
+            renderHBar(r, players);
             render(r, gameObjectives);
+            renderHBar(r, gameObjectives);
+        }
+
+        private void renderHBar(Renderer r, List<Entity> objects)
+        {
+            foreach (Entity e in objects)
+            {
+                if (e.CombatStats == null || e.Renderable == null) continue;
+                float w = e.Renderable.Size.X;
+                float health = 1.0f * e.CombatStats.Health / CombatStats.defaultShip().Health;
+
+                float top = e.Physics.Position.Y - e.Renderable.Size.Y / 2 - 15.0f;
+                Vector2 topleft = new Vector2(e.Physics.Position.X - w / 2, top);
+                Vector2 bottomRight = new Vector2(e.Physics.Position.X + w / 2, top + 10);
+                Vector2 lastOne = new Vector2(topleft.X + health * w, top + 10);
+
+                r.renderRect(topleft, bottomRight, Color.White);
+                r.renderRect(topleft, lastOne, Color.Red);
+            }
         }
 
         private List<Entity> statusCheck(List<Entity> gameObjects)

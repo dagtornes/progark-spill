@@ -24,7 +24,6 @@ namespace progarkspill
         Viewport view;
         Entity ent;
         List<Player> players = new List<Player>();
-        Entity corner;
         Stats statsTests;
 
 
@@ -60,30 +59,7 @@ namespace progarkspill
 
             statsTests = Content.Load<Stats>("InitialCombatStats");
             System.Console.WriteLine(statsTests.Armor);
-           
-            Texture2D tex = Content.Load<Texture2D>("ship9km");
-            Texture2D tex2 = Content.Load<Texture2D>("bullet");
-
-            // Behaviour for Entities
-            Player playerOne = new Player(PlayerIndex.One);
-            Player playerTwo = new Player(PlayerIndex.Two);
-            ((GameState) states.peek()).BulletSprite = tex2;
-
-            Entity p1 = new Entity();
-            p1.Behaviour = playerOne;
-            p1.CombatStats = CombatStats.defaultShip();
-            p1.CombatStats.Damage = 50;
-            p1.CombatStats.Health = 4;
-            p1.Physics = new Physics(200);
-            p1.Renderable = new Sprite(tex);
-            p1.Status = new Status();
-            p1.Collidable = new HitCircle(tex.Width / 2);
-
-            ((GameState)states.peek()).addPlayer(p1);
-
-            corner = new Entity();
-            corner.Physics = new Physics(0);
-            corner.Physics.Position = new Vector2(0,0);
+            
             // TODO: use this.Content to load your game content here
         }
 

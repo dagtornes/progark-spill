@@ -13,5 +13,6 @@ namespace progarkspill
         Texture2D Texture { get; }
         float Depth { get; set; }
         bool Tiled { get; set; }
+        Vector2 Size { get; }
     }
 }
