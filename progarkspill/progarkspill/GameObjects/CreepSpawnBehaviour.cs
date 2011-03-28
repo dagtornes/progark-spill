@@ -25,11 +25,11 @@ namespace progarkspill.GameObjects
                 newCreep.Physics.Position = me.Physics.Position;
                 newCreep.Behaviour = Prototype.Behaviour;
                 newCreep.CollisionHandler = Prototype.CollisionHandler;
-                newCreep.Renderable = Prototype.Renderable;
+                newCreep.Renderable = new Sprite(Resources.getRes("enemy1"));
                 newCreep.Source = me;
-                newCreep.Status = Prototype.Status;
+                newCreep.Status = new Status();
                 newCreep.Collidable = Prototype.Collidable;
-                newCreep.CombatStats = Prototype.CombatStats;
+                newCreep.CombatStats = Prototype.CombatStats.copy();
                 me.CombatStats.CurrentCooldown = me.CombatStats.Cooldown;
                 environment.addGameObject(newCreep);
             }

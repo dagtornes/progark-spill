@@ -15,6 +15,7 @@ namespace progarkspill.GameObjects
             else
                 resistance = other.CombatStats.Resistance;
             other.CombatStats.Health -= (int) (me.CombatStats.Damage * (1 - resistance / 100.0));
+            me.CombatStats.Health = -1; // Kill self on crash
         }
     }
 }

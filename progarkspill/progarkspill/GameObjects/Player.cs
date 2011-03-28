@@ -50,7 +50,7 @@ namespace progarkspill.GameObjects
 
         public void shoot(Entity me, GameState environment)
         {
-            // TODO: Make this use EventQueue instead of GameState directly when it's done?
+            // TODO: Extract this information from data somehow?
             if (me.CombatStats.CurrentCooldown <= 0)
             {
                 Entity projectile = new Entity();

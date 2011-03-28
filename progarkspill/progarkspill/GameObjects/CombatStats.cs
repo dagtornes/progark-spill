@@ -19,8 +19,13 @@ namespace progarkspill.GameObjects
         public CombatStats()
         {
             Health = 1; // All objects are alive by default
-
         }
+
+        public CombatStats copy()
+        {
+            return (CombatStats) this.MemberwiseClone();
+        }
+
         public static CombatStats defaultShip()
         {
             CombatStats ship = new CombatStats();
@@ -30,6 +35,7 @@ namespace progarkspill.GameObjects
             ship.Cooldown = 0.25f;
             ship.CurrentCooldown = 0;
             ship.DamageType = 0;
+            ship.Damage = 8;
             ship.ProjectileVelocity = 500;
             return ship;
         }

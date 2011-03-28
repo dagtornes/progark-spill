@@ -53,14 +53,15 @@ namespace progarkspill
             objective.Physics.Position = new Vector2(250, 250);
             objective.CombatStats.Health = 1000;
             objective.Physics.Speed = 0;
+            objective.Collidable = new HitCircle(objective.Renderable.Texture.Width / 2);
             Entity spawner = new Entity();
             nonInteractives.Add(spawner);
-            spawner.Physics.Position = new Vector2(0, 0);
-            spawner.CombatStats.Cooldown = 10;
+            spawner.Physics.Position = new Vector2(750, 750);
+            spawner.CombatStats.Cooldown = 0.5f;
             Entity standardCreep = new Entity();
             standardCreep.CombatStats = CombatStats.defaultShip(); // Sanify
-            standardCreep.Collidable = new HitCircle(tex.Width);
             standardCreep.Renderable = new Sprite(Resources.getRes("enemy1"));
+            standardCreep.Collidable = new HitCircle(standardCreep.Renderable.Texture.Width / 2);
             standardCreep.CollisionHandler = new DamageCollisionHandler();
             standardCreep.Behaviour = new CreepBehaviour();
            
@@ -110,7 +111,25 @@ namespace progarkspill
             }
         }
 
+        public void collisionTick()
+        {
+            collisionCheck(projectiles, hostiles); // Players kill hostiles
+            collisionCheck(hostiles, gameObjectives); // Hostiles kill gameobjective
+            collisionCheck(hostiles, players); // Hostiles kill players
+            collisionCheck(players, nonInteractives); // Players gain powerups (?)
 
+        }
+        private void collisionCheck(List<Entity> colliders, List<Entity> obstacles)
+        {
+            foreach (Entity collider  in colliders)
+            {
+                foreach (Entity obstacle in obstacles)
+                {
+                    if (collider.Collidable.intersects(collider, obstacle))
+                        collider.CollisionHandler.collide(collider, obstacle);
+                }
+            }
+        }
  
         public void addGameObject(Entity gameObject)
         {
@@ -121,10 +140,13 @@ namespace progarkspill
         {
             players.Add(player);
         }
+
         private void render(Renderer r, List<Entity> gameObjects)
         {
             foreach (Entity gameObject in gameObjects)
             {
+                if (gameObject.Renderable == null)
+                    continue;
                 r.render(gameObject.Renderable, gameObject.Physics);
             }
         }
@@ -133,7 +155,8 @@ namespace progarkspill
         {
             view.fit(players);
             view.fit(hostiles);
-            nonInteractives[0].Renderable = new Sprite(BulletSprite);
+            view.fit(gameObjectives);
+            view.fit(nonInteractives);
             r.begin(view);
             r.renderRect(-10 * Vector2.One, 10 * Vector2.One, Color.White);
             r.render(bgRenderable, new Physics(0.0f));
@@ -144,14 +167,34 @@ namespace progarkspill
             render(r, gameObjectives);
         }
 
+        private List<Entity> statusCheck(List<Entity> gameObjects)
+        {
+            List<Entity> dead = new List<Entity>();
+            foreach (Entity gameObject in gameObjects)
+            {
+                if (!gameObject.Status.isAlive(gameObject))
+                {
+                    dead.Add(gameObject);
+                }
+            }
+            foreach (Entity gameObject in dead)
+            {
+                gameObjects.Remove(gameObject);
+            }
+            return dead;
+        }
+
         public void tick(float timedelta) 
         {
             behaviourTick(timedelta);
             physicsTick(timedelta);
             view.shrink(-0.1f * timedelta);
-            // Collision pass
-            // Status pass
+            collisionTick();
 
+            statusCheck(hostiles); // Returns list of dead hostiles
+            statusCheck(projectiles);
+            statusCheck(gameObjectives); // Returns list of length > 0 if gameObjective is dead
+            statusCheck(players);
         }
 
 

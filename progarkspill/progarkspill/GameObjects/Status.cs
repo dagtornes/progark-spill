@@ -11,7 +11,7 @@ namespace progarkspill.GameObjects
 
         public bool isAlive(Entity me)
         {
-            return me.CombatStats.Health > 0;
+            return me.CombatStats.Health > 0 && me.Physics.Position.LengthSquared() < 2000 * 2000;
         }
         public void kill(Entity me, Entity murderer)
         {
