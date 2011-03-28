@@ -165,6 +165,7 @@ namespace progarkspill
             r.render(bgRenderable, new Physics(0.0f));
             render(r, projectiles);
             render(r, hostiles);
+            renderHBar(r, hostiles);
             render(r, nonInteractives);
             render(r, players);
             renderHBar(r, players);
