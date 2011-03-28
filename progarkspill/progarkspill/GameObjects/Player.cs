@@ -20,7 +20,8 @@ namespace progarkspill.GameObjects
             p1.Behaviour = new Player(PlayerIndex.One);
             p1.CombatStats = CombatStats.defaultShip();
             p1.CombatStats.Damage = 50;
-            p1.CombatStats.Health = 4;
+            p1.CombatStats.Health = 50;
+            p1.CombatStats.MaxHealth = 50;
             p1.Physics = new Physics(200);
             p1.Renderable = new Sprite(tex);
             p1.Status = new Status();

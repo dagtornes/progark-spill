@@ -7,7 +7,8 @@ namespace progarkspill.GameObjects
 {
     public class CombatStats
     {
-        public int Health { get; set; } 
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
         public int Armor { get; set; }
         public int Resistance { get; set; }
         public float Cooldown { get; set; }
@@ -18,7 +19,7 @@ namespace progarkspill.GameObjects
 
         public CombatStats()
         {
-            Health = 1; // All objects are alive by default
+            MaxHealth = Health = 1; // All objects are alive by default
         }
 
         public CombatStats copy()
@@ -29,7 +30,7 @@ namespace progarkspill.GameObjects
         public static CombatStats defaultShip()
         {
             CombatStats ship = new CombatStats();
-            ship.Health = 100;
+            ship.MaxHealth = ship.Health = 100;
             ship.Armor = 15;
             ship.Resistance = 15;
             ship.Cooldown = 0.25f;

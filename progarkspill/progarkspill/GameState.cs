@@ -54,6 +54,7 @@ namespace progarkspill
             objective.Renderable = new Sprite(Resources.getRes("objective"));
             objective.Physics.Position = new Vector2(250, 250);
             objective.CombatStats.Health = 1000;
+            objective.CombatStats.MaxHealth = 1000;
             objective.Physics.Speed = 0;
             objective.Collidable = new HitCircle(objective.Renderable.Texture.Width / 2);
             Entity spawner = new Entity();
@@ -177,7 +178,7 @@ namespace progarkspill
             {
                 if (e.CombatStats == null || e.Renderable == null) continue;
                 float w = e.Renderable.Size.X;
-                float health = 1.0f * e.CombatStats.Health / CombatStats.defaultShip().Health;
+                float health = 1.0f * e.CombatStats.Health / e.CombatStats.MaxHealth;
 
                 float top = e.Physics.Position.Y - e.Renderable.Size.Y / 2 - 15.0f;
                 Vector2 topleft = new Vector2(e.Physics.Position.X - w / 2, top);

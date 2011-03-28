@@ -14,5 +14,6 @@ namespace progarkspill
         float Depth { get; set; }
         bool Tiled { get; set; }
         Vector2 Size { get; }
+        Vector2 Scale { get; set; }
     }
 }
