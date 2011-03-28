@@ -49,7 +49,7 @@ namespace progarkspill
             gameObjectives.Add(new Entity());
             Entity objective = gameObjectives[0];
             Texture2D tex = Resources.getRes("bullet");
-            objective.Renderable = new Sprite(tex);
+            objective.Renderable = new Sprite(Resources.getRes("objective"));
             objective.Physics.Position = new Vector2(250, 250);
             objective.CombatStats.Health = 1000;
             objective.Physics.Speed = 0;
@@ -60,7 +60,7 @@ namespace progarkspill
             Entity standardCreep = new Entity();
             standardCreep.CombatStats = CombatStats.defaultShip(); // Sanify
             standardCreep.Collidable = new HitCircle(tex.Width);
-            standardCreep.Renderable = new Sprite(tex);
+            standardCreep.Renderable = new Sprite(Resources.getRes("enemy1"));
             standardCreep.CollisionHandler = new DamageCollisionHandler();
             standardCreep.Behaviour = new CreepBehaviour();
            
@@ -141,6 +141,7 @@ namespace progarkspill
             render(r, hostiles);
             render(r, nonInteractives);
             render(r, players);
+            render(r, gameObjectives);
         }
 
         public void tick(float timedelta) 
