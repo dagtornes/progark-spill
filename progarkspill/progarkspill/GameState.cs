@@ -55,9 +55,13 @@ namespace progarkspill
             objective.Physics.Speed = 0;
             objective.Collidable = new HitCircle(objective.Renderable.Texture.Width / 2);
             Entity spawner = new Entity();
+            Entity spawner2 = new Entity();
             nonInteractives.Add(spawner);
+            nonInteractives.Add(spawner2);
             spawner.Physics.Position = new Vector2(750, 750);
-            spawner.CombatStats.Cooldown = 0.5f;
+            spawner2.Physics.Position = new Vector2(-300, -300);
+            spawner2.CombatStats.Cooldown = 5;
+            spawner.CombatStats.Cooldown = 5;
             Entity standardCreep = new Entity();
             standardCreep.CombatStats = CombatStats.defaultShip(); // Sanify
             standardCreep.Renderable = new Sprite(Resources.getRes("enemy1"));
@@ -66,6 +70,7 @@ namespace progarkspill
             standardCreep.Behaviour = new CreepBehaviour();
            
             spawner.Behaviour = new CreepSpawnBehaviour(standardCreep);
+            spawner2.Behaviour = new CreepSpawnBehaviour(standardCreep);
             
         }
 

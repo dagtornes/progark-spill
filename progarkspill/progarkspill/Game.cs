@@ -72,9 +72,12 @@ namespace progarkspill
             Entity p1 = new Entity();
             p1.Behaviour = playerOne;
             p1.CombatStats = CombatStats.defaultShip();
+            p1.CombatStats.Damage = 50;
+            p1.CombatStats.Health = 4;
             p1.Physics = new Physics(200);
             p1.Renderable = new Sprite(tex);
             p1.Status = new Status();
+            p1.Collidable = new HitCircle(tex.Width / 2);
 
             ((GameState)states.peek()).addPlayer(p1);
 
