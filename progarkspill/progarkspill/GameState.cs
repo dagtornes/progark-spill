@@ -210,10 +210,13 @@ namespace progarkspill
 
         public void tick(float timedelta) 
         {
-            behaviourTick(timedelta);
             physicsTick(timedelta);
+            behaviourTick(timedelta);
+            /*
             if (!(view.fit(players) || view.fit(hostiles)))
                 view.shrink(-0.1f * timedelta);
+            */
+            updateViewport();
             collisionTick();
 
             statusCheck(hostiles); // Returns list of dead hostiles
@@ -222,6 +225,29 @@ namespace progarkspill
             statusCheck(players);
         }
 
+        private void updateViewport()
+        {
+            Vector2 pad = 150 * Vector2.One;
+            float minSizeY = 1000;
 
+            List<Vector2> positions = new List<Vector2>();
+            foreach (Entity player in players) positions.Add(player.Physics.Position);
+            positions.Add(gameObjective().Physics.Position);
+
+            Vector2 min, max;
+            Util.VectorUnion(positions, out min, out max);
+            min -= pad;
+            max += pad;
+            if (max.Y - min.Y < minSizeY)
+            {
+                float delta = max.Y - min.Y;
+                min.Y -= delta / 2;
+                max.Y += delta / 2;
+            }
+            float aspect = view.Aspect;
+            view.TopLeft = min;
+            view.BottomRight = max;
+            view.preserveAspect(aspect);
+        }
     }
 }
