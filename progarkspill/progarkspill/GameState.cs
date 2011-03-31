@@ -114,7 +114,8 @@ namespace progarkspill
             collisionCheck(projectiles, hostiles); // Players kill hostiles
             collisionCheck(hostiles, gameObjectives); // Hostiles kill gameobjective
             collisionCheck(hostiles, players); // Hostiles kill players
-            collisionCheck(hostileProjectiles, players);
+            collisionCheck(hostileProjectiles, players); // Creep projectiles kill players
+            collisionCheck(hostileProjectiles, gameObjectives);
             collisionCheck(players, nonInteractives); // Players gain powerups (?)
 
         }
@@ -214,8 +215,15 @@ namespace progarkspill
             statusCheck(hostiles); // Returns list of dead hostiles
             statusCheck(projectiles);
             statusCheck(gameObjectives); // Returns list of length > 0 if gameObjective is dead
-            statusCheck(players);
+            foreach (Entity player in statusCheck(players))
+            {
+                Entity respawner = new Entity();
+                respawner.Behaviour = new RespawnPlayer(player, 7.5f);
+                respawner.CombatStats.Health = 1;
+                nonInteractives.Add(respawner);
+            }
             statusCheck(hostileProjectiles);
+            statusCheck(nonInteractives);
             
         }
 

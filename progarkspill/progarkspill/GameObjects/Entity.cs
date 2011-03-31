@@ -26,10 +26,12 @@ namespace progarkspill.GameObjects
         public Entity()
         {
             CombatStats = new SharedContent.CombatStats();
+            CombatStats.Health = 1; // Alive by default
             Status = new Status();
             Collidable = new NonCollidable();
             Physics = new Physics(200);
             Stats = new SharedContent.Statistics();
+            Abilities = new List<IAbility>();
         }
 
         public Entity(SharedContent.EntityModel Model, ContentManager Content): this()

@@ -6,7 +6,7 @@
     <Damage>10</Damage>
     <Cooldown>1.8</Cooldown>
     <CurrentCooldown>0</CurrentCooldown>
-    <ProjectileVelocity>400</ProjectileVelocity>
+    <ProjectileVelocity>250</ProjectileVelocity>
     <Level>1</Level>
   </Asset>
 </XnaContent>
