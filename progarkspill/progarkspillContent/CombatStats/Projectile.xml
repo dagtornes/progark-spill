@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <!-- TODO: replace this Asset with your own XML asset data. -->
+  <Asset Type="SharedContent.CombatStats">
+    <MaxHealth>1</MaxHealth>
+    <Health>1</Health>
+    <Armor>0</Armor>
+    <Resistance>0</Resistance>
+    <!-- Crash damage from this hull -->
+    <Damage>0</Damage>
+    <DamageType>0</DamageType>
+  </Asset>
+</XnaContent>

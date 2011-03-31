@@ -12,6 +12,7 @@ namespace progarkspill.GameObjects
     public interface IAbility
     {
         AbilityStats Stats { get; set; }
+        Entity ProjectilePrototype { get; set; }
 
         bool triggered(Entity me, GameState environment, float timedelta);
         void fire(Entity me, GameState environment);

@@ -189,6 +189,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityPrototypes\EnergyShot.xml">
+      <Name>EnergyShot</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
     <Compile Include="crosshair.png">
       <Name>crosshair</Name>
       <Importer>TextureImporter</Importer>
@@ -196,6 +201,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CombatStats\Projectile.xml">
+      <Name>Projectile</Name>
+    </Compile>
     <Compile Include="EntityPrototypes\Crosshair.xml">
       <Name>Crosshair</Name>
       <Importer>XmlImporter</Importer>

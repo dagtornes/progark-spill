@@ -46,6 +46,10 @@ namespace progarkspill.GameObjects
                 IAbility control = (IAbility) abilityHandle.Unwrap();
                 control.Stats = Content.Load<SharedContent.AbilityStats>(ability.AbilityStatsAsset).clone(); ;
                 Abilities.Add(control);
+                if (ability.EntityModelAsset != null && ability.EntityModelAsset != "")
+                {
+                    control.ProjectilePrototype = new Entity(Content.Load<SharedContent.EntityModel>(ability.EntityModelAsset), Content);
+                }
             }
             ObjectHandle collidableHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.CollidableType);
             Collidable = (ICollidable) collidableHandle.Unwrap();
