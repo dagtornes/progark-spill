@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="GameObjects\Abilities\AutoAttack.cs" />
     <Compile Include="GameObjects\Behaviours\BulletBehaviour.cs" />
+    <Compile Include="GameObjects\Behaviours\DummyBehaviour.cs" />
     <Compile Include="GameObjects\CollisionHandlers\BulletCollider.cs" />
     <Compile Include="GameObjects\IAbility.cs" />
     <Compile Include="GameObjects\Statuses\BulletStatus.cs" />

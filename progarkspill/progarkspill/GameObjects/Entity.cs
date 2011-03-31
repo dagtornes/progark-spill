@@ -51,6 +51,8 @@ namespace progarkspill.GameObjects
             Renderable = new Sprite(Content.Load<Texture2D>(Model.RenderableAsset));
             ObjectHandle statusHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.StatusType);
             Status = (IStatus)statusHandle.Unwrap();
+            ObjectHandle behaviourHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.BehaviourType);
+            Behaviour = (IBehaviour)behaviourHandle.Unwrap();
         }
 
         public void move(float timedelta)

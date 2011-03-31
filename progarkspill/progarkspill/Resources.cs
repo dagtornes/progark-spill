@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using SharedContent;
+using progarkspill.GameObjects;
 
 namespace progarkspill
 {
@@ -28,6 +30,10 @@ namespace progarkspill
             
         }
 
+        public static Entity getPrototype(String name)
+        {
+            return new Entity((EntityModel)Resources.res.content.Load<EntityModel>("EntityPrototypes/" + name), Resources.res.content);
+        }
         private static Resources res;
         private ContentManager content;
         private Dictionary<string, Texture2D> resources;

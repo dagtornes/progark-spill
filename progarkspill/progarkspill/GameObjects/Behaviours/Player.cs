@@ -10,8 +10,7 @@ namespace progarkspill.GameObjects
 {
     public class Player : IBehaviour
     {
-        PlayerIndex control;
-        Buttons action = Buttons.A;
+        public PlayerIndex control;
 
         public Player()
         {

@@ -46,6 +46,10 @@ namespace progarkspill
             this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
             // This needs to be fetched from data and tweaked loads 
             // addPlayer(Player.createPlayer(PlayerIndex.One));
+            gameObjectives.Add(Resources.getPrototype("GameObjective"));
+            Entity playerOne = Resources.getPrototype("PlayerPrototype");
+            ((Player)playerOne.Behaviour).control = PlayerIndex.One;
+            addPlayer(playerOne);
             
         }
 
