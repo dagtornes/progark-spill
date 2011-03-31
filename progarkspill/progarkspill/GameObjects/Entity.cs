@@ -27,7 +27,7 @@ namespace progarkspill.GameObjects
         {
             CombatStats = new SharedContent.CombatStats();
             Status = new Status();
-            Collidable = new Noncollidable();
+            Collidable = new NonCollidable();
             Physics = new Physics(200);
             Stats = new SharedContent.Statistics();
         }

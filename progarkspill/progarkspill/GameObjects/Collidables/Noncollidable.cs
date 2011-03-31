@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill.GameObjects
 {   // Special collidable essentially for noncollidables
-    class Noncollidable : ICollidable
+    class NonCollidable : ICollidable
     {
         public int Radius
         {

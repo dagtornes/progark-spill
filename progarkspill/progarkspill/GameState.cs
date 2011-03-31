@@ -48,7 +48,10 @@ namespace progarkspill
             // addPlayer(Player.createPlayer(PlayerIndex.One));
             gameObjectives.Add(Resources.getPrototype("GameObjective"));
             Entity playerOne = Resources.getPrototype("PlayerPrototype");
+            Entity crosshair = Resources.getPrototype("Crosshair");
             ((Player)playerOne.Behaviour).control = PlayerIndex.One;
+            playerOne.Source = crosshair;
+            crosshair.Source = playerOne;
             addPlayer(playerOne);
             playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.LeftTrigger);
             
