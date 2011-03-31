@@ -215,6 +215,7 @@ namespace progarkspill
             statusCheck(projectiles);
             statusCheck(gameObjectives); // Returns list of length > 0 if gameObjective is dead
             statusCheck(players);
+            statusCheck(hostileProjectiles);
             
         }
 

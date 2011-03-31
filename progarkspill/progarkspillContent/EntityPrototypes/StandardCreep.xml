@@ -6,7 +6,7 @@
     <Position>750 250</Position>
     <Speed>100</Speed>
     <!-- Hull selection -->
-    <CombatStatsAsset>CombatStats/ArmorHull</CombatStatsAsset>
+    <CombatStatsAsset>CombatStats/CreepHull</CombatStatsAsset>
 
     <Abilities>
       <!-- Add abilities here -->
