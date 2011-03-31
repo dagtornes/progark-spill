@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="GameObjects\Abilities\AutoAttack.cs" />
     <Compile Include="GameObjects\Behaviours\BulletBehaviour.cs" />
+    <Compile Include="GameObjects\Behaviours\Crosshair.cs" />
     <Compile Include="GameObjects\Behaviours\DummyBehaviour.cs" />
     <Compile Include="GameObjects\CollisionHandlers\BulletCollider.cs" />
     <Compile Include="GameObjects\IAbility.cs" />
@@ -121,7 +122,7 @@
     <Compile Include="GameObjects\IStatus.cs" />
     <Compile Include="GameObjects\Collidables\HitCircle.cs" />
     <Compile Include="GameObjects\ICollidable.cs" />
-    <Compile Include="GameObjects\Collidables\Noncollidable.cs" />
+    <Compile Include="GameObjects\Collidables\NonCollidable.cs" />
     <Compile Include="GameObjects\Physics.cs" />
     <Compile Include="GameObjects\Renderables\Sprite.cs" />
     <Compile Include="Game.cs" />

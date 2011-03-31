@@ -48,9 +48,12 @@ namespace progarkspill
             // addPlayer(Player.createPlayer(PlayerIndex.One));
             gameObjectives.Add(Resources.getPrototype("GameObjective"));
             Entity playerOne = Resources.getPrototype("PlayerPrototype");
+            Entity crosshair = Resources.getPrototype("Crosshair");
             ((Player)playerOne.Behaviour).control = PlayerIndex.One;
+            playerOne.Source = crosshair;
+            crosshair.Source = playerOne;
             addPlayer(playerOne);
-            
+            nonInteractives.Add(crosshair);
         }
 
         public Entity gameObjective()
