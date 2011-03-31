@@ -12,8 +12,10 @@ namespace progarkspill.GameObjects
 
         public override void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
         {
-            me.Physics.Velocity = new Vector2(1, -1) * GamePad.GetState(control).ThumbSticks.Right;
-            //me.Physics.Velocity += me.Source.Physics.Velocity;
+            // Copy players speed, then add our own delta
+            Physics p = me.Source.Physics;
+            me.Physics.Velocity = p.Velocity * p.Speed / me.Physics.Speed;
+            me.Physics.Velocity += new Vector2(1, -1) * GamePad.GetState(control).ThumbSticks.Right;
         }
     }
 }
