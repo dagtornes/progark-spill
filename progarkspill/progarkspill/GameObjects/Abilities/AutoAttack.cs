@@ -52,6 +52,7 @@ namespace progarkspill.GameObjects
             projectile.Physics.Speed = Stats.ProjectileVelocity;
             projectile.CombatStats.Damage = Stats.Damage;
             projectile.CombatStats.DamageType = Stats.DamageType;
+            projectile.Source = me;
             environment.addGameObject(projectile);
         }
 

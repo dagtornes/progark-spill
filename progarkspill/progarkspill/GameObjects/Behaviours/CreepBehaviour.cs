@@ -10,9 +10,12 @@ namespace progarkspill.GameObjects
     {
         public void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
         {
-            Vector2 direction = environment.gameObjective().Physics.Position - me.Physics.Position;
-            direction.Normalize();
-            me.Physics.Velocity = direction;
+            me.Physics.Velocity = environment.gameObjective().Physics.Position - me.Physics.Position;
+            foreach (Entity player in environment.Players)
+                if ((player.Physics.Position - me.Physics.Position).LengthSquared() < 90000) {
+                    me.Physics.Velocity = player.Physics.Position - me.Physics.Position;
+
+                }
         }
         public IBehaviour clone()
         {

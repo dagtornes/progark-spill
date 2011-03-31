@@ -14,7 +14,7 @@ namespace progarkspill.GameObjects
         {
             // Copy players speed, then add our own delta
             Physics p = me.Source.Physics;
-            me.Physics.Velocity = p.Velocity * p.Speed / me.Physics.Speed;
+            me.Physics.Velocity = p.Velocity * p.Speed;
             me.Physics.Velocity += new Vector2(1, -1) * GamePad.GetState(control).ThumbSticks.Right;
         }
     }

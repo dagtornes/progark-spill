@@ -11,7 +11,8 @@ namespace progarkspill
 {
     public class GameState : IGameState
     {
-        private List<Entity> hostiles = new List<Entity>(); // All enemies and hostile projectiles
+        private List<Entity> hostiles = new List<Entity>(); // All enemies
+        private List<Entity> hostileProjectiles = new List<Entity>();
         private List<Entity> projectiles = new List<Entity>(); // Playerside projectiles
         private List<Entity> players = new List<Entity>(); // Players
         private List<Entity> nonInteractives = new List<Entity>(); // Events and creep spawners and the like
@@ -68,7 +69,7 @@ namespace progarkspill
         private void behaviourTick(float timedelta)
         {
             behaviourTick(players, timedelta, projectiles);
-            behaviourTick(hostiles, timedelta, hostiles);
+            behaviourTick(hostiles, timedelta, hostileProjectiles);
             behaviourTick(projectiles, timedelta, projectiles);
             behaviourTick(nonInteractives, timedelta, hostiles); // nonInteractives may only spawn players
         }
@@ -97,6 +98,7 @@ namespace progarkspill
             physicsTick(timedelta, hostiles);
             physicsTick(timedelta, projectiles);
             physicsTick(timedelta, nonInteractives);
+            physicsTick(timedelta, hostileProjectiles);
         }
 
         private void physicsTick(float timedelta, List<Entity> gameObjects)
@@ -112,6 +114,7 @@ namespace progarkspill
             collisionCheck(projectiles, hostiles); // Players kill hostiles
             collisionCheck(hostiles, gameObjectives); // Hostiles kill gameobjective
             collisionCheck(hostiles, players); // Hostiles kill players
+            collisionCheck(hostileProjectiles, players);
             collisionCheck(players, nonInteractives); // Players gain powerups (?)
 
         }
@@ -159,6 +162,7 @@ namespace progarkspill
             renderHBar(r, players);
             render(r, gameObjectives);
             renderHBar(r, gameObjectives);
+            render(r, hostileProjectiles);
         }
 
         private void renderHBar(Renderer r, List<Entity> objects)
@@ -211,6 +215,7 @@ namespace progarkspill
             statusCheck(projectiles);
             statusCheck(gameObjectives); // Returns list of length > 0 if gameObjective is dead
             statusCheck(players);
+            
         }
 
         private void updateViewport()

@@ -79,7 +79,6 @@ namespace progarkspill.GameObjects
             this.Renderable = other.Renderable.clone();
         }
 
-
         public void move(float timedelta)
         {
             Physics.Position += Physics.Velocity * Physics.Speed * timedelta;

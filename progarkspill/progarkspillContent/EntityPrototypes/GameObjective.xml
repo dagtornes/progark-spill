@@ -8,7 +8,7 @@
     <Abilities></Abilities>
     <BehaviourType>progarkspill.GameObjects.DummyBehaviour</BehaviourType>
     <RenderableAsset>objective</RenderableAsset>
-    <CollidableType>progarkspill.GameObjects.NonCollidable</CollidableType>
+    <CollidableType>progarkspill.GameObjects.HitCircle</CollidableType>
     <CollisionHandlerType></CollisionHandlerType>
     <StatusType>progarkspill.GameObjects.Status</StatusType>
   </Asset>

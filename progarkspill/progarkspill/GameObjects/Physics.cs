@@ -9,7 +9,21 @@ namespace progarkspill.GameObjects
     public class Physics
     {
         public Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; }
+        private Vector2 velocity;
+        public Vector2 Velocity
+        {
+            get
+            {
+                return velocity;
+            }
+            set
+            {
+                if (value != Vector2.Zero)
+                    value.Normalize();
+                velocity = value;
+            }
+
+        }
         public Vector2 Orientation
         {
             get { return orientation; }

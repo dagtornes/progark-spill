@@ -10,10 +10,7 @@ namespace progarkspill.GameObjects
     {
         public override Vector2 Orientation(Entity me, GameState environment)
         {
-            Random rgen = new Random();
-            Vector2 orientation = environment.Players[rgen.Next(environment.Players.Count)].Physics.Position - me.Physics.Position;
-            orientation.Normalize();
-            return orientation;
+            return me.Physics.Orientation;
         }
     }
 }
