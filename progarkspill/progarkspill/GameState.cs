@@ -50,6 +50,7 @@ namespace progarkspill
             Entity playerOne = Resources.getPrototype("PlayerPrototype");
             ((Player)playerOne.Behaviour).control = PlayerIndex.One;
             addPlayer(playerOne);
+            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.LeftTrigger);
             
         }
 

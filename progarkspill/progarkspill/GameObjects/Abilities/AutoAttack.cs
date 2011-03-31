@@ -11,11 +11,13 @@ namespace progarkspill.GameObjects
     public class AutoAttack : IAbility
     {
         public AbilityStats Stats { get; set; }
+        public Entity ProjectilePrototype { get; set; }
+
         private PlayerIndex control;
         private Buttons binding;
         private bool bound = false;
 
-        public bool triggered(Entity me, GameState environment, float timedelta)
+        public virtual bool triggered(Entity me, GameState environment, float timedelta)
         {
             Stats.CurrentCooldown -= timedelta;
             if (Stats.Level < 1)
@@ -31,7 +33,14 @@ namespace progarkspill.GameObjects
 
         public void fire(Entity me, GameState environment)
         {
-            
+            Entity projectile = new Entity(ProjectilePrototype);
+            projectile.Physics.Position = me.Physics.Position;
+            projectile.Physics.Velocity = me.Physics.Position - me.Source.Physics.Position;
+            projectile.Physics.Velocity.Normalize();
+            if (projectile.Physics.Velocity == Vector2.Zero)
+                projectile.Physics.Velocity = me.Physics.Orientation;
+            projectile.CombatStats.Damage = Stats.Damage;
+            projectile.CombatStats.DamageType = Stats.DamageType;
         }
 
         public void levelUp()

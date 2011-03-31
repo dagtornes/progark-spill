@@ -9,5 +9,6 @@ namespace SharedContent
     {
         public String AbilityTypeName;
         public String AbilityStatsAsset;
+        public String EntityModelAsset;
     }
 }

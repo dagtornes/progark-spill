@@ -13,6 +13,7 @@
       <Item>
           <AbilityTypeName>progarkspill.GameObjects.AutoAttack</AbilityTypeName>
           <AbilityStatsAsset>AbilityStats/EnergyPlayerAuto</AbilityStatsAsset>
+          <EntityModelAsset>EntityPrototypes/EnergyShot</EntityModelAsset>
       </Item>
     </Abilities>
     <!-- Behaviour -->
