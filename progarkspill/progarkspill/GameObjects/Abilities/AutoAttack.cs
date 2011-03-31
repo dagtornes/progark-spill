@@ -41,6 +41,7 @@ namespace progarkspill.GameObjects
                 projectile.Physics.Velocity = me.Physics.Orientation;
             projectile.CombatStats.Damage = Stats.Damage;
             projectile.CombatStats.DamageType = Stats.DamageType;
+            environment.addGameObject(projectile);
         }
 
         public void levelUp()
