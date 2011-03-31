@@ -53,8 +53,11 @@ namespace progarkspill.GameObjects
             }
             ObjectHandle collidableHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.CollidableType);
             Collidable = (ICollidable) collidableHandle.Unwrap();
-            ObjectHandle handlerHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.CollisionHandlerType);
-            CollisionHandler = (ICollisionHandler)handlerHandle.Unwrap();
+            if (Model.CollisionHandlerType != null && Model.CollisionHandlerType != "")
+            {
+                ObjectHandle handlerHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.CollisionHandlerType);
+                CollisionHandler = (ICollisionHandler)handlerHandle.Unwrap();
+            }
             Renderable = new Sprite(Content.Load<Texture2D>(Model.RenderableAsset));
             ObjectHandle statusHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.StatusType);
             Status = (IStatus)statusHandle.Unwrap();
