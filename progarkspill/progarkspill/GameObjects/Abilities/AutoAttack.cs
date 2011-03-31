@@ -26,7 +26,7 @@ namespace progarkspill.GameObjects
                 return Stats.CurrentCooldown <= 0;
             else
             {
-                bool cd = Stats.CurrentCooldown <= 0;
+                bool cd = (Stats.CurrentCooldown <= 0);
                 return cd && (GamePad.GetState(control).IsButtonDown(binding));
             }
         }

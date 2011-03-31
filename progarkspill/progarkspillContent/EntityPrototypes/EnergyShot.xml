@@ -9,7 +9,7 @@
     <BehaviourType>progarkspill.GameObjects.BulletBehaviour</BehaviourType>
     <RenderableAsset>bullet</RenderableAsset>
     <CollidableType>progarkspill.GameObjects.HitCircle</CollidableType>
-    <CollisionHandlerType>progarkspill.GameObjects.DamageCollider</CollisionHandlerType>
+    <CollisionHandlerType>progarkspill.GameObjects.DamageCollisionHandler</CollisionHandlerType>
     <StatusType>progarkspill.GameObjects.Status</StatusType>
   </Asset>
 </XnaContent>

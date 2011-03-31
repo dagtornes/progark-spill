@@ -53,6 +53,7 @@ namespace progarkspill
             playerOne.Source = crosshair;
             crosshair.Source = playerOne;
             addPlayer(playerOne);
+            nonInteractives.Add(crosshair);
             playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.LeftTrigger);
             
         }

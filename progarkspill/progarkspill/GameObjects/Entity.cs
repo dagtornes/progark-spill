@@ -32,7 +32,7 @@ namespace progarkspill.GameObjects
             Stats = new SharedContent.Statistics();
         }
 
-        public Entity(SharedContent.EntityModel Model, ContentManager Content)
+        public Entity(SharedContent.EntityModel Model, ContentManager Content): this()
         {
             Physics = new Physics(Model.Speed);
             Physics.Position = Model.Position;
@@ -53,13 +53,15 @@ namespace progarkspill.GameObjects
             }
             ObjectHandle collidableHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.CollidableType);
             Collidable = (ICollidable) collidableHandle.Unwrap();
+            ObjectHandle handlerHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.CollisionHandlerType);
+            CollisionHandler = (ICollisionHandler)handlerHandle.Unwrap();
             Renderable = new Sprite(Content.Load<Texture2D>(Model.RenderableAsset));
             ObjectHandle statusHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.StatusType);
             Status = (IStatus)statusHandle.Unwrap();
             ObjectHandle behaviourHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.BehaviourType);
             Behaviour = (IBehaviour)behaviourHandle.Unwrap();
         }
-        public Entity(Entity other)
+        public Entity(Entity other): this()
         {
             this.Physics = other.Physics.clone();
             this.Status = other.Status.clone();
@@ -71,6 +73,7 @@ namespace progarkspill.GameObjects
             this.Stats = other.Stats.clone();
             this.Collidable = other.Collidable.clone();
             this.CollisionHandler = other.CollisionHandler;
+            this.Renderable = other.Renderable.clone();
         }
 
 
