@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameObjects\Abilities\AutoAttack.cs" />
+    <Compile Include="GameObjects\Abilities\CreepAutoAttack.cs" />
     <Compile Include="GameObjects\Behaviours\BulletBehaviour.cs" />
     <Compile Include="GameObjects\Behaviours\Crosshair.cs" />
     <Compile Include="GameObjects\Behaviours\DummyBehaviour.cs" />

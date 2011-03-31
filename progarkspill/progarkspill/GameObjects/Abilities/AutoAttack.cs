@@ -31,14 +31,25 @@ namespace progarkspill.GameObjects
             }
         }
 
+        public virtual Vector2 Orientation(Entity me, GameState environment)
+        {
+            if (!bound)
+                return me.Physics.Orientation;
+            Vector2 orientation =  me.Source.Physics.Position - me.Physics.Position;
+            orientation.Normalize();
+            if (orientation == Vector2.Zero)
+                orientation = me.Physics.Orientation;
+            return orientation;
+
+        }
+
         public void fire(Entity me, GameState environment)
         {
+            Stats.CurrentCooldown = Stats.Cooldown;
             Entity projectile = new Entity(ProjectilePrototype);
             projectile.Physics.Position = me.Physics.Position;
-            projectile.Physics.Velocity = me.Physics.Position - me.Source.Physics.Position;
-            projectile.Physics.Velocity.Normalize();
-            if (projectile.Physics.Velocity == Vector2.Zero)
-                projectile.Physics.Velocity = me.Physics.Orientation;
+            projectile.Physics.Velocity = Orientation(me, environment);
+            projectile.Physics.Speed = Stats.ProjectileVelocity;
             projectile.CombatStats.Damage = Stats.Damage;
             projectile.CombatStats.DamageType = Stats.DamageType;
             environment.addGameObject(projectile);

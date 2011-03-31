@@ -55,9 +55,11 @@ namespace progarkspill
             addPlayer(playerOne);
             nonInteractives.Add(crosshair);
             playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.LeftTrigger);
+            hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
+            hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
+            hostiles[1].Physics.Position = new Vector2(-500, -250);
             
         }
-
         public Entity gameObjective()
         {
             return gameObjectives[0];

@@ -14,7 +14,7 @@ namespace SharedContent
         public int Resistance;
 
         public float Damage;
-        public float DamageType;
+        public int DamageType;
 
         public CombatStats clone()
         {
