@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <!-- TODO: replace this Asset with your own XML asset data. -->
+  <Asset Type="SharedContent.CombatStats">
+    <MaxHealth>100</MaxHealth>
+    <Health>100</Health>
+    <Armor>40</Armor>
+    <Resistance>25</Resistance>
+  </Asset>
+</XnaContent>

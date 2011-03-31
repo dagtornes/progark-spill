@@ -25,6 +25,7 @@ namespace progarkspill
         {
             this.resources = new Dictionary<string, Texture2D>();
             this.content = content;
+            
         }
 
         private static Resources res;

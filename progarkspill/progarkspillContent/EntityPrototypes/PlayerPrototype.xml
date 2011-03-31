@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <!-- TODO: replace this Asset with your own XML asset data. -->
+  <Asset Type="SharedContent.EntityModel">
+    <!-- Placement and maximum speed -->
+    <Position>250 250</Position>
+    <Speed>200</Speed>
+    <!-- Hull selection -->
+    <CombatStatsAsset>EnergyResistHull</CombatStatsAsset>
+    
+    <Abilities>
+      <!-- Add abilities here -->
+    </Abilities>
+    <!-- Behaviour -->
+    <BehaviourType>Player</BehaviourType>
+    <!-- Name of sprite asset-->
+    <RenderableAsset>ship9km</RenderableAsset>
+    <!-- Collision detection setup -->
+    <CollidableType>HitCircle</CollidableType>
+    <CollidableParam>10</CollidableParam>
+    <!-- This needs to be fixed -->
+    <CollisionHandlerType>BulletCollider</CollisionHandlerType>
+    <!-- Choice of status-checker -->
+    <StatusType>Status</StatusType>
+  </Asset>
+</XnaContent>

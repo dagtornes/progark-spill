@@ -29,7 +29,9 @@ namespace progarkspill.GameObjects
 
             return p1;
         }
-
+        public Player()
+        {
+        }
         public Player(PlayerIndex controller)
         {
             control = controller;

@@ -23,6 +23,7 @@ namespace progarkspill
         GraphicsDeviceManager gdm;
         Viewport view;
         Entity ent;
+        EntityModel playerPrototype;
         List<Player> players = new List<Player>();
         Stats statsTests;
 
@@ -58,6 +59,7 @@ namespace progarkspill
             // Create a new SpriteBatch, which can be used to draw textures.
 
             statsTests = Content.Load<Stats>("InitialCombatStats");
+            playerPrototype = Content.Load<EntityModel>("EntityProtoTypes/PlayerPrototype");
             System.Console.WriteLine(statsTests.Armor);
             
             // TODO: use this.Content to load your game content here
