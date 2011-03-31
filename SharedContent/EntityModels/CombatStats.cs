@@ -13,5 +13,12 @@ namespace SharedContent
         public int Armor;
         public int Resistance;
 
+        public float Damage;
+        public float DamageType;
+
+        public CombatStats clone()
+        {
+            return (CombatStats)MemberwiseClone();
+        }
     }
 }

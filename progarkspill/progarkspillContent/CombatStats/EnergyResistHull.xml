@@ -6,5 +6,8 @@
     <Health>100</Health>
     <Armor>20</Armor>
     <Resistance>50</Resistance>
+    <!-- Crash damage from this hull-->
+    <Damage>10</Damage>
+    <DamageType>0</DamageType>
   </Asset>
 </XnaContent>

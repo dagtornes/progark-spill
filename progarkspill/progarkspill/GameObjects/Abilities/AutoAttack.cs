@@ -6,7 +6,7 @@ using SharedContent;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
-namespace progarkspill.GameObjects.Abilities
+namespace progarkspill.GameObjects
 {
     public class AutoAttack : IAbility
     {

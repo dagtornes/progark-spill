@@ -7,9 +7,8 @@ namespace SharedContent
 {
     public class Statistics
     {
-        public int Experience { get; set; }
-        public int Level { get; set; }
-        public int Kills { get; set; }
-
+        public int Experience;
+        public int Level;
+        public int Kills;
     }
 }

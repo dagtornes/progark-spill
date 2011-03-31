@@ -7,7 +7,7 @@ namespace SharedContent
 {
     public class Ability
     {
-        String AbilityTypeName;
-        String AbilityStatsAsset;
+        public String AbilityTypeName;
+        public String AbilityStatsAsset;
     }
 }

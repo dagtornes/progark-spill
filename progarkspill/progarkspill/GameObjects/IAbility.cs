@@ -9,7 +9,7 @@ using SharedContent;
 
 namespace progarkspill.GameObjects
 {
-    interface IAbility
+    public interface IAbility
     {
         AbilityStats Stats { get; set; }
 

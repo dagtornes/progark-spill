@@ -16,7 +16,6 @@ namespace SharedContent
         public String BehaviourType;
         public String RenderableAsset;
         public String CollidableType;
-        public int CollidableParam;
         public String CollisionHandlerType;
         public String StatusType;
     }

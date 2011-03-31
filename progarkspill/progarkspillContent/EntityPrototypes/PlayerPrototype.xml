@@ -6,21 +6,24 @@
     <Position>250 250</Position>
     <Speed>200</Speed>
     <!-- Hull selection -->
-    <CombatStatsAsset>EnergyResistHull</CombatStatsAsset>
+    <CombatStatsAsset>CombatStats/EnergyResistHull</CombatStatsAsset>
     
     <Abilities>
       <!-- Add abilities here -->
+      <Item>
+          <AbilityTypeName>progarkspill.GameObjects.AutoAttack</AbilityTypeName>
+          <AbilityStatsAsset>AbilityStats/EnergyPlayerAuto</AbilityStatsAsset>
+      </Item>
     </Abilities>
     <!-- Behaviour -->
-    <BehaviourType>Player</BehaviourType>
+    <BehaviourType>progarkspill.GameObjects.Player</BehaviourType>
     <!-- Name of sprite asset-->
     <RenderableAsset>ship9km</RenderableAsset>
     <!-- Collision detection setup -->
-    <CollidableType>HitCircle</CollidableType>
-    <CollidableParam>10</CollidableParam>
+    <CollidableType>progarkspill.GameObjects.HitCircle</CollidableType>
     <!-- This needs to be fixed -->
-    <CollisionHandlerType>BulletCollider</CollisionHandlerType>
+    <CollisionHandlerType>progarkspill.GameObjects.DamageCollider</CollisionHandlerType>
     <!-- Choice of status-checker -->
-    <StatusType>Status</StatusType>
+    <StatusType>progarkspill.GameObjects.Status</StatusType>
   </Asset>
 </XnaContent>

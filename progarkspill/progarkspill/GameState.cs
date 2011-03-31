@@ -45,35 +45,7 @@ namespace progarkspill
         {
             this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
             // This needs to be fetched from data and tweaked loads 
-            addPlayer(Player.createPlayer(PlayerIndex.One));
-
-            gameObjectives.Add(new Entity());
-            Entity objective = gameObjectives[0];
-            Texture2D tex = Resources.getRes("bullet");
-            this.BulletSprite = tex;
-            objective.Renderable = new Sprite(Resources.getRes("objective"));
-            objective.Physics.Position = new Vector2(250, 250);
-            objective.CombatStats.Health = 1000;
-            objective.CombatStats.MaxHealth = 1000;
-            objective.Physics.Speed = 0;
-            objective.Collidable = new HitCircle(objective.Renderable.Texture.Width / 2);
-            Entity spawner = new Entity();
-            Entity spawner2 = new Entity();
-            nonInteractives.Add(spawner);
-            nonInteractives.Add(spawner2);
-            spawner.Physics.Position = new Vector2(750, 750);
-            spawner2.Physics.Position = new Vector2(-300, -300);
-            spawner2.CombatStats.Cooldown = 5;
-            spawner.CombatStats.Cooldown = 5;
-            Entity standardCreep = new Entity();
-            standardCreep.CombatStats = CombatStats.defaultShip(); // Sanify
-            standardCreep.Renderable = new Sprite(Resources.getRes("enemy1"));
-            standardCreep.Collidable = new HitCircle(standardCreep.Renderable.Texture.Width / 2);
-            standardCreep.CollisionHandler = new DamageCollisionHandler();
-            standardCreep.Behaviour = new CreepBehaviour();
-           
-            spawner.Behaviour = new CreepSpawnBehaviour(standardCreep);
-            spawner2.Behaviour = new CreepSpawnBehaviour(standardCreep);
+            // addPlayer(Player.createPlayer(PlayerIndex.One));
             
         }
 
@@ -98,6 +70,11 @@ namespace progarkspill
             foreach (Entity gameObject in gameObjects)
             {
                 gameObject.Behaviour.decide(gameObject, this, timedelta, stack);
+                foreach (IAbility ability in gameObject.Abilities)
+                {
+                    if (ability.triggered(gameObject, this, timedelta))
+                        ability.fire(gameObject, this);
+                }
             }
             foreach (Entity newObject in newObjects)
                 destination.Add(newObject);

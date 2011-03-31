@@ -10,19 +10,19 @@ namespace progarkspill.GameObjects
     {
         public int Radius { get; set; }
 
-        public HitCircle(int radius)
-        {
-            Radius = radius;
-        }
-
         public bool contains(Entity me, Vector2 point)
         {
+            if (Radius == 0)
+                Radius = me.Renderable.Texture.Width / 2;
             Vector2 difference = me.Physics.Position - point;
             return difference.LengthSquared() < this.Radius * this.Radius;
         }
 
         public bool intersects(Entity me, Entity other)
         {
+            if (Radius == 0)
+                Radius = me.Renderable.Texture.Width / 2;
+
             if (other.Collidable is HitCircle)
             {
                 Vector2 difference = me.Physics.Position - other.Physics.Position;
@@ -38,6 +38,9 @@ namespace progarkspill.GameObjects
         public bool rayTrace(Entity me, Vector2 origin, Vector2 ray)
         {
             float c;
+            if (Radius == 0)
+                Radius = me.Renderable.Texture.Width / 2;
+
             Vector2.Dot(ref origin, ref origin, out c);
             c -= Radius * Radius;
             float b;
