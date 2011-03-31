@@ -10,5 +10,6 @@ namespace progarkspill.GameObjects
         bool isAlive(Entity me);
         void kill(Entity me, Entity murderer);
         Entity getKiller();
+        IStatus clone();
     }
 }

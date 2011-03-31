@@ -14,5 +14,9 @@ namespace progarkspill.GameObjects
             direction.Normalize();
             me.Physics.Velocity = direction;
         }
+        public IBehaviour clone()
+        {
+            return (CreepBehaviour)MemberwiseClone();
+        }
     }
 }

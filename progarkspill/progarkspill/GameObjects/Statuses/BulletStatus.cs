@@ -23,5 +23,9 @@ namespace progarkspill.GameObjects
         {
             return null;
         }
+        public IStatus clone()
+        {
+            return (BulletStatus)MemberwiseClone();
+        }
     }
 }

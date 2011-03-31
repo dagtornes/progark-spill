@@ -45,5 +45,12 @@ namespace progarkspill.GameObjects
             binding = button;
             this.control = control;
         }
+
+        public IAbility clone()
+        {
+            AutoAttack cloned = (AutoAttack)MemberwiseClone();
+            cloned.Stats = Stats.clone();
+            return cloned;
+        }
     }
 }

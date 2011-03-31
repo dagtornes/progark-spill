@@ -17,5 +17,6 @@ namespace progarkspill.GameObjects
         void fire(Entity me, GameState environment);
         void bind(PlayerIndex control, Buttons button);
         void levelUp();
+        IAbility clone();
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace progarkspill.GameObjects
 {
-    public class Player : IBehaviour
+    public class Player : DummyBehaviour
     {
         public PlayerIndex control;
 
@@ -20,7 +20,7 @@ namespace progarkspill.GameObjects
             control = controller;
         }
 
-        public void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
+        public override void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
         {
             // Verify connection status
             GamePadState controller = GamePad.GetState(control);

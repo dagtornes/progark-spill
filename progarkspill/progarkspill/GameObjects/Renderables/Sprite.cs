@@ -68,5 +68,10 @@ namespace progarkspill.GameObjects
         private Vector2 position;
         private float angle;
         private Texture2D texture;
+
+        public IRenderable clone()
+        {
+            return (IRenderable)MemberwiseClone();
+        }
     }
 }

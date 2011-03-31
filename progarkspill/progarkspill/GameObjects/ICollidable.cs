@@ -12,5 +12,6 @@ namespace progarkspill.GameObjects
         bool intersects(Entity me, Entity other);
         bool rayTrace(Entity me, Vector2 origin, Vector2 ray);
         int Radius { get; set; }
+        ICollidable clone();
     }
 }

@@ -28,5 +28,10 @@ namespace progarkspill.GameObjects
 
         private float angle;
         private Vector2 orientation;
+
+        public Physics clone()
+        {
+            return (Physics)MemberwiseClone();
+        }
     }
 }

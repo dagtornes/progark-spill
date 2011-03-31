@@ -8,5 +8,6 @@ namespace progarkspill.GameObjects
     public interface IBehaviour
     {
         void decide(Entity me, GameState environment, float timedelta, GameStateStack states);
+        IBehaviour clone();
     }
 }

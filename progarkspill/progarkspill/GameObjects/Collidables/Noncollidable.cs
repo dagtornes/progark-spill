@@ -25,5 +25,9 @@ namespace progarkspill.GameObjects
         {
             return false;
         }
+        public ICollidable clone()
+        {
+            return (ICollidable)MemberwiseClone();
+        }
     }
 }

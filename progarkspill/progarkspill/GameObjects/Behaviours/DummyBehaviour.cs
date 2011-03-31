@@ -7,8 +7,13 @@ namespace progarkspill.GameObjects
 {
     public class DummyBehaviour : IBehaviour
     {
-        public void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
+        public virtual void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
         {
+        }
+
+        public IBehaviour clone()
+        {
+            return (IBehaviour)MemberwiseClone();
         }
     }
 }

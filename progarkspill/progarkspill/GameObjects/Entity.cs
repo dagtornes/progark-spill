@@ -31,6 +31,7 @@ namespace progarkspill.GameObjects
             Physics = new Physics(200);
             Stats = new SharedContent.Statistics();
         }
+
         public Entity(SharedContent.EntityModel Model, ContentManager Content)
         {
             Physics = new Physics(Model.Speed);
@@ -54,6 +55,20 @@ namespace progarkspill.GameObjects
             ObjectHandle behaviourHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.BehaviourType);
             Behaviour = (IBehaviour)behaviourHandle.Unwrap();
         }
+        public Entity(Entity other)
+        {
+            this.Physics = other.Physics.clone();
+            this.Status = other.Status.clone();
+            this.CombatStats = other.CombatStats.clone();
+            this.Abilities = new List<IAbility>();
+            foreach (IAbility ability in other.Abilities)
+                this.Abilities.Add(ability.clone());
+            this.Behaviour = other.Behaviour.clone();
+            this.Stats = other.Stats.clone();
+            this.Collidable = other.Collidable.clone();
+            this.CollisionHandler = other.CollisionHandler;
+        }
+
 
         public void move(float timedelta)
         {

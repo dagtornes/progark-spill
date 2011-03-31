@@ -21,5 +21,9 @@ namespace progarkspill.GameObjects
         {
             return killer;
         }
+        public IStatus clone()
+        {
+            return (IStatus)MemberwiseClone();
+        }
     }
 }

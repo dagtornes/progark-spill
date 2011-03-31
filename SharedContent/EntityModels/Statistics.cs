@@ -10,5 +10,10 @@ namespace SharedContent
         public int Experience;
         public int Level;
         public int Kills;
+
+        public Statistics clone()
+        {
+            return (Statistics)MemberwiseClone();
+        }
     }
 }

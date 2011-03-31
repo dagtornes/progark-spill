@@ -50,5 +50,9 @@ namespace progarkspill.GameObjects
 
             return b * b - 4 * a * c >= 0.0f;
         }
+        public ICollidable clone()
+        {
+            return (ICollidable)MemberwiseClone();
+        }
     }
 }

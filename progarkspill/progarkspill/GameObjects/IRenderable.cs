@@ -15,5 +15,6 @@ namespace progarkspill
         bool Tiled { get; set; }
         Vector2 Size { get; }
         Vector2 Scale { get; set; }
+        IRenderable clone();
     }
 }
