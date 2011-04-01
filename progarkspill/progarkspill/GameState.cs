@@ -143,7 +143,6 @@ namespace progarkspill
             Entity crosshair = Resources.getPrototype("Crosshair");
             player.Source = crosshair;
             crosshair.Source = player;
-            crosshair.Status = new Owned();
             crosshair.Renderable.Tint = Color.Red;
             newNoninteractives.Add(crosshair);
             

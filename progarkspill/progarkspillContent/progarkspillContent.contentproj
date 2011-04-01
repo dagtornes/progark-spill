@@ -179,6 +179,7 @@
       <Name>PlayerPrototype</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +194,7 @@
       <Name>EnergyShot</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <Compile Include="crosshair.png">
       <Name>crosshair</Name>

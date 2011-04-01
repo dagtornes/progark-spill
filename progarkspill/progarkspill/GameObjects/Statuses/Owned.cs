@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace progarkspill.GameObjects
+namespace progarkspill.GameObjects.Statuses
 {
     /**
      * This status class represents any entity owned by another (me.Source),
