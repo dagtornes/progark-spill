@@ -21,6 +21,7 @@ namespace progarkspill
             this.pixel = Resources.getRes("whitepixel");
             this.font = content.Load<SpriteFont>("default");
             Vector2 screensize = new Vector2(gdm.PreferredBackBufferWidth, gdm.PreferredBackBufferHeight);
+            Console.WriteLine("Screensize: {0}", screensize);
             screenspace = new Viewport(Vector2.Zero, screensize);
             sb = new SpriteBatch(gdm.GraphicsDevice);
         }
@@ -41,6 +42,29 @@ namespace progarkspill
 
         private void renderTiled(IRenderable renderable, Vector2 position, float angle, Vector2 scale)
         {
+            // position is given in screenspace
+            Vector2 delta = scale * new Vector2(renderable.Texture.Width, renderable.Texture.Height);
+            Vector2 begin = position;
+            while (begin.X > 0) begin.X -= delta.X;
+            while (begin.Y > 0) begin.Y -= delta.Y;
+            //Console.WriteLine("Begin: {0}", begin);
+            //Console.WriteLine("Screenspace: {0}", screenspace.Size);
+            Vector2 rpos = begin;
+            Vector2 size = screenspace.size;
+            while (rpos.Y < screenspace.Size.Y)
+            {
+                while (rpos.X < screenspace.Size.X)
+                {
+                    sb.Draw(renderable.Texture, rpos, null, renderable.Tint, angle, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+                    rpos.X += delta.X;
+                }
+                rpos.X = begin.X;
+                rpos.Y += delta.Y;
+            }
+        }
+
+        private void renderTiled2(IRenderable renderable, Vector2 position, float angle, Vector2 scale)
+        {
             // sb.Draw(renderable.Texture, rpos + new Vector2(x, y) * scale * delta, null, Color.White, angle, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
             Vector2 delta = scale * new Vector2(renderable.Texture.Width, renderable.Texture.Height);
             Vector2 cnt = screenspace.Size / delta + 3*Vector2.One;
@@ -51,7 +75,7 @@ namespace progarkspill
 
             for (int x = 0; x != (int) cnt.X; ++x)
                 for (int y = 0; y != (int) cnt.Y; ++y)
-                    sb.Draw(renderable.Texture, off + position + new Vector2(x, y) * delta, null, Color.White, angle, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+                    sb.Draw(renderable.Texture, off + position + new Vector2(x, y) * delta, null, renderable.Tint, angle, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
         }
 
         public void beginScreen()
@@ -82,11 +106,10 @@ namespace progarkspill
         {
             Vector2 render_position = currentspace.mapTo(pos, screenspace);
             Vector2 scale = currentspace.scaleTo(screenspace);
-            
             if (entity.Tiled)
                 renderTiled(entity, render_position, angle, scale);
             else
-                sb.Draw(entity.Texture, render_position, null, Color.White, angle, entity.Origin, scale, SpriteEffects.None, 0.0f);
+                sb.Draw(entity.Texture, render_position, null, entity.Tint, angle, entity.Origin, scale, SpriteEffects.None, 0.0f);
         }
 
         public void renderRect(Vector2 topleft, Vector2 bottomright, Color color)

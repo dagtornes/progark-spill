@@ -20,6 +20,8 @@ namespace progarkspill
         private List<Entity> nonInteractives = new List<Entity>(); // Events and creep spawners and the like
         private List<Entity> gameObjectives = new List<Entity>(); // Work this one out somewhere
 
+        public List<Entity> newNoninteractives = new List<Entity>();
+
         private GameStateStack stack;
         private Viewport view;
         public Texture2D BulletSprite { get; set; }
@@ -51,12 +53,8 @@ namespace progarkspill
             // addPlayer(Player.createPlayer(PlayerIndex.One));
             gameObjectives.Add(Resources.getPrototype("GameObjective"));
             Entity playerOne = Resources.getPrototype("PlayerPrototype");
-            Entity crosshair = Resources.getPrototype("Crosshair");
             ((Player)playerOne.Behaviour).control = PlayerIndex.One;
-            playerOne.Source = crosshair;
-            crosshair.Source = playerOne;
             addPlayer(playerOne);
-            nonInteractives.Add(crosshair);
             playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.LeftTrigger);
             hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
             hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
@@ -74,6 +72,8 @@ namespace progarkspill
             behaviourTick(hostiles, timedelta, hostileProjectiles);
             behaviourTick(projectiles, timedelta, projectiles);
             behaviourTick(nonInteractives, timedelta, hostiles); // nonInteractives may only spawn players
+            nonInteractives.AddRange(newNoninteractives);
+            newNoninteractives.Clear();
         }
 
         // Run a behaviour tick that is timedelta long, and let behaviour objects in gameObjects add
@@ -140,6 +140,13 @@ namespace progarkspill
 
         public void addPlayer(Entity player)
         {
+            Entity crosshair = Resources.getPrototype("Crosshair");
+            player.Source = crosshair;
+            crosshair.Source = player;
+            crosshair.Status = new Owned();
+            crosshair.Renderable.Tint = Color.Red;
+            newNoninteractives.Add(crosshair);
+            
             players.Add(player);
         }
 

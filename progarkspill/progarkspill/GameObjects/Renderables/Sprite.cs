@@ -18,10 +18,13 @@ namespace progarkspill.GameObjects.Renderables
             this.depth = 0.0f;
             this.tiled = false;
             this.Scale = Vector2.One;
+            this.Tint = Color.White;
         }
 
         public bool Tiled { get; set; }
         public float Depth { get; set; }
+
+        public Color Tint { get; set; }
 
         public Vector2 Position
         {

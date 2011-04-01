@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace progarkspill.GameObjects.Behaviours
 {
@@ -20,6 +21,7 @@ namespace progarkspill.GameObjects.Behaviours
         {
             environment.addPlayer(playerEntity);
             playerEntity.CombatStats.Health = playerEntity.CombatStats.MaxHealth;
+            playerEntity.Physics.Position = 50 * Vector2.One;
         }
         public void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
         {
