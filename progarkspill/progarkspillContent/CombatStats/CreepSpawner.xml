@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="SharedContent.CombatStats">
+    <!-- READ: This is a huge hack that enables creepspawner to track state.-->
+    <MaxHealth>100</MaxHealth>
+    <Health>100</Health>
+    <Armor>10</Armor> <!-- Spawner goes active after 10 seconds-->
+    <Resistance>30</Resistance> <!-- It lasts for 30 seconds -->
+    <!-- Crash damage from this hull -->
+    <Damage>10</Damage>
+    <DamageType>0</DamageType>
+  </Asset>
+</XnaContent>

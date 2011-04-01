@@ -59,6 +59,7 @@ namespace progarkspill
             hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
             hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
             hostiles[1].Physics.Position = new Vector2(-500, -250);
+            nonInteractives.Add(new Entity(Resources.getPrototype("CreepSpawner")));
             
         }
         public Entity gameObjective()

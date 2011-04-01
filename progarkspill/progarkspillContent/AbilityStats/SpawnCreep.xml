@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="SharedContent.AbilityStats">
-    <DamageType>1</DamageType>
+    <DamageType>0</DamageType>
     <Damage>8</Damage>
     <Cooldown>2</Cooldown>
-    <CurrentCooldown>2</CurrentCooldown>
-    <ProjectileVelocity>200</ProjectileVelocity>
-    <Level>1</Level>
+    <CurrentCooldown>0</CurrentCooldown>
+    <ProjectileVelocity>100</ProjectileVelocity>
+    <Level>0</Level>
   </Asset>
 </XnaContent>

@@ -65,7 +65,8 @@ namespace progarkspill.GameObjects
                     "progarkspill.GameObjects.CollisionHandlers." + Model.CollisionHandlerType);
                 CollisionHandler = (ICollisionHandler)handlerHandle.Unwrap();
             }
-            Renderable = new Sprite(Content.Load<Texture2D>(Model.RenderableAsset));
+            if (Model.RenderableAsset != null && Model.RenderableAsset != "")
+                Renderable = new Sprite(Content.Load<Texture2D>(Model.RenderableAsset));
             ObjectHandle statusHandle = Activator.CreateInstanceFrom(me.CodeBase, 
                 "progarkspill.GameObjects.Statuses." + Model.StatusType);
             Status = (IStatus)statusHandle.Unwrap();
@@ -85,7 +86,8 @@ namespace progarkspill.GameObjects
             this.Stats = other.Stats.clone();
             this.Collidable = other.Collidable.clone();
             this.CollisionHandler = other.CollisionHandler;
-            this.Renderable = other.Renderable.clone();
+            if (other.Renderable != null)
+                this.Renderable = other.Renderable.clone();
         }
 
         public void move(float timedelta)

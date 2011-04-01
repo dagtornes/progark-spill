@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill.GameObjects.Behaviours
 {
-    class CreepBehaviour : IBehaviour
+    class Creep : IBehaviour
     {
         public void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
         {
@@ -19,7 +19,7 @@ namespace progarkspill.GameObjects.Behaviours
         }
         public IBehaviour clone()
         {
-            return (CreepBehaviour)MemberwiseClone();
+            return (Creep)MemberwiseClone();
         }
     }
 }

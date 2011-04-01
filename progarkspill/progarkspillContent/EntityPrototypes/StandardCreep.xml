@@ -16,7 +16,7 @@
       </Item>
     </Abilities>
     <!-- Behaviour -->
-    <BehaviourType>CreepBehaviour</BehaviourType>
+    <BehaviourType>Creep</BehaviourType>
     <!-- Name of sprite asset-->
     <RenderableAsset>enemy1</RenderableAsset>
     <!-- Collision detection setup -->
