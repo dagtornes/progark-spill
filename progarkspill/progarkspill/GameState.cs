@@ -55,7 +55,7 @@ namespace progarkspill
             Entity playerOne = Resources.getPrototype("PlayerPrototype");
             ((Player)playerOne.Behaviour).control = PlayerIndex.One;
             addPlayer(playerOne);
-            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.LeftTrigger);
+            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.RightTrigger);
             hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
             hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
             hostiles[1].Physics.Position = new Vector2(-500, -250);

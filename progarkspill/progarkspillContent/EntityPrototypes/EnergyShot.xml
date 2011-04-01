@@ -8,7 +8,7 @@
     <BehaviourType>Bullet</BehaviourType>
     <RenderableAsset>bullet</RenderableAsset>
     <CollidableType>HitCircle</CollidableType>
-    <CollisionHandlerType>DamageCollisionHandler</CollisionHandlerType>
+    <CollisionHandlerType>Damage</CollisionHandlerType>
     <StatusType>Status</StatusType>
   </Asset>
 </XnaContent>

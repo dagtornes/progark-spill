@@ -22,7 +22,7 @@
     <!-- Collision detection setup -->
     <CollidableType>HitCircle</CollidableType>
     <!-- This needs to be fixed -->
-    <CollisionHandlerType>BulletCollider</CollisionHandlerType>
+    <CollisionHandlerType>Bullet</CollisionHandlerType>
     <!-- Choice of status-checker -->
     <StatusType>Status</StatusType>
   </Asset>

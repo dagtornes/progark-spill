@@ -5,7 +5,7 @@ using System.Text;
 
 namespace progarkspill.GameObjects.CollisionHandlers
 {
-    public class DamageCollisionHandler : ICollisionHandler
+    public class Damage : ICollisionHandler
     {
         public void collide(Entity me, Entity other)
         {
