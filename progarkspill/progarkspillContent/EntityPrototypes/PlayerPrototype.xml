@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
-  <!-- TODO: replace this Asset with your own XML asset data. -->
   <Asset Type="SharedContent.EntityModel">
     <!-- Placement and maximum speed -->
     <Position>250 250</Position>
