@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
-  <!-- TODO: replace this Asset with your own XML asset data. -->
   <Asset Type="SharedContent.AbilityStats">
     <DamageType>1</DamageType>
     <Damage>12</Damage>
     <Cooldown>1.5</Cooldown>
-    <CurrentCooldown>0</CurrentCooldown>
+    <CurrentCooldown>0.5</CurrentCooldown>
     <ProjectileVelocity>300</ProjectileVelocity>
     <Level>1</Level>
   </Asset>

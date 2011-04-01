@@ -225,7 +225,7 @@ namespace progarkspill
             foreach (Entity player in statusCheck(players))
             {
                 Entity respawner = new Entity();
-                respawner.Behaviour = new RespawnPlayer(player, 7.5f);
+                respawner.Behaviour = new RespawnPlayer(player, 7.5f + 7.5f * player.Stats.Level);
                 respawner.CombatStats.Health = 1;
                 nonInteractives.Add(respawner);
             }
