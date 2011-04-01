@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace progarkspill.GameObjects
-{   // Special collidable essentially for noncollidables
+namespace progarkspill.GameObjects.Collidables
+{
     class NonCollidable : ICollidable
     {
         public int Radius

@@ -10,20 +10,20 @@
     <Abilities>
       <!-- Add abilities here -->
       <Item>
-          <AbilityTypeName>progarkspill.GameObjects.AutoAttack</AbilityTypeName>
+          <AbilityTypeName>AutoAttack</AbilityTypeName>
           <AbilityStatsAsset>AbilityStats/EnergyPlayerAuto</AbilityStatsAsset>
           <EntityModelAsset>EntityPrototypes/EnergyShot</EntityModelAsset>
       </Item>
     </Abilities>
     <!-- Behaviour -->
-    <BehaviourType>progarkspill.GameObjects.Player</BehaviourType>
+    <BehaviourType>Player</BehaviourType>
     <!-- Name of sprite asset-->
     <RenderableAsset>ship9km</RenderableAsset>
     <!-- Collision detection setup -->
-    <CollidableType>progarkspill.GameObjects.HitCircle</CollidableType>
+    <CollidableType>HitCircle</CollidableType>
     <!-- This needs to be fixed -->
-    <CollisionHandlerType>progarkspill.GameObjects.DamageCollisionHandler</CollisionHandlerType>
+    <CollisionHandlerType>DamageCollisionHandler</CollisionHandlerType>
     <!-- Choice of status-checker -->
-    <StatusType>progarkspill.GameObjects.Status</StatusType>
+    <StatusType>Status</StatusType>
   </Asset>
 </XnaContent>

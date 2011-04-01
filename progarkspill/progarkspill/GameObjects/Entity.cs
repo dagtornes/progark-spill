@@ -7,6 +7,8 @@ using System.Runtime.Remoting;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using progarkspill.GameObjects.Collidables;
+using progarkspill.GameObjects.Renderables;
 
 namespace progarkspill.GameObjects
 {
@@ -27,7 +29,7 @@ namespace progarkspill.GameObjects
         {
             CombatStats = new SharedContent.CombatStats();
             CombatStats.Health = 1; // Alive by default
-            Status = new Status();
+            Status = new Statuses.Status();
             Collidable = new NonCollidable();
             Physics = new Physics(200);
             Stats = new SharedContent.Statistics();
@@ -43,8 +45,9 @@ namespace progarkspill.GameObjects
             Assembly me = Assembly.GetEntryAssembly();
             foreach (SharedContent.Ability ability in Model.Abilities)
             {
+               
                 ObjectHandle abilityHandle = Activator.CreateInstanceFrom(me.CodeBase,
-                    ability.AbilityTypeName);
+                    "progarkspill.GameObjects.Abilities." + ability.AbilityTypeName);
                 IAbility control = (IAbility) abilityHandle.Unwrap();
                 control.Stats = Content.Load<SharedContent.AbilityStats>(ability.AbilityStatsAsset).clone(); ;
                 Abilities.Add(control);
@@ -53,17 +56,21 @@ namespace progarkspill.GameObjects
                     control.ProjectilePrototype = new Entity(Content.Load<SharedContent.EntityModel>(ability.EntityModelAsset), Content);
                 }
             }
-            ObjectHandle collidableHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.CollidableType);
+            ObjectHandle collidableHandle = Activator.CreateInstanceFrom(me.CodeBase, 
+                "progarkspill.GameObjects.Collidables." + Model.CollidableType);
             Collidable = (ICollidable) collidableHandle.Unwrap();
             if (Model.CollisionHandlerType != null && Model.CollisionHandlerType != "")
             {
-                ObjectHandle handlerHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.CollisionHandlerType);
+                ObjectHandle handlerHandle = Activator.CreateInstanceFrom(me.CodeBase, 
+                    "progarkspill.GameObjects.CollisionHandlers." + Model.CollisionHandlerType);
                 CollisionHandler = (ICollisionHandler)handlerHandle.Unwrap();
             }
             Renderable = new Sprite(Content.Load<Texture2D>(Model.RenderableAsset));
-            ObjectHandle statusHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.StatusType);
+            ObjectHandle statusHandle = Activator.CreateInstanceFrom(me.CodeBase, 
+                "progarkspill.GameObjects.Statuses." + Model.StatusType);
             Status = (IStatus)statusHandle.Unwrap();
-            ObjectHandle behaviourHandle = Activator.CreateInstanceFrom(me.CodeBase, Model.BehaviourType);
+            ObjectHandle behaviourHandle = Activator.CreateInstanceFrom(me.CodeBase, 
+                "progarkspill.GameObjects.Behaviours." + Model.BehaviourType);
             Behaviour = (IBehaviour)behaviourHandle.Unwrap();
         }
         public Entity(Entity other): this()

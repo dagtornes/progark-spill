@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using progarkspill.GameObjects;
 using SharedContent;
+using progarkspill.GameObjects.Behaviours;
 
 namespace progarkspill
 {

@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using progarkspill.GameObjects;
+using progarkspill.GameObjects.Behaviours;
+using progarkspill.GameObjects.Renderables;
 
 namespace progarkspill
 {

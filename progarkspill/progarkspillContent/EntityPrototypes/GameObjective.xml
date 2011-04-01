@@ -5,10 +5,10 @@
     <Speed>0</Speed>
     <CombatStatsAsset>CombatStats/GameObjective</CombatStatsAsset>
     <Abilities></Abilities>
-    <BehaviourType>progarkspill.GameObjects.DummyBehaviour</BehaviourType>
+    <BehaviourType>DummyBehaviour</BehaviourType>
     <RenderableAsset>objective</RenderableAsset>
-    <CollidableType>progarkspill.GameObjects.HitCircle</CollidableType>
+    <CollidableType>HitCircle</CollidableType>
     <CollisionHandlerType></CollisionHandlerType>
-    <StatusType>progarkspill.GameObjects.Status</StatusType>
+    <StatusType>Status</StatusType>
   </Asset>
 </XnaContent>

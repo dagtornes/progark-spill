@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace progarkspill.GameObjects
+namespace progarkspill.GameObjects.CollisionHandlers
 {
     public class DamageCollisionHandler : ICollisionHandler
     {

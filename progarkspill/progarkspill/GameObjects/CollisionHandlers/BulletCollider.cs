@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace progarkspill.GameObjects
+namespace progarkspill.GameObjects.CollisionHandlers
 {
     public class BulletCollider : ICollisionHandler
     {
         public void collide(Entity me, Entity hostile)
         {
-            // Turn off friendly fire
-            if (me.Behaviour is Player && hostile.Behaviour is Player)
-                return;
-            // TODO: Disable friendly fire for creeps too
             int armor;
             if (me.CombatStats.DamageType == 0)
                 armor = hostile.CombatStats.Armor;

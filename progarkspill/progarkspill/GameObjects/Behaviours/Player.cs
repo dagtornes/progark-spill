@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace progarkspill.GameObjects
+namespace progarkspill.GameObjects.Behaviours
 {
     public class Player : DummyBehaviour
     {

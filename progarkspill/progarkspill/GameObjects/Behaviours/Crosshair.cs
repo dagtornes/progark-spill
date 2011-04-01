@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace progarkspill.GameObjects
+namespace progarkspill.GameObjects.Behaviours
 {
     public class Crosshair : Player
     {

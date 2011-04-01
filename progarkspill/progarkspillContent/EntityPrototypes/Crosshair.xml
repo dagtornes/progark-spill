@@ -10,14 +10,14 @@
     <Abilities>
     </Abilities>
     <!-- Behaviour -->
-    <BehaviourType>progarkspill.GameObjects.Crosshair</BehaviourType>
+    <BehaviourType>Crosshair</BehaviourType>
     <!-- Name of sprite asset-->
     <RenderableAsset>crosshair</RenderableAsset>
     <!-- Collision detection setup -->
-    <CollidableType>progarkspill.GameObjects.NonCollidable</CollidableType>
+    <CollidableType>NonCollidable</CollidableType>
     <!-- This needs to be fixed -->
     <CollisionHandlerType></CollisionHandlerType>
     <!-- Choice of status-checker -->
-    <StatusType>progarkspill.GameObjects.Status</StatusType>
+    <StatusType>Status</StatusType>
   </Asset>
 </XnaContent>

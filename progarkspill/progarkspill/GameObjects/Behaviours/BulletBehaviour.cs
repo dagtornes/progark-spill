@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace progarkspill.GameObjects
+namespace progarkspill.GameObjects.Behaviours
 {
-    public class BulletBehaviour : DummyBehaviour
+    public class Bullet : DummyBehaviour
     {
         // Implement heatseeking?
         

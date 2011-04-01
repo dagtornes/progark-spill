@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace progarkspill.GameObjects
+namespace progarkspill.GameObjects.Renderables
 {
     public class Sprite : IRenderable
     {
