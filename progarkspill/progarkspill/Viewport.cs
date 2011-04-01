@@ -19,7 +19,18 @@ namespace progarkspill
             this.minSizeY = 500;
         }
 
-        public Vector2 Size { get; set; }
+        public Viewport(Viewport other)
+        {
+            this.corner = other.corner;
+            this.size = other.size;
+            this.minSizeY = other.minSizeY;
+        }
+
+        public Vector2 Size
+        {
+            get { return this.size; }
+            set { this.size = value; }
+        }
         public Vector2 TopLeft
         {
             get { return this.corner; }
@@ -100,7 +111,7 @@ namespace progarkspill
             get { return size.X / size.Y; }
         }
 
-        private Vector2 corner, size;
+        public Vector2 corner, size;
         private float minSizeY;
     }
 }
