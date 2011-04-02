@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-using System.Runtime.Remoting;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -54,13 +53,14 @@ namespace progarkspill.GameObjects
             Physics.Position = Model.Position;
             CombatStats = Content.Load<SharedContent.CombatStats>(Model.CombatStatsAsset).clone();
             Abilities = new List<IAbility>();
-            Assembly me = Assembly.GetEntryAssembly();
+            Assembly me = Assembly.GetExecutingAssembly();
             foreach (SharedContent.Ability ability in Model.Abilities)
             {
-               
-                ObjectHandle abilityHandle = Activator.CreateInstanceFrom(me.CodeBase,
-                    "progarkspill.GameObjects.Abilities." + ability.AbilityTypeName);
-                IAbility control = (IAbility) abilityHandle.Unwrap();
+                Object abilityHandle = me.CreateInstance("progarkspill.GameObjects.Abilities." +
+                    ability.AbilityTypeName);
+                //ObjectHandle abilityHandle = Activator.CreateInstanceFrom(me.CodeBase,
+                //    "progarkspill.GameObjects.Abilities." + ability.AbilityTypeName);
+                IAbility control = (IAbility) abilityHandle;
                 control.Stats = Content.Load<SharedContent.AbilityStats>(ability.AbilityStatsAsset).clone(); ;
                 Abilities.Add(control);
                 if (ability.EntityModelAsset != null && ability.EntityModelAsset != "")
@@ -68,23 +68,27 @@ namespace progarkspill.GameObjects
                     control.ProjectilePrototype = new Entity(Content.Load<SharedContent.EntityModel>(ability.EntityModelAsset), Content);
                 }
             }
-            ObjectHandle collidableHandle = Activator.CreateInstanceFrom(me.CodeBase, 
-                "progarkspill.GameObjects.Collidables." + Model.CollidableType);
-            Collidable = (ICollidable) collidableHandle.Unwrap();
+            //ObjectHandle collidableHandle = Activator.CreateInstanceFrom(me.CodeBase, 
+            //    "progarkspill.GameObjects.Collidables." + Model.CollidableType);
+            Collidable = (ICollidable)me.CreateInstance("progarkspill.GameObjects.Collidables." +
+                Model.CollidableType);
             if (Model.CollisionHandlerType != null && Model.CollisionHandlerType != "")
             {
-                ObjectHandle handlerHandle = Activator.CreateInstanceFrom(me.CodeBase, 
-                    "progarkspill.GameObjects.CollisionHandlers." + Model.CollisionHandlerType);
-                CollisionHandler = (ICollisionHandler)handlerHandle.Unwrap();
+                //ObjectHandle handlerHandle = Activator.CreateInstanceFrom(me.CodeBase, 
+                //    "progarkspill.GameObjects.CollisionHandlers." + Model.CollisionHandlerType);
+                CollisionHandler = (ICollisionHandler)me.CreateInstance("progarkspill.GameObjects.CollisionHandlers." +
+                    Model.CollisionHandlerType);
             }
             if (Model.RenderableAsset != null && Model.RenderableAsset != "")
                 Renderable = new Sprite(Content.Load<Texture2D>(Model.RenderableAsset));
-            ObjectHandle statusHandle = Activator.CreateInstanceFrom(me.CodeBase, 
-                "progarkspill.GameObjects.Statuses." + Model.StatusType);
-            Status = (IStatus)statusHandle.Unwrap();
-            ObjectHandle behaviourHandle = Activator.CreateInstanceFrom(me.CodeBase, 
-                "progarkspill.GameObjects.Behaviours." + Model.BehaviourType);
-            Behaviour = (IBehaviour)behaviourHandle.Unwrap();
+            //ObjectHandle statusHandle = Activator.CreateInstanceFrom(me.CodeBase, 
+            //    "progarkspill.GameObjects.Statuses." + Model.StatusType);
+            Status = (IStatus)me.CreateInstance("progarkspill.GameObjects.Statuses." + 
+                Model.StatusType);
+            //ObjectHandle behaviourHandle = Activator.CreateInstanceFrom(me.CodeBase, 
+            //    "progarkspill.GameObjects.Behaviours." + Model.BehaviourType);
+            Behaviour = (IBehaviour)me.CreateInstance("progarkspill.GameObjects.Behaviours." +
+                Model.BehaviourType);
         }
         public Entity(Entity other): this()
         {
