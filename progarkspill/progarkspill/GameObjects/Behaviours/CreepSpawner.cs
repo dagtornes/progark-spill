@@ -7,37 +7,31 @@ namespace progarkspill.GameObjects.Behaviours
 {
     public class CreepSpawner : IBehaviour
     {
+        private float Start;
+        private float End;
         private bool triggered = false;
-        private bool bound = false;
-        private float remainingTime;
-        private float duration;
 
-        private void bind(Entity me)
+        public CreepSpawner()
         {
-            remainingTime = me.CombatStats.Armor;
-            duration = me.CombatStats.Resistance;
-            bound = true;
         }
 
+        public CreepSpawner(float Start, float End)
+        {
+            this.Start = Start;
+            this.End = End;
+        }
+        
         public void decide(Entity me, GameState environment, float timedelta, GameStateStack states)
         {
-            if (!bound)
-                bind(me);
-
-            remainingTime -= timedelta;
-            if (remainingTime < 0 && !triggered)
+            Start -= timedelta;
+            End -= timedelta;
+            if (Start < 0 && !triggered)
             {
-                foreach (IAbility ability in me.Abilities)
-                {
-                    ability.levelUp();
-                }
                 triggered = true;
+                foreach (IAbility ability in me.Abilities)
+                    ability.levelUp();
             }
-            if (triggered)
-            {
-                duration -= timedelta;
-            }
-            if (duration < 0)
+            if (End < 0)
                 me.CombatStats.Health = -1;
         }
 

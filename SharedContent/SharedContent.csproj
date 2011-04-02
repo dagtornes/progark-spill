@@ -95,7 +95,9 @@
     <Compile Include="EntityModels\Ability.cs" />
     <Compile Include="EntityModels\AbilityStats.cs" />
     <Compile Include="EntityModels\CombatStats.cs" />
+    <Compile Include="EntityModels\CreepSpawner.cs" />
     <Compile Include="EntityModels\EntityModel.cs" />
+    <Compile Include="EntityModels\LevelModel.cs" />
     <Compile Include="EntityModels\Statistics.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

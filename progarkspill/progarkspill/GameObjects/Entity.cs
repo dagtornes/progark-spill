@@ -35,7 +35,19 @@ namespace progarkspill.GameObjects
             Stats = new SharedContent.Statistics();
             Abilities = new List<IAbility>();
         }
+        public Entity(SharedContent.CreepSpawner Model, ContentManager Content)
+            :
+            this(Content.Load<SharedContent.EntityModel>("EntityPrototypes/CreepSpawner"), Content)
+        {
+            Abilities[0].Stats.Cooldown = Model.Cooldown;
+            SharedContent.EntityModel prototype = Content.Load<SharedContent.EntityModel>(Model.CreepPrototypeAsset);
+            Abilities[0].ProjectilePrototype = new Entity(prototype, Content);
+            Physics.Position = Model.Position;
+            Behaviour = new Behaviours.CreepSpawner(Model.Start, Model.End);
+            if (Model.RenderableAsset != null && Model.RenderableAsset != "")
+                Renderable = new Sprite(Content.Load<Texture2D>(Model.RenderableAsset));
 
+        }
         public Entity(SharedContent.EntityModel Model, ContentManager Content): this()
         {
             Physics = new Physics(Model.Speed);

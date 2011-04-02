@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using progarkspill.GameObjects;
 using progarkspill.GameObjects.Behaviours;
 using progarkspill.GameObjects.Renderables;
+using SharedContent;
 
 namespace progarkspill
 {
@@ -51,21 +52,24 @@ namespace progarkspill
             this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
             // This needs to be fetched from data and tweaked loads 
             // addPlayer(Player.createPlayer(PlayerIndex.One));
-            gameObjectives.Add(Resources.getPrototype("GameObjective"));
             Entity playerOne = Resources.getPrototype("PlayerPrototype");
             ((Player)playerOne.Behaviour).control = PlayerIndex.One;
             addPlayer(playerOne);
-            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.RightTrigger);
-            hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
-            hostiles.Add(new Entity(Resources.getPrototype("StandardCreep")));
-            hostiles[1].Physics.Position = new Vector2(-500, -250);
-            nonInteractives.Add(new Entity(Resources.getPrototype("CreepSpawner")));
-            
+            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.RightTrigger);       
         }
+        public GameState(GameStateStack stack, SharedContent.LevelModel level)
+           : this(stack)
+        {
+            foreach (SharedContent.CreepSpawner spawner in level.SpawnPoints)
+                nonInteractives.Add(new Entity(spawner, Resources.res.content));
+            gameObjectives.Add(Resources.getPrototype(level.GameObjectiveAsset));
+        }
+
         public Entity gameObjective()
         {
             return gameObjectives[0];
         }
+
 
         private void behaviourTick(float timedelta)
         {

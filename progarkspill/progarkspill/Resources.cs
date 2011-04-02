@@ -34,8 +34,8 @@ namespace progarkspill
         {
             return new Entity((EntityModel)Resources.res.content.Load<EntityModel>("EntityPrototypes/" + name), Resources.res.content);
         }
-        private static Resources res;
-        private ContentManager content;
+        public static Resources res;
+        public ContentManager content;
         private Dictionary<string, Texture2D> resources;
     }
 }

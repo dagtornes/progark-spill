@@ -46,7 +46,7 @@ namespace progarkspill
             // TODO: Add your initialization logic here
 
             Resources.init(Content);
-            states.push(new GameState(states));
+            states.push(new GameState(states, Content.Load<SharedContent.LevelModel>("Levels/DemoLevel")));
             renderer = new Renderer(gdm, Content);
             base.Initialize();
         }

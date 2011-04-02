@@ -19,7 +19,6 @@ namespace progarkspill.GameObjects.Behaviours
 
             if (!controller.IsConnected)
             {
-                return;
                 pauseDisconnect(states); // May want to remember which player that paused game
                 return;
             }

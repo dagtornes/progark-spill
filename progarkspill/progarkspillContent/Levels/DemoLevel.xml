@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="SharedContent.LevelModel">
+    <GameObjectiveAsset>GameObjective</GameObjectiveAsset>
+    <GameObjectivePosition>0 0</GameObjectivePosition>
+
+    <SpawnPoints>
+      <Item>
+        <CreepPrototypeAsset>EntityPrototypes/StandardCreep</CreepPrototypeAsset>
+        <Position>750 750</Position>
+        <RenderableAsset></RenderableAsset>
+        <Start>10</Start>
+        <End>50</End>
+        <Cooldown>4</Cooldown>
+      </Item>
+      <Item>
+        <CreepPrototypeAsset>EntityPrototypes/StandardCreep</CreepPrototypeAsset>
+        <Position>-750 -750</Position>
+        <RenderableAsset></RenderableAsset>
+        <Start>20</Start>
+        <End>100</End>
+        <Cooldown>7</Cooldown>
+      </Item>
+      <Item>
+        <CreepPrototypeAsset>EntityPrototypes/StandardCreep</CreepPrototypeAsset>
+        <Position>750 0</Position>
+        <RenderableAsset></RenderableAsset>
+        <Start>80</Start>
+        <End>160</End>
+        <Cooldown>3</Cooldown>
+      </Item>
+    </SpawnPoints>
+  </Asset>
+
+</XnaContent>
