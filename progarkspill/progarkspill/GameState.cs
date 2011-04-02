@@ -227,7 +227,10 @@ namespace progarkspill
 
             statusCheck(hostiles); // Returns list of dead hostiles
             statusCheck(projectiles);
-            statusCheck(gameObjectives); // Returns list of length > 0 if gameObjective is dead
+            if (statusCheck(gameObjectives).Count > 0)
+            {
+                stack.pop();
+            }
             foreach (Entity player in statusCheck(players))
             {
                 Entity respawner = new Entity();

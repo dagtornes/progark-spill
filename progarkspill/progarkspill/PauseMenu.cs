@@ -28,7 +28,7 @@ namespace progarkspill
         public void tick(float timedelta)
         {
             GamePadState inputstate = GamePad.GetState(initiated);
-            if (inputstate.IsButtonDown(Buttons.Start))
+            if (inputstate.IsButtonDown(Buttons.RightShoulder))
             {
                 owner.pop();
             }
