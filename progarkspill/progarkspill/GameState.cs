@@ -34,6 +34,14 @@ namespace progarkspill
             get { return players; }
             set { players = value; }
         }
+
+        public static GameState Create(GameStateStack stack, SharedContent.LevelModel level, List<Entity> players)
+        {
+            GameState ret = new GameState(stack, level);
+            foreach (Entity player in players)
+                ret.addPlayer(player);
+            return ret;
+        }
         
         public bool tickDown { get { return false; } }
         public bool renderDown { get { return false; } }
