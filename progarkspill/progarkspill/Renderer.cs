@@ -128,7 +128,12 @@ namespace progarkspill
             sb.End();
         }
 
-        public void renderText(string text, Vector2 position, Color color, bool centered = true)
+        public void renderText(string text, Vector2 position, Color color)
+        {
+            renderText(text, position, color, true);
+        }
+
+        public void renderText(string text, Vector2 position, Color color, bool centered)
         {
             sb.Begin();
             Vector2 origin = Vector2.Zero;
