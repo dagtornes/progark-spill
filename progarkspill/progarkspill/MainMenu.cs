@@ -75,6 +75,7 @@ namespace progarkspill
             }
             if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back))
                 states.pop();
+            players.Clear();
         }
 
     }

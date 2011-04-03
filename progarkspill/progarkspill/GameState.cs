@@ -29,6 +29,9 @@ namespace progarkspill
         private List<Entity> newObjects = new List<Entity>();
         private Sprite bgRenderable;
 
+        private float leveltimeleft;
+        private float leveltime;
+
         public List<Entity> Players
         {
             get { return players; }
@@ -71,6 +74,7 @@ namespace progarkspill
             foreach (SharedContent.CreepSpawner spawner in level.SpawnPoints)
                 nonInteractives.Add(new Entity(spawner, Resources.res.content));
             gameObjectives.Add(Resources.getPrototype(level.GameObjectiveAsset));
+            leveltime = leveltimeleft = level.Duration;
         }
 
         public Entity gameObjective()
@@ -186,6 +190,15 @@ namespace progarkspill
             render(r, gameObjectives);
             renderHBar(r, gameObjectives);
             render(r, hostileProjectiles);
+
+            r.beginScreen();
+            float left = 0.2f * r.Screenspace.Size.X;
+            float right = 0.8f * r.Screenspace.Size.X;
+            float top = 0.025f * r.Screenspace.Size.Y;
+            float bottom = 0.05f * r.Screenspace.Size.Y;
+            r.renderRect(new Vector2(left, top), new Vector2(right, bottom), Color.White);
+            float timeleft = (right - left) * this.leveltimeleft / this.leveltime + left;
+            r.renderRect(new Vector2(left, top), new Vector2(timeleft, bottom), Color.White);
         }
 
         private void renderHBar(Renderer r, List<Entity> objects)
@@ -225,6 +238,12 @@ namespace progarkspill
 
         public void tick(float timedelta) 
         {
+            this.leveltimeleft -= timedelta;
+            if (this.leveltimeleft < 0.0f)
+            {
+                // You've won, congratulations.
+                this.stack.pop();
+            }
             physicsTick(timedelta);
             behaviourTick(timedelta);
             /*
@@ -263,7 +282,8 @@ namespace progarkspill
                 positions.Add(player.Source.Physics.Position);
             }
             positions.Add(gameObjective().Physics.Position);
-
+            positions.Add(-100 * Vector2.One);
+            positions.Add(100 * Vector2.One);
             Vector2 min, max;
             Util.VectorUnion(positions, out min, out max);
             min -= pad;
