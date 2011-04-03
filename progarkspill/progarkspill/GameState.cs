@@ -191,6 +191,11 @@ namespace progarkspill
             renderHBar(r, gameObjectives);
             render(r, hostileProjectiles);
 
+            renderTimeBar(r);
+        }
+
+        private void renderTimeBar(Renderer r)
+        {
             r.beginScreen();
             float left = 0.2f * r.Screenspace.Size.X;
             float right = 0.8f * r.Screenspace.Size.X;
@@ -198,7 +203,7 @@ namespace progarkspill
             float bottom = 0.05f * r.Screenspace.Size.Y;
             r.renderRect(new Vector2(left, top), new Vector2(right, bottom), Color.White);
             float timeleft = (right - left) * this.leveltimeleft / this.leveltime + left;
-            r.renderRect(new Vector2(left, top), new Vector2(timeleft, bottom), Color.White);
+            r.renderRect(new Vector2(left, top), new Vector2(timeleft, bottom), Color.White, true);
         }
 
         private void renderHBar(Renderer r, List<Entity> objects)
@@ -214,8 +219,8 @@ namespace progarkspill
                 Vector2 bottomRight = new Vector2(e.Physics.Position.X + w / 2, top + 10);
                 Vector2 lastOne = new Vector2(topleft.X + health * w, top + 10);
 
-                r.renderRect(topleft, bottomRight, Color.White);
-                r.renderRect(topleft, lastOne, Color.Red);
+                r.renderRect(topleft, bottomRight, Color.Red);
+                r.renderRect(topleft, lastOne, Color.Green, true);
             }
         }
 
@@ -246,10 +251,7 @@ namespace progarkspill
             }
             physicsTick(timedelta);
             behaviourTick(timedelta);
-            /*
-            if (!(view.fit(players) || view.fit(hostiles)))
-                view.shrink(-0.1f * timedelta);
-            */
+            
             updateViewport();
             collisionTick();
 

@@ -112,7 +112,7 @@ namespace progarkspill
                 sb.Draw(entity.Texture, render_position, null, entity.Tint, angle, entity.Origin, scale, SpriteEffects.None, 0.0f);
         }
 
-        public void renderRect(Vector2 topleft, Vector2 bottomright, Color color)
+        public void renderRectOutline(Vector2 topleft, Vector2 bottomright, Color color)
         {
             topleft = currentspace.mapTo(topleft, screenspace);
             bottomright = currentspace.mapTo(bottomright, screenspace);
@@ -126,6 +126,32 @@ namespace progarkspill
             sb.Draw(this.pixel, topleft, null, color, 0.0f, Vector2.Zero, new Vector2(1, b - t), SpriteEffects.None, 0.0f);
             sb.Draw(this.pixel, topleft + new Vector2(r - l, 0), null, color, 0.0f, Vector2.Zero, new Vector2(1, b - t), SpriteEffects.None, 0.0f);
             sb.End();
+        }
+
+        public void renderRect(Vector2 topleft, Vector2 bottomright, Color color, bool filled)
+        {
+            if (filled)
+                renderRectFilled(topleft, bottomright, color);
+            else
+                renderRectOutline(topleft, bottomright, color);
+        }
+
+        private void renderRectFilled(Vector2 topleft, Vector2 bottomright, Color color)
+        {
+            topleft = currentspace.mapTo(topleft, screenspace);
+            bottomright = currentspace.mapTo(bottomright, screenspace);
+
+            float l = topleft.X, r = bottomright.X;
+            float t = topleft.Y, b = bottomright.Y;
+
+            sb.Begin();
+            sb.Draw(this.pixel, topleft, null, color, 0.0f, Vector2.Zero, new Vector2(1 + r - l, 1 + b - t), SpriteEffects.None, 0.0f);
+            sb.End();
+        }
+
+        public void renderRect(Vector2 topleft, Vector2 bottomright, Color color)
+        {
+            renderRect(topleft, bottomright, color, false);
         }
 
         public void renderText(string text, Vector2 position, Color color)

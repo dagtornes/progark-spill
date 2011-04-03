@@ -17,5 +17,8 @@ namespace progarkspill
         Vector2 Scale { get; set; }
         Color Tint { get; set; }
         IRenderable clone();
+
+        int Frames { get; set; }
+        float FrameTime { get; set; }
     }
 }

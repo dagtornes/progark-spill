@@ -19,6 +19,9 @@ namespace progarkspill.GameObjects.Renderables
             this.tiled = false;
             this.Scale = Vector2.One;
             this.Tint = Color.White;
+
+            this.frametime = 1.0f;
+            this.frames = 1;
         }
 
         public bool Tiled { get; set; }
@@ -75,6 +78,20 @@ namespace progarkspill.GameObjects.Renderables
         public IRenderable clone()
         {
             return (IRenderable)MemberwiseClone();
+        }
+
+        private int frames;
+        public int Frames
+        {
+            get { return this.frames; }
+            set { this.frames = value; }
+        }
+
+        private float frametime;
+        public float FrameTime
+        {
+            get { return this.frametime; }
+            set { this.frametime = value; }
         }
     }
 }
