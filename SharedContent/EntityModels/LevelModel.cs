@@ -12,5 +12,6 @@ namespace SharedContent
         public Vector2 GameObjectivePosition;
 
         public List<CreepSpawner> SpawnPoints; // Which spawn points to use
+        public float Duration;
     }
 }

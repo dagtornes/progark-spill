@@ -61,11 +61,10 @@ namespace progarkspill
             // Create a new SpriteBatch, which can be used to draw textures.
 
             statsTests = Content.Load<Stats>("InitialCombatStats");
-            playerPrototype = Content.Load<EntityModel>("EntityProtoTypes/PlayerPrototype");
-            Entity player = new Entity(playerPrototype, Content);
-            player.Abilities[0].bind(PlayerIndex.One, Buttons.LeftTrigger);
-            System.Console.WriteLine(statsTests.Armor);
-            
+            //playerPrototype = Content.Load<EntityModel>("EntityProtoTypes/PlayerPrototype");
+            //Entity player = new Entity(playerPrototype, Content);
+            //player.Abilities[0].bind(PlayerIndex.One, Buttons.LeftTrigger);
+            //System.Console.WriteLine(statsTests.Armor);
             // TODO: use this.Content to load your game content here
         }
 

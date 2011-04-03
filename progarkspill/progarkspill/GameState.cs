@@ -60,10 +60,10 @@ namespace progarkspill
             this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
             // This needs to be fetched from data and tweaked loads 
             // addPlayer(Player.createPlayer(PlayerIndex.One));
-            Entity playerOne = Resources.getPrototype("PlayerPrototype");
+            /*Entity playerOne = Resources.getPrototype("PlayerPrototype");
             ((Player)playerOne.Behaviour).control = PlayerIndex.One;
             addPlayer(playerOne);
-            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.RightTrigger);       
+            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.RightTrigger);   */    
         }
         public GameState(GameStateStack stack, SharedContent.LevelModel level)
            : this(stack)
@@ -155,6 +155,7 @@ namespace progarkspill
         {
             Entity crosshair = Resources.getPrototype("Crosshair");
             player.Source = crosshair;
+            ((Crosshair)crosshair.Behaviour).control = ((Player)player.Behaviour).control;
             crosshair.Source = player;
             crosshair.Renderable.Tint = Color.Red;
             newNoninteractives.Add(crosshair);
@@ -254,22 +255,20 @@ namespace progarkspill
         private void updateViewport()
         {
             Vector2 pad = 150 * Vector2.One;
-            float minSizeY = 1000;
-
+            
             List<Vector2> positions = new List<Vector2>();
-            foreach (Entity player in players) positions.Add(player.Physics.Position);
+            foreach (Entity player in players)
+            {
+                positions.Add(player.Physics.Position);
+                positions.Add(player.Source.Physics.Position);
+            }
             positions.Add(gameObjective().Physics.Position);
 
             Vector2 min, max;
             Util.VectorUnion(positions, out min, out max);
             min -= pad;
             max += pad;
-            if (max.Y - min.Y < minSizeY)
-            {
-                float delta = max.Y - min.Y;
-                min.Y -= delta / 2;
-                max.Y += delta / 2;
-            }
+            
             float aspect = view.Aspect;
             view.TopLeft = min;
             view.BottomRight = max;

@@ -3,7 +3,7 @@
   <Asset Type="SharedContent.LevelModel">
     <GameObjectiveAsset>GameObjective</GameObjectiveAsset>
     <GameObjectivePosition>0 0</GameObjectivePosition>
-
+    
     <SpawnPoints>
       <Item>
         <CreepPrototypeAsset>EntityPrototypes/StandardCreep</CreepPrototypeAsset>
@@ -30,6 +30,7 @@
         <Cooldown>3</Cooldown>
       </Item>
     </SpawnPoints>
+    <Duration>180.0</Duration>
   </Asset>
-
+  
 </XnaContent>
