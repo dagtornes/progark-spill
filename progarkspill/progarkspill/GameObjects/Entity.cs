@@ -77,6 +77,7 @@ namespace progarkspill.GameObjects
                 Model.StatusType);
             Behaviour = (IBehaviour)me.CreateInstance("progarkspill.GameObjects.Behaviours." +
                 Model.BehaviourType);
+            Stats.Level = Model.Level;
         }
         public Entity(Entity other): this()
         {

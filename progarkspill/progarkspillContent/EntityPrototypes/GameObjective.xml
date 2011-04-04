@@ -10,5 +10,6 @@
     <CollidableType>HitCircle</CollidableType>
     <CollisionHandlerType></CollisionHandlerType>
     <StatusType>Status</StatusType>
+    <Level>1</Level>
   </Asset>
 </XnaContent>

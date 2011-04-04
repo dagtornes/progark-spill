@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="SharedContent.AbilityStats">
+    <Description>Spawns a gravity well at crosshair, pulling enemies into the center if they stray close.</Description>
+    <DamageType>0</DamageType>
+    <Damage>0</Damage>
+    <Cooldown>10</Cooldown>
+    <CurrentCooldown>0</CurrentCooldown>
+    <ProjectileVelocity>0</ProjectileVelocity>
+    <Level>1</Level>
+    <Radius>0</Radius>
+    <Duration>5</Duration>
+    <EffectParam>1.4</EffectParam>
+    <!-- Used to determine gravitational pull -->
+  </Asset>
+</XnaContent>

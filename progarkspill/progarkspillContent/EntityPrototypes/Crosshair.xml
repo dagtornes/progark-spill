@@ -19,5 +19,6 @@
     <CollisionHandlerType></CollisionHandlerType>
     <!-- Choice of status-checker -->
     <StatusType>Owned</StatusType>
+    <Level>0</Level>
   </Asset>
 </XnaContent>

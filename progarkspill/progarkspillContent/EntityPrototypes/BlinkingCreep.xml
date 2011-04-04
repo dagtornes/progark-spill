@@ -31,5 +31,6 @@
     <CollisionHandlerType>Bullet</CollisionHandlerType>
     <!-- Choice of status-checker -->
     <StatusType>Status</StatusType>
+    <Level>2</Level>
   </Asset>
 </XnaContent>

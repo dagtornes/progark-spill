@@ -25,6 +25,12 @@
         <!-- Not used by Blink -->
         <EntityModelAsset>EntityPrototypes/Crosshair</EntityModelAsset>
       </Item>
+      <Item>
+        <AbilityTypeName>SpeedBoost</AbilityTypeName>
+        <AbilityStatsAsset>AbilityStats/SpeedBoost</AbilityStatsAsset>
+        <!-- Not used by SpeedBoost -->
+        <EntityModelAsset>EntityPrototypes/Crosshair</EntityModelAsset>
+      </Item>
     </Abilities>
     <!-- Behaviour -->
     <BehaviourType>Player</BehaviourType>
@@ -36,5 +42,6 @@
     <CollisionHandlerType>Damage</CollisionHandlerType>
     <!-- Choice of status-checker -->
     <StatusType>Status</StatusType>
+    <Level>1</Level>
   </Asset>
 </XnaContent>

@@ -275,7 +275,10 @@ namespace progarkspill
 
             List<Entity> dead = statusCheck(hostiles, timedelta); // Returns list of dead hostiles
             foreach (Entity d in dead)
+            {
                 explode(d.Physics.Position);
+                grantXp(d.Stats.Level * 50);
+            }
              // Returns list of dead hostiles
             statusCheck(projectiles, timedelta);
             if (statusCheck(gameObjectives, timedelta).Count > 0)
@@ -293,7 +296,11 @@ namespace progarkspill
             statusCheck(nonInteractives, timedelta);
             
         }
-
+        private void grantXp(int amount)
+        {
+            foreach (Entity player in players)
+                player.Stats.grantXp(amount / players.Count);
+        }
         private void updateViewport()
         {
             Vector2 pad = 150 * Vector2.One;
