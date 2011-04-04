@@ -59,7 +59,8 @@ namespace progarkspill
             Entity player = new Entity(playerPrototype, Content);
             ((Player)player.Behaviour).control = controller;
             player.Abilities[0].bind(controller, Buttons.RightTrigger);
-            player.Abilities[1].bind(controller, Buttons.A);
+            player.Abilities[1].bind(controller, Buttons.A); // Gravity Well
+            player.Abilities[2].bind(controller, Buttons.B); // Blink
             players.Add(player);
         }
 

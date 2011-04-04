@@ -16,6 +16,7 @@ namespace SharedContent
         public int Level;
         public float Radius;
         public float Duration;
+        public float EffectParam;
 
         public AbilityStats clone()
         {

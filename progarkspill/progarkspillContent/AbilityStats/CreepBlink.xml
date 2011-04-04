@@ -4,12 +4,13 @@
     <Description>Spawns a gravity well at crosshair, pulling enemies into the center if they stray close.</Description>
     <DamageType>0</DamageType>
     <Damage>0</Damage>
-    <Cooldown>15</Cooldown>
-    <CurrentCooldown>0</CurrentCooldown>
-    <ProjectileVelocity>250</ProjectileVelocity>
+    <Cooldown>25</Cooldown>
+    <CurrentCooldown>8</CurrentCooldown>
+    <ProjectileVelocity>0</ProjectileVelocity>
     <Level>1</Level>
-    <Radius>400</Radius>
-    <Duration>20</Duration>
-    <EffectParam>500</EffectParam> <!-- Used to determine gravitational pull -->
+    <Radius>0</Radius>
+    <Duration>0</Duration>
+    <EffectParam>300</EffectParam>
+    <!-- Used to determine gravitational pull -->
   </Asset>
 </XnaContent>
