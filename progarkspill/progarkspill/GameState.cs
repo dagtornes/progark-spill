@@ -9,6 +9,7 @@ using progarkspill.GameObjects;
 using progarkspill.GameObjects.Behaviours;
 using progarkspill.GameObjects.Renderables;
 using SharedContent;
+using progarkspill.GameObjects.Statuses;
 
 namespace progarkspill
 {
@@ -248,8 +249,7 @@ namespace progarkspill
         {
             Entity explosion = new Entity();
             explosion.Behaviour = new DummyBehaviour();
-            // TODO: Add this line back when we have merged.
-            //explosion.Status = new ExpireStatus(1.8f);
+            explosion.Status = new ExpireCheck(1.8f);
             explosion.Physics = new Physics(0);
             explosion.Physics.Position = pos;
             Sprite expl = new Sprite(Resources.getRes("TheExplosion"));
