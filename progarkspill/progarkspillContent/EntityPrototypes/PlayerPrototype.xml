@@ -19,6 +19,12 @@
         <AbilityStatsAsset>AbilityStats/GravityWell</AbilityStatsAsset>
         <EntityModelAsset>EntityPrototypes/GravityWell</EntityModelAsset>
       </Item>
+      <Item>
+        <AbilityTypeName>Blink</AbilityTypeName>
+        <AbilityStatsAsset>AbilityStats/Blink</AbilityStatsAsset>
+        <!-- Not used by Blink -->
+        <EntityModelAsset>EntityPrototypes/Crosshair</EntityModelAsset>
+      </Item>
     </Abilities>
     <!-- Behaviour -->
     <BehaviourType>Player</BehaviourType>

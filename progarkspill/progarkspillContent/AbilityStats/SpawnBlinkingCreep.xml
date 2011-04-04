@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="SharedContent.AbilityStats">
-    <Description>A creep attack that deals physical damage.</Description>
+    <Description>An ability that spawns a creep.</Description>
     <DamageType>0</DamageType>
-    <Damage>10</Damage>
-    <Cooldown>1.8</Cooldown>
-    <CurrentCooldown>0</CurrentCooldown>
-    <ProjectileVelocity>250</ProjectileVelocity>
-    <Level>1</Level>
+    <Damage>8</Damage>
+    <Cooldown>20</Cooldown>
+    <CurrentCooldown>5</CurrentCooldown>
+    <ProjectileVelocity>50</ProjectileVelocity>
+    <Level>0</Level>
     <Radius>0</Radius>
     <Duration>0</Duration>
     <EffectParam>0</EffectParam>

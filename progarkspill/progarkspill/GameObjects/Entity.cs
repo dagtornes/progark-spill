@@ -38,9 +38,7 @@ namespace progarkspill.GameObjects
             :
             this(Content.Load<SharedContent.EntityModel>("EntityPrototypes/CreepSpawner"), Content)
         {
-            Abilities[0].Stats.Cooldown = Model.Cooldown;
             SharedContent.EntityModel prototype = Content.Load<SharedContent.EntityModel>(Model.CreepPrototypeAsset);
-            Abilities[0].ProjectilePrototype = new Entity(prototype, Content);
             Physics.Position = Model.Position;
             Behaviour = new Behaviours.CreepSpawner(Model.Start, Model.End);
             if (Model.RenderableAsset != null && Model.RenderableAsset != "")

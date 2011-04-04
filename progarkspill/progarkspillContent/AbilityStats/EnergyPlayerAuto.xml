@@ -10,5 +10,6 @@
     <Level>1</Level>
     <Radius>0</Radius>
     <Duration>0</Duration>
+    <EffectParam>0</EffectParam>
   </Asset>
 </XnaContent>

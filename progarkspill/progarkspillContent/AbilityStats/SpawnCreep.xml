@@ -4,11 +4,12 @@
     <Description>An ability that spawns a creep.</Description>
     <DamageType>0</DamageType>
     <Damage>8</Damage>
-    <Cooldown>2</Cooldown>
-    <CurrentCooldown>0</CurrentCooldown>
+    <Cooldown>8</Cooldown>
+    <CurrentCooldown>3</CurrentCooldown>
     <ProjectileVelocity>100</ProjectileVelocity>
-    <Level>0</Level>
+    <Level>1</Level>
     <Radius>0</Radius>
     <Duration>0</Duration>
+    <EffectParam>0</EffectParam>
   </Asset>
 </XnaContent>

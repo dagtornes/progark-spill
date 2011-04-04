@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="SharedContent.CombatStats">
-    <MaxHealth>15</MaxHealth>
-    <Health>15</Health>
+    <MaxHealth>30</MaxHealth>
+    <Health>30</Health>
     <Armor>20</Armor>
     <Resistance>30</Resistance>
     <!-- Crash damage from this hull-->
