@@ -10,6 +10,7 @@ namespace progarkspill.GameObjects
     {
         public Vector2 Position { get; set; }
         private Vector2 velocity;
+        public float SpeedModifier;
         public Vector2 Velocity
         {
             get
@@ -31,13 +32,14 @@ namespace progarkspill.GameObjects
         }
         public float Angle { get { return angle; } }
         public float Speed { get; set; }
-
+   
         public Physics(float Speed)
         {
             Position = new Vector2(0, 0);
             Velocity = new Vector2(0, 0);
             Orientation = Vector2.UnitX;
             this.Speed = Speed;
+            this.SpeedModifier = 1;
         }
 
         private float angle;

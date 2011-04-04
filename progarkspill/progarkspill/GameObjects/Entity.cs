@@ -98,12 +98,13 @@ namespace progarkspill.GameObjects
 
         public void move(float timedelta)
         {
-            Physics.Position += Physics.Velocity * Physics.Speed * timedelta;
+            Physics.Position += Physics.Velocity * Physics.Speed * Physics.SpeedModifier * timedelta;
             if (Physics.Velocity != Vector2.Zero)
             {
                 Physics.Orientation = Physics.Velocity;
                 Physics.Orientation.Normalize();
             }
+            Physics.SpeedModifier = 1;
         }
 
 

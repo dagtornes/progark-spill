@@ -113,12 +113,14 @@
   <ItemGroup>
     <Compile Include="GameObjects\Abilities\AutoAttack.cs" />
     <Compile Include="GameObjects\Abilities\CreepAutoAttack.cs" />
+    <Compile Include="GameObjects\Abilities\GravityWell.cs" />
     <Compile Include="GameObjects\Behaviours\Bullet.cs" />
     <Compile Include="GameObjects\Behaviours\CreepSpawner.cs" />
     <Compile Include="GameObjects\Behaviours\Crosshair.cs" />
     <Compile Include="GameObjects\Behaviours\DummyBehaviour.cs" />
     <Compile Include="GameObjects\Behaviours\RespawnPlayer.cs" />
-    <Compile Include="GameObjects\CollisionHandlers\BulletCollider.cs" />
+    <Compile Include="GameObjects\CollisionHandlers\Bullet.cs" />
+    <Compile Include="GameObjects\CollisionHandlers\GravityWell.cs" />
     <Compile Include="GameObjects\IAbility.cs" />
     <Compile Include="GameObjects\Statuses\BulletStatus.cs" />
     <Compile Include="GameObjects\Behaviours\Creep.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="GameObjects\Physics.cs" />
     <Compile Include="GameObjects\Renderables\Sprite.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameObjects\Statuses\ExpireCheck.cs" />
     <Compile Include="GameObjects\Statuses\Owned.cs" />
     <Compile Include="GameObjects\Statuses\Status.cs" />
     <Compile Include="GameState.cs" />

@@ -30,7 +30,7 @@
         <Cooldown>3</Cooldown>
       </Item>
     </SpawnPoints>
-    <Duration>20.0</Duration>
+    <Duration>60.0</Duration>
   </Asset>
   
 </XnaContent>
