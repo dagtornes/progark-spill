@@ -87,10 +87,11 @@ namespace progarkspill
             // Allows the game to exit
             if (states.isEmpty())
                 this.Exit();
-
+            
             // TODO: Add your update logic here
             base.Update(gameTime);
             float seconds = gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
+            Controller.Update(seconds);
             states.tick(seconds);
         }
 
@@ -100,7 +101,7 @@ namespace progarkspill
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            renderer.preRender();
+            renderer.preRender(0.001f * gameTime.ElapsedGameTime.Milliseconds);
             // TODO: Add your drawing code here
             base.Draw(gameTime);
             states.render(renderer);

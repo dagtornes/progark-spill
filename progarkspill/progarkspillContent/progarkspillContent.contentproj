@@ -284,6 +284,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TheExplosion.png">
+      <Name>TheExplosion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <ProcessorParameters_ColorKeyColor>0, 0, 0, 255</ProcessorParameters_ColorKeyColor>
+    </Compile>
+  </ItemGroup>
     <Compile Include="AbilityStats\GravityWell.xml">
       <Name>GravityWell</Name>
       <Importer>XmlImporter</Importer>

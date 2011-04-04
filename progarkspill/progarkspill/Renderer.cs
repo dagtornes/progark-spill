@@ -13,6 +13,8 @@ namespace progarkspill
     {
         private Texture2D pixel;
         private SpriteFont font;
+        private float time;
+        private float dt;
 
         public Renderer(GraphicsDeviceManager gdm, ContentManager content)
         {
@@ -24,11 +26,15 @@ namespace progarkspill
             Console.WriteLine("Screensize: {0}", screensize);
             screenspace = new Viewport(Vector2.Zero, screensize);
             sb = new SpriteBatch(gdm.GraphicsDevice);
+            this.time = 0.0f;
+            this.dt = 0.0f;
         }
 
-        public void preRender()
+        public void preRender(float dt)
         {
             gdm.GraphicsDevice.Clear(Color.CornflowerBlue);
+            this.time += dt;
+            this.dt = dt;
         }
 
         /*
@@ -55,7 +61,7 @@ namespace progarkspill
             {
                 while (rpos.X < screenspace.Size.X)
                 {
-                    sb.Draw(renderable.Texture, rpos, null, renderable.Tint, angle, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+                    sb.Draw(renderable.Texture, rpos, null, renderable.Tint, angle, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
                     rpos.X += delta.X;
                 }
                 rpos.X = begin.X;
@@ -75,7 +81,7 @@ namespace progarkspill
 
             for (int x = 0; x != (int) cnt.X; ++x)
                 for (int y = 0; y != (int) cnt.Y; ++y)
-                    sb.Draw(renderable.Texture, off + position + new Vector2(x, y) * delta, null, renderable.Tint, angle, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+                    sb.Draw(renderable.Texture, off + position + new Vector2(x, y) * delta, null, renderable.Tint, angle, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
         }
 
         public void beginScreen()
@@ -102,14 +108,25 @@ namespace progarkspill
             sb.End();
         }
 
+        private void renderAnimated(IRenderable renderable, Vector2 pos, float angle, Vector2 scale)
+        {
+            int which = ((int) Math.Floor(this.time / renderable.FrameTime)) % renderable.Frames;
+            int width = (int) renderable.Size.X / renderable.Frames;
+            int height = (int) renderable.Size.Y;
+            Rectangle frame = new Rectangle(width * which, 0, width, height);
+            sb.Draw(renderable.Texture, pos, frame, renderable.Tint, angle, renderable.Origin, scale, SpriteEffects.None, 0.0f);
+        }
+
         private void render(IRenderable entity, Vector2 pos, float angle)
         {
             Vector2 render_position = currentspace.mapTo(pos, screenspace);
             Vector2 scale = currentspace.scaleTo(screenspace);
-            if (entity.Tiled)
+            if (entity.Frames > 1)
+                renderAnimated(entity, render_position, angle, scale);
+            else if (entity.Tiled)
                 renderTiled(entity, render_position, angle, scale);
             else
-                sb.Draw(entity.Texture, render_position, null, entity.Tint, angle, entity.Origin, scale, SpriteEffects.None, 0.0f);
+                sb.Draw(entity.Texture, render_position, null, entity.Tint, angle, entity.Origin, scale, SpriteEffects.None, 0.5f);
         }
 
         public void renderRectOutline(Vector2 topleft, Vector2 bottomright, Color color)

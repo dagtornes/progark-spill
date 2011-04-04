@@ -27,11 +27,15 @@ namespace progarkspill
 
         public void tick(float timedelta)
         {
+            /*
             GamePadState inputstate = GamePad.GetState(initiated);
             if (inputstate.IsButtonDown(Buttons.RightShoulder))
             {
                 owner.pop();
             }
+             */
+            if (Controller.RecentlyPressed(PlayerIndex.One, Buttons.Back, 0.5f))
+                owner.pop();
         }
 
         public bool renderDown
