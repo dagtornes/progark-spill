@@ -18,5 +18,6 @@ namespace SharedContent
         public String CollidableType;
         public String CollisionHandlerType;
         public String StatusType;
+        public int Level;
     }
 }

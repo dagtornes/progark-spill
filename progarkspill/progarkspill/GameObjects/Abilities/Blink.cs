@@ -40,5 +40,9 @@ namespace progarkspill.GameObjects.Abilities
             Stats.CurrentCooldown = Stats.Cooldown;
         }
 
+        public override void levelUp()
+        {
+            Stats.EffectParam += 50;
+        }
     }
 }

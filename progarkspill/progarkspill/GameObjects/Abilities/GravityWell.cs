@@ -40,7 +40,7 @@ namespace progarkspill.GameObjects.Abilities
             this.binding = button;
         }
 
-        public void levelUp()
+        public virtual void levelUp()
         {
             Stats.Level += 1;
             Stats.Radius *= 1.10f;

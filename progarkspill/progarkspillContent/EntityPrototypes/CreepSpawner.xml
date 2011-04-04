@@ -30,5 +30,6 @@
     <CollisionHandlerType></CollisionHandlerType>
     <!-- Choice of status-checker -->
     <StatusType>Status</StatusType>
+    <Level>3</Level>
   </Asset>
 </XnaContent>
