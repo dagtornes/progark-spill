@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="SharedContent.AbilityStats">
+    <Description>Spawns a gravity well at crosshair, pulling enemies into the center if they stray close.</Description>
     <DamageType>0</DamageType>
     <Damage>0</Damage>
     <Cooldown>15</Cooldown>
     <CurrentCooldown>0</CurrentCooldown>
     <ProjectileVelocity>250</ProjectileVelocity>
     <Level>1</Level>
+    <Radius>400</Radius>
+    <Duration>20</Duration>
   </Asset>
 </XnaContent>
