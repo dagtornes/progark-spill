@@ -58,15 +58,7 @@ namespace progarkspill
             this.view = new Viewport(Vector2.Zero, 500 * (Vector2.One + 0.667f * Vector2.UnitX));
 
 
-            Entity test = new Entity();
-            test.Behaviour = new DummyBehaviour();
-            test.Physics = new Physics(10);
-            test.Physics.Position = Vector2.One * 40;
-            Sprite expl = new Sprite(Resources.getRes("TheExplosion"));
-            expl.Frames = 18;
-            expl.FrameTime = 0.1f;
-            test.Renderable = expl;
-            this.nonInteractives.Add(test);
+            
         }
 
         public GameState()
@@ -252,6 +244,21 @@ namespace progarkspill
             return dead;
         }
 
+        private void explode(Vector2 pos)
+        {
+            Entity explosion = new Entity();
+            explosion.Behaviour = new DummyBehaviour();
+            // TODO: Add this line back when we have merged.
+            //explosion.Status = new ExpireStatus(1.8f);
+            explosion.Physics = new Physics(0);
+            explosion.Physics.Position = pos;
+            Sprite expl = new Sprite(Resources.getRes("TheExplosion"));
+            expl.Frames = 18;
+            expl.FrameTime = 0.1f;
+            explosion.Renderable = expl;
+            newNoninteractives.Add(explosion);
+        }
+
         public void tick(float timedelta) 
         {
             this.leveltimeleft -= timedelta;
@@ -266,7 +273,10 @@ namespace progarkspill
             updateViewport();
             collisionTick();
 
-            statusCheck(hostiles); // Returns list of dead hostiles
+            List<Entity> dead = statusCheck(hostiles); // Returns list of dead hostiles
+            foreach (Entity d in dead)
+                explode(d.Physics.Position);
+
             statusCheck(projectiles);
             if (statusCheck(gameObjectives).Count > 0)
             {

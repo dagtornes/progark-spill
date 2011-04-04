@@ -58,7 +58,7 @@ namespace progarkspill.GameObjects.Renderables
 
         public Vector2 Origin
         {
-            get { return this.origin; }
+            get { return (new Vector2(1.0f / frames, 1.0f) * this.origin); }
         }
 
         public Vector2 Size
