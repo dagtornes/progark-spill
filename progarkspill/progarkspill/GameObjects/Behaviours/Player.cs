@@ -26,8 +26,8 @@ namespace progarkspill.GameObjects.Behaviours
             setHeading(me, controller);
 
             // Pause menu:
-            if (controller.IsButtonDown(Buttons.Start)) pauseDisconnect(states);
-            if (controller.IsButtonDown(Buttons.Back)) states.pop();
+            if (Controller.RecentlyPressed(control, Buttons.Start, 0.5f)) pauseDisconnect(states);
+            if (Controller.RecentlyPressed(control, Buttons.Back, 0.5f)) states.pop();
         }
 
 

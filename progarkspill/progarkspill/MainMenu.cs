@@ -63,7 +63,7 @@ namespace progarkspill
         }
 
         public void tick(float timedelta) {
-            if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
+            if (Controller.RecentlyPressed(PlayerIndex.One, Buttons.Start, 0.5f))
             {
                 //states.push(new GameState(states, levelProtos[0]));
                 foreach (PlayerIndex controller in controllers)
@@ -72,10 +72,13 @@ namespace progarkspill
                     addPlayer(controller);
                 }
                 states.push(GameState.Create(states, levelProtos[selectedLevel], players));
+                players.Clear();
             }
-            if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back))
+            if (Controller.RecentlyPressed(PlayerIndex.One, Buttons.Back, 0.5f))
                 states.pop();
-            players.Clear();
+            //if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Back))
+            //    states.pop();
+            
         }
 
     }

@@ -87,10 +87,11 @@ namespace progarkspill
             // Allows the game to exit
             if (states.isEmpty())
                 this.Exit();
-
+            
             // TODO: Add your update logic here
             base.Update(gameTime);
             float seconds = gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
+            Controller.Update(seconds);
             states.tick(seconds);
         }
 
