@@ -56,6 +56,17 @@ namespace progarkspill
             this.bgRenderable = new Sprite(Resources.getRes("starfield"));
             this.bgRenderable.Tiled = true;
             this.view = new Viewport(Vector2.Zero, 500 * (Vector2.One + 0.667f * Vector2.UnitX));
+
+
+            Entity test = new Entity();
+            test.Behaviour = new DummyBehaviour();
+            test.Physics = new Physics(10);
+            test.Physics.Position = Vector2.One * 40;
+            Sprite expl = new Sprite(Resources.getRes("TheExplosion"));
+            expl.Frames = 18;
+            expl.FrameTime = 0.1f;
+            test.Renderable = expl;
+            this.nonInteractives.Add(test);
         }
 
         public GameState()

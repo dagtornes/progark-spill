@@ -100,7 +100,7 @@ namespace progarkspill
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            renderer.preRender();
+            renderer.preRender(0.001f * gameTime.ElapsedGameTime.Milliseconds);
             // TODO: Add your drawing code here
             base.Draw(gameTime);
             states.render(renderer);
