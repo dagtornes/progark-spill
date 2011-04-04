@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="SharedContent.AbilityStats">
+    <Description>Autoattack for a creep that attacks with energy.</Description>
     <DamageType>1</DamageType>
     <Damage>8</Damage>
     <Cooldown>2</Cooldown>
     <CurrentCooldown>2</CurrentCooldown>
     <ProjectileVelocity>200</ProjectileVelocity>
     <Level>1</Level>
+    <Radius>0</Radius>
+    <Duration>0</Duration>
   </Asset>
 </XnaContent>

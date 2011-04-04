@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="SharedContent.AbilityStats">
+    <Description>A player attack that deals physical damage.</Description>
     <DamageType>0</DamageType>
     <Damage>20</Damage>
     <Cooldown>0.25</Cooldown>
     <CurrentCooldown>0</CurrentCooldown>
     <ProjectileVelocity>400</ProjectileVelocity>
     <Level>1</Level>
+    <Radius>0</Radius>
+    <Duration>0</Duration>
   </Asset>
 </XnaContent>

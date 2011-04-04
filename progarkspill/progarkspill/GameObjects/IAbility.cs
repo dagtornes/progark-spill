@@ -14,7 +14,7 @@ namespace progarkspill.GameObjects
         AbilityStats Stats { get; set; }
         Entity ProjectilePrototype { get; set; }
 
-        bool triggered(Entity me, GameState environment, float timedelta);
+        bool isReady(Entity me, GameState environment, float timedelta);
         void fire(Entity me, GameState environment);
         void bind(PlayerIndex control, Buttons button);
         void levelUp();

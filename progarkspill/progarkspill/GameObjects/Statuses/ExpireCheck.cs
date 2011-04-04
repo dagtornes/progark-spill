@@ -5,27 +5,34 @@ using System.Text;
 
 namespace progarkspill.GameObjects.Statuses
 {
-    public class BulletStatus : IStatus
+    public class ExpireCheck : IStatus
     {
-        private float radius;
-        public BulletStatus(float radius) { this.radius = radius; }
-        public BulletStatus() { this.radius = 1000; }
+        public float duration;
+
+        public ExpireCheck(float duration)
+        {
+            this.duration = duration;
+        }
 
         public bool isAlive(Entity me, float timedelta)
         {
-            return me.Physics.Position.Length() < radius;
+            duration -= timedelta;
+            return duration >= 0;
         }
+
         public void kill(Entity me, Entity murderer)
         {
-
+            ;
         }
+
         public Entity getKiller()
         {
             return null;
         }
+
         public IStatus clone()
         {
-            return (BulletStatus)MemberwiseClone();
+            return (ExpireCheck)MemberwiseClone();
         }
     }
 }

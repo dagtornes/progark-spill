@@ -69,7 +69,7 @@ namespace progarkspill
             /*Entity playerOne = Resources.getPrototype("PlayerPrototype");
             ((Player)playerOne.Behaviour).control = PlayerIndex.One;
             addPlayer(playerOne);
-            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.RightTrigger);   */    
+            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.RightTrigger);   */
         }
         public GameState(GameStateStack stack, SharedContent.LevelModel level)
            : this(stack)
@@ -106,7 +106,7 @@ namespace progarkspill
                 gameObject.Behaviour.decide(gameObject, this, timedelta, stack);
                 foreach (IAbility ability in gameObject.Abilities)
                 {
-                    if (ability.triggered(gameObject, this, timedelta))
+                    if (ability.isReady(gameObject, this, timedelta))
                         ability.fire(gameObject, this);
                 }
             }
@@ -227,12 +227,12 @@ namespace progarkspill
             }
         }
 
-        private List<Entity> statusCheck(List<Entity> gameObjects)
+        private List<Entity> statusCheck(List<Entity> gameObjects, float timedelta)
         {
             List<Entity> dead = new List<Entity>();
             foreach (Entity gameObject in gameObjects)
             {
-                if (!gameObject.Status.isAlive(gameObject))
+                if (!gameObject.Status.isAlive(gameObject, timedelta))
                 {
                     dead.Add(gameObject);
                 }
@@ -273,24 +273,24 @@ namespace progarkspill
             updateViewport();
             collisionTick();
 
-            List<Entity> dead = statusCheck(hostiles); // Returns list of dead hostiles
+            List<Entity> dead = statusCheck(hostiles, timedelta); // Returns list of dead hostiles
             foreach (Entity d in dead)
                 explode(d.Physics.Position);
-
-            statusCheck(projectiles);
-            if (statusCheck(gameObjectives).Count > 0)
+             // Returns list of dead hostiles
+            statusCheck(projectiles, timedelta);
+            if (statusCheck(gameObjectives, timedelta).Count > 0)
             {
                 stack.pop();
             }
-            foreach (Entity player in statusCheck(players))
+            foreach (Entity player in statusCheck(players, timedelta))
             {
                 Entity respawner = new Entity();
                 respawner.Behaviour = new RespawnPlayer(player, 7.5f + 7.5f * player.Stats.Level);
                 respawner.CombatStats.Health = 1;
                 nonInteractives.Add(respawner);
             }
-            statusCheck(hostileProjectiles);
-            statusCheck(nonInteractives);
+            statusCheck(hostileProjectiles, timedelta);
+            statusCheck(nonInteractives, timedelta);
             
         }
 

@@ -11,9 +11,9 @@ namespace progarkspill.GameObjects.Statuses
      */
     public class Owned : IStatus
     {
-        public bool isAlive(Entity me)
+        public bool isAlive(Entity me, float timedelta)
         {
-            return me.Source.Status.isAlive(me.Source);
+            return me.Source.Status.isAlive(me.Source, timedelta);
         }
 
         public void kill(Entity me, Entity murderer)

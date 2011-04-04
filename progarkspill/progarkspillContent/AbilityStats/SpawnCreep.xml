@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="SharedContent.AbilityStats">
+    <Description>An ability that spawns a creep.</Description>
     <DamageType>0</DamageType>
     <Damage>8</Damage>
     <Cooldown>2</Cooldown>
     <CurrentCooldown>0</CurrentCooldown>
     <ProjectileVelocity>100</ProjectileVelocity>
     <Level>0</Level>
+    <Radius>0</Radius>
+    <Duration>0</Duration>
   </Asset>
 </XnaContent>

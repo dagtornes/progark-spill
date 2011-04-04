@@ -59,6 +59,7 @@ namespace progarkspill
             Entity player = new Entity(playerPrototype, Content);
             ((Player)player.Behaviour).control = controller;
             player.Abilities[0].bind(controller, Buttons.RightTrigger);
+            player.Abilities[1].bind(controller, Buttons.A);
             players.Add(player);
         }
 

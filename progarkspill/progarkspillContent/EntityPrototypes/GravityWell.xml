@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="SharedContent.EntityModel">
+    <Position>400 0</Position>
+    <Speed>0</Speed>
+    <CombatStatsAsset>CombatStats/Projectile</CombatStatsAsset>
+    <Abilities></Abilities>
+    <BehaviourType>DummyBehaviour</BehaviourType>
+    <RenderableAsset>bullet</RenderableAsset>
+    <CollidableType>HitCircle</CollidableType>
+    <CollisionHandlerType></CollisionHandlerType>
+    <StatusType>Status</StatusType>
+  </Asset>
+</XnaContent>

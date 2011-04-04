@@ -17,7 +17,7 @@ namespace progarkspill.GameObjects.Abilities
         private Buttons binding;
         private bool bound = false;
 
-        public virtual bool triggered(Entity me, GameState environment, float timedelta)
+        public virtual bool isReady(Entity me, GameState environment, float timedelta)
         {
             Stats.CurrentCooldown -= timedelta;
             if (Stats.Level < 1)

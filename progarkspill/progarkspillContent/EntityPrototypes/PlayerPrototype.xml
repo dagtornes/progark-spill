@@ -14,6 +14,11 @@
           <AbilityStatsAsset>AbilityStats/EnergyPlayerAuto</AbilityStatsAsset>
           <EntityModelAsset>EntityPrototypes/EnergyShot</EntityModelAsset>
       </Item>
+      <Item>
+        <AbilityTypeName>GravityWell</AbilityTypeName>
+        <AbilityStatsAsset>AbilityStats/GravityWell</AbilityStatsAsset>
+        <EntityModelAsset>EntityPrototypes/GravityWell</EntityModelAsset>
+      </Item>
     </Abilities>
     <!-- Behaviour -->
     <BehaviourType>Player</BehaviourType>

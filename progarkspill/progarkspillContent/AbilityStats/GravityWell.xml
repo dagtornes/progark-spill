@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
   <Asset Type="SharedContent.AbilityStats">
-    <Description>A creep attack that deals physical damage.</Description>
+    <Description>Spawns a gravity well at crosshair, pulling enemies into the center if they stray close.</Description>
     <DamageType>0</DamageType>
-    <Damage>10</Damage>
-    <Cooldown>1.8</Cooldown>
+    <Damage>0</Damage>
+    <Cooldown>15</Cooldown>
     <CurrentCooldown>0</CurrentCooldown>
     <ProjectileVelocity>250</ProjectileVelocity>
     <Level>1</Level>
-    <Radius>0</Radius>
-    <Duration>0</Duration>
+    <Radius>400</Radius>
+    <Duration>20</Duration>
   </Asset>
 </XnaContent>

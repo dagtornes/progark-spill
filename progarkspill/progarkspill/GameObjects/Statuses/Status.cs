@@ -9,7 +9,7 @@ namespace progarkspill.GameObjects.Statuses
     {
         Entity killer = null;
 
-        public bool isAlive(Entity me)
+        public bool isAlive(Entity me, float timedelta)
         {
             return me.CombatStats.Health > 0 && me.Physics.Position.LengthSquared() < 2000 * 2000;
         }
