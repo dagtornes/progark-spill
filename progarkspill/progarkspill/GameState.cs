@@ -10,6 +10,7 @@ using progarkspill.GameObjects.Behaviours;
 using progarkspill.GameObjects.Renderables;
 using SharedContent;
 using progarkspill.GameObjects.Statuses;
+using progarkspill.Menus;
 
 namespace progarkspill
 {
@@ -33,6 +34,11 @@ namespace progarkspill
         private float leveltimeleft;
         private float leveltime;
 
+        private Sprite pie = new Sprite(Resources.getRes("pie"));
+        private Sprite ring = new Sprite(Resources.getRes("ring"));
+        private Dictionary<int, Color> abilityColors = new Dictionary<int,Color>();
+        private Dictionary<int, Vector2> dirs = new Dictionary<int, Vector2>();
+        
         public List<Entity> Players
         {
             get { return players; }
@@ -57,20 +63,16 @@ namespace progarkspill
             this.bgRenderable = new Sprite(Resources.getRes("starfield"));
             this.bgRenderable.Tiled = true;
             this.view = new Viewport(Vector2.Zero, 500 * (Vector2.One + 0.667f * Vector2.UnitX));
-
-
-            
         }
 
         public GameState()
         {
             this.view = new Viewport(Vector2.Zero, 500*(Vector2.One + 0.667f*Vector2.UnitX));
-            // This needs to be fetched from data and tweaked loads 
-            // addPlayer(Player.createPlayer(PlayerIndex.One));
-            /*Entity playerOne = Resources.getPrototype("PlayerPrototype");
-            ((Player)playerOne.Behaviour).control = PlayerIndex.One;
-            addPlayer(playerOne);
-            playerOne.Abilities[0].bind(PlayerIndex.One, Microsoft.Xna.Framework.Input.Buttons.RightTrigger);   */
+            this.pie.Origin = new Vector2(0.0f, pie.Origin.Y);
+            abilityColors.Add(1, Color.Green);     dirs.Add(1, Vector2.UnitY);
+            abilityColors.Add(2, Color.Red);       dirs.Add(2, Vector2.UnitX);
+            abilityColors.Add(3, Color.Blue);      dirs.Add(3, -Vector2.UnitX);
+            abilityColors.Add(4, Color.Orange);    dirs.Add(4, -Vector2.UnitY);
         }
         public GameState(GameStateStack stack, SharedContent.LevelModel level)
            : this(stack)
@@ -196,6 +198,33 @@ namespace progarkspill
             render(r, hostileProjectiles);
 
             renderTimeBar(r);
+            Vector2 rpos = new Vector2(50, r.Screenspace.Size.Y / (players.Count + 1));
+            foreach (Entity p in this.players)
+            {
+                renderCooldowns(r, p, rpos);
+                rpos.Y += r.Screenspace.Size.Y / (players.Count + 1);
+            }
+        }
+
+        private void renderCooldowns(Renderer r, Entity player, Vector2 rpos)
+        {
+            int end = Math.Max(player.Abilities.Count, 4);
+            for (int a = 1; a != end; ++a)
+            {
+                if (player.Abilities[a].Stats == null) continue;
+                float s = 1 - Math.Max(player.Abilities[a].Stats.CurrentCooldown / player.Abilities[a].Stats.Cooldown, 0);
+                this.pie.Scale = s * Vector2.One;
+                this.pie.Tint = abilityColors[a];
+                r.render(pie, rpos, dirs[a]);
+            }
+
+            for (int i = 0; i != player.Stats.Levels; ++i)
+            {
+                float s = (float)Math.Pow(1.1f, i);
+                this.ring.Scale = s * Vector2.One;
+                r.render(this.ring, rpos, Vector2.UnitX);
+            }
+            this.ring.Scale = Vector2.One;
         }
 
         private void renderTimeBar(Renderer r)
@@ -262,10 +291,11 @@ namespace progarkspill
         public void tick(float timedelta) 
         {
             this.leveltimeleft -= timedelta;
-            if (this.leveltimeleft < 0.0f)
+            if (this.leveltimeleft < 0.0f && hostiles.Count == 0)
             {
                 // You've won, congratulations.
                 this.stack.pop();
+                this.stack.push(new WinMenu(this.stack));
             }
             physicsTick(timedelta);
             behaviourTick(timedelta);
@@ -283,7 +313,8 @@ namespace progarkspill
             statusCheck(projectiles, timedelta);
             if (statusCheck(gameObjectives, timedelta).Count > 0)
             {
-                stack.pop();
+                this.stack.pop();
+                this.stack.push(new LoseMenu(this.stack));
             }
             foreach (Entity player in statusCheck(players, timedelta))
             {

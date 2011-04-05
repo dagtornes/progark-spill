@@ -146,9 +146,11 @@
     <Compile Include="GameStateStack.cs" />
     <Compile Include="IGameState.cs" />
     <Compile Include="GameObjects\IRenderable.cs" />
-    <Compile Include="MainMenu.cs" />
+    <Compile Include="Menus\LoseMenu.cs" />
+    <Compile Include="Menus\MainMenu.cs" />
     <Compile Include="GameObjects\Behaviours\Player.cs" />
-    <Compile Include="PauseMenu.cs" />
+    <Compile Include="Menus\PauseMenu.cs" />
+    <Compile Include="Menus\WinMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Renderer.cs" />

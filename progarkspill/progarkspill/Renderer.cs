@@ -100,7 +100,7 @@ namespace progarkspill
             sb.End();
         }
 
-        private void render(IRenderable entity, Vector2 pos, Vector2 dir)
+        public void render(IRenderable entity, Vector2 pos, Vector2 dir)
         {
             sb.Begin();
             float angle = (float)Math.Atan2(dir.Y, dir.X);
@@ -126,7 +126,7 @@ namespace progarkspill
             else if (entity.Tiled)
                 renderTiled(entity, render_position, angle, scale);
             else
-                sb.Draw(entity.Texture, render_position, null, entity.Tint, angle, entity.Origin, scale, SpriteEffects.None, 0.5f);
+                sb.Draw(entity.Texture, render_position, null, entity.Tint, angle, entity.Origin, entity.Scale * scale, SpriteEffects.None, 0.5f);
         }
 
         public void renderRectOutline(Vector2 topleft, Vector2 bottomright, Color color)

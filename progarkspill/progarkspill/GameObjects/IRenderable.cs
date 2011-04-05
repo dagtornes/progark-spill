@@ -9,7 +9,7 @@ namespace progarkspill
 {
     public interface IRenderable
     {
-        Vector2 Origin { get; }
+        Vector2 Origin { get; set; }
         Texture2D Texture { get; }
         float Depth { get; set; }
         bool Tiled { get; set; }
