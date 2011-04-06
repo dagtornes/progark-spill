@@ -21,7 +21,7 @@ namespace progarkspill
         /// <summary>
         /// Perform updates on IGameState that took place the last timedelta seconds.
         /// </summary>
-        /// <param name="timedelta"></param>
+        /// <param name="timedelta">Time in seconds since last update.</param>
         void tick(float timedelta);
 
         bool renderDown { get; }
