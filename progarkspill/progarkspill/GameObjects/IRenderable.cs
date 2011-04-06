@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace progarkspill
 {
+    /// <summary>
+    /// Entities must have one of these to be drawn to screen by Renderer.
+    /// </summary>
     public interface IRenderable
     {
         Vector2 Origin { get; set; }

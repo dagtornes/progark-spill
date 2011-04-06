@@ -11,19 +11,59 @@ using progarkspill.GameObjects.Renderables;
 
 namespace progarkspill.GameObjects
 {
+    /// <summary>
+    /// This book-keeping object is used for the state of multiple kinds of
+    /// gameobjects. It uses a composition of classes to determine how to act.
+    /// Some of these act as controllers only, some act as model only.
+    /// </summary>
     public class Entity
     {
+        /// <summary>
+        /// Controller. <see cref="IBehaviour"/>
+        /// </summary>
         public IBehaviour Behaviour { get; set; }
+        /// <summary>
+        /// The model for health, armor and other combat engine related
+        /// numbers.
+        /// </summary>
         public SharedContent.CombatStats CombatStats { get; set; }
+        /// <summary>
+        /// Controller. <see cref="IRenderable"/>
+        /// </summary>
         public IRenderable Renderable { get; set; }
+        /// <summary>
+        /// Controller. <see cref="IStatus"/>
+        /// </summary>
         public IStatus Status { get; set; }
+        /// <summary>
+        /// Controller. <see cref="ICollidable"/>
+        /// </summary>
         public ICollidable Collidable { get; set; }
+        /// <summary>
+        /// Controller. <see cref="ICollisionHandler"/>
+        /// </summary>
         public ICollisionHandler CollisionHandler { get; set; }
+        /// <summary>
+        /// Model of physics (Location, speed...). <see cref="Physics"/>
+        /// </summary>
         public Physics Physics { get; set; }
+        /// <summary>
+        /// The Entity that caused this Entity to come into existence. Not
+        /// used by all Entities - check for null.
+        /// </summary>
         public Entity Source { get; set; }
+        /// <summary>
+        /// Statistics about this Entity, such as level, stats, kills.
+        /// </summary>
         public SharedContent.Statistics Stats { get; set; }
+        /// <summary>
+        /// The abilities this Entity can trigger. <see cref="IAbility"/>
+        /// </summary>
         public List<IAbility> Abilities { get; set; }
 
+        /// <summary>
+        /// Initialize a default Entity that sets most fields to empty instances.
+        /// </summary>
         public Entity()
         {
             CombatStats = new SharedContent.CombatStats();
@@ -34,6 +74,12 @@ namespace progarkspill.GameObjects
             Stats = new SharedContent.Statistics();
             Abilities = new List<IAbility>();
         }
+        /// <summary>
+        /// Specialcase that creates an Entity that spawns creeps from a CreepSpawner.
+        /// This loads necessary data from XNA content pipeline.
+        /// </summary>
+        /// <param name="Model"><see cref="SharedContent.CreepSpawner"/></param>
+        /// <param name="Content">XNA content pipeline</param>
         public Entity(SharedContent.CreepSpawner Model, ContentManager Content)
             :
             this(Content.Load<SharedContent.EntityModel>("EntityPrototypes/CreepSpawner"), Content)

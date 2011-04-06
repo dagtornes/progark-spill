@@ -62,6 +62,7 @@ namespace progarkspill
             if (isEmpty()) return null;
 
             IGameState state = gamestates[gamestates.Count-1];
+            
             gamestates.RemoveAt(gamestates.Count-1);
             return state;
         }
