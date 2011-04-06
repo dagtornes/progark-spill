@@ -7,7 +7,7 @@ namespace progarkspill.GameObjects.CollisionHandlers
 {
     public class Damage : ICollisionHandler
     {
-        public void collide(Entity me, Entity other)
+        public virtual void collide(Entity me, Entity other)
         {
             int resistance;
             if (me.CombatStats.DamageType == 0)
@@ -15,6 +15,8 @@ namespace progarkspill.GameObjects.CollisionHandlers
             else
                 resistance = other.CombatStats.Resistance;
             other.CombatStats.Health -= (int) (me.CombatStats.Damage * (1 - resistance / 100.0));
+            if (other.CombatStats.Health <= 0)
+                other.Status.kill(other, me.Source);
             me.CombatStats.Health = -1; // Kill self on crash
         }
     }

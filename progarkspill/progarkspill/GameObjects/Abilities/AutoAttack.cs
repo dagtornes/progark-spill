@@ -56,7 +56,7 @@ namespace progarkspill.GameObjects.Abilities
             environment.addGameObject(projectile);
         }
 
-        public void levelUp()
+        public virtual void levelUp()
         {
             Stats.Level += 1;
         }

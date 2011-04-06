@@ -18,10 +18,9 @@ namespace progarkspill.GameObjects.CollisionHandlers
             hostile.CombatStats.Health -= (int) me.CombatStats.Damage;
             // Kill projectile after it's hit a creep
             me.CombatStats.Health = -1;
-            if (hostile.CombatStats.Health < 0)
+            if (hostile.CombatStats.Health <= 0)
             {
-                me.Stats.Kills += 1;
-                hostile.Status.kill(hostile, me);
+                hostile.Status.kill(hostile, me.Source);
             }
         }
     }

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="SharedContent.AbilityStats">
+    <Description>Pass-through laser ability.</Description>
+    <DamageType>1</DamageType>
+    <Damage>15</Damage>
+    <Cooldown>3</Cooldown>
+    <CurrentCooldown>0</CurrentCooldown>
+    <ProjectileVelocity>500</ProjectileVelocity>
+    <Level>1</Level>
+    <Radius>0</Radius>
+    <Duration>0</Duration>
+    <EffectParam>0</EffectParam>
+  </Asset>
+</XnaContent>

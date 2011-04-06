@@ -31,6 +31,11 @@
         <!-- Not used by SpeedBoost -->
         <EntityModelAsset>EntityPrototypes/Crosshair</EntityModelAsset>
       </Item>
+      <Item>
+        <AbilityTypeName>LaserAttack</AbilityTypeName>
+        <AbilityStatsAsset>AbilityStats/Laser</AbilityStatsAsset>
+        <EntityModelAsset>EntityPrototypes/Laser</EntityModelAsset>
+      </Item>
     </Abilities>
     <!-- Behaviour -->
     <BehaviourType>Player</BehaviourType>

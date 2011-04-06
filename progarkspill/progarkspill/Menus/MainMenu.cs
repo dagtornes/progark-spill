@@ -62,12 +62,15 @@ namespace progarkspill
             player.Abilities[1].bind(controller, Buttons.A); // Gravity Well
             player.Abilities[2].bind(controller, Buttons.B); // Blink
             player.Abilities[3].bind(controller, Buttons.X); // SpeedBoost
+            player.Abilities[4].bind(controller, Buttons.Y); // Laser
             IAbility l1 = new GameObjects.Abilities.LevelUp(player.Abilities[1]);
             IAbility l2 = new GameObjects.Abilities.LevelUp(player.Abilities[2]);
             IAbility l3 = new GameObjects.Abilities.LevelUp(player.Abilities[3]);
+            IAbility l4 = new GameObjects.Abilities.LevelUp(player.Abilities[4]);
             l1.bind(controller, Buttons.DPadDown);
             l2.bind(controller, Buttons.DPadRight);
             l3.bind(controller, Buttons.DPadLeft);
+            l4.bind(controller, Buttons.DPadUp);
             player.Abilities.Add(l1);
             player.Abilities.Add(l2);
             players.Add(player);

@@ -15,6 +15,9 @@ namespace progarkspill.GameObjects.Statuses
         }
         public void kill(Entity me, Entity murderer)
         {
+            if (murderer != null)
+                murderer.Stats.Kills++;
+
             killer = murderer;
         }
         public Entity getKiller()

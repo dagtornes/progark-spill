@@ -9,7 +9,7 @@
     <ProjectileVelocity>250</ProjectileVelocity>
     <Level>1</Level>
     <Radius>400</Radius>
-    <Duration>20</Duration>
+    <Duration>8</Duration>
     <EffectParam>500</EffectParam> <!-- Used to determine gravitational pull -->
   </Asset>
 </XnaContent>

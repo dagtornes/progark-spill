@@ -116,6 +116,7 @@
     <Compile Include="GameObjects\Abilities\Blink.cs" />
     <Compile Include="GameObjects\Abilities\CreepAutoAttack.cs" />
     <Compile Include="GameObjects\Abilities\GravityWell.cs" />
+    <Compile Include="GameObjects\Abilities\LaserAttack.cs" />
     <Compile Include="GameObjects\Abilities\LevelUp.cs" />
     <Compile Include="GameObjects\Abilities\SpeedBoost.cs" />
     <Compile Include="GameObjects\Behaviours\Bullet.cs" />
@@ -125,10 +126,11 @@
     <Compile Include="GameObjects\Behaviours\RespawnPlayer.cs" />
     <Compile Include="GameObjects\CollisionHandlers\Bullet.cs" />
     <Compile Include="GameObjects\CollisionHandlers\GravityWell.cs" />
+    <Compile Include="GameObjects\CollisionHandlers\PassThrough.cs" />
     <Compile Include="GameObjects\IAbility.cs" />
     <Compile Include="GameObjects\Statuses\BulletStatus.cs" />
     <Compile Include="GameObjects\Behaviours\Creep.cs" />
-    <Compile Include="GameObjects\CollisionHandlers\DamageCollisionHandler.cs" />
+    <Compile Include="GameObjects\CollisionHandlers\Damage.cs" />
     <Compile Include="GameObjects\IBehaviour.cs" />
     <Compile Include="GameObjects\ICollisionHandler.cs" />
     <Compile Include="GameObjects\Entity.cs" />
