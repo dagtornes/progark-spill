@@ -91,8 +91,15 @@ namespace progarkspill.GameObjects
                 Renderable = new Sprite(Content.Load<Texture2D>(Model.RenderableAsset));
 
         }
+        /// <summary>
+        /// Loads a generic Entity from data coming from XNA content pipeline. This instanciates the classes named
+        /// in the model using reflection.
+        /// </summary>
+        /// <param name="Model">The name of Model to load.</param>
+        /// <param name="Content">Content pipeline to use.</param>
         public Entity(SharedContent.EntityModel Model, ContentManager Content): this()
         {
+            // Hairy hacks to allow dynamic creation of classes from data files.
             Physics = new Physics(Model.Speed);
             Physics.Position = Model.Position;
             CombatStats = Content.Load<SharedContent.CombatStats>(Model.CombatStatsAsset).clone();
@@ -125,6 +132,10 @@ namespace progarkspill.GameObjects
                 Model.BehaviourType);
             Stats.Level = Model.Level;
         }
+        /// <summary>
+        /// Perform a memberwise clone of another Entity.
+        /// </summary>
+        /// <param name="other">The entity to clone.</param>
         public Entity(Entity other): this()
         {
             this.Physics = other.Physics.clone();
@@ -140,7 +151,10 @@ namespace progarkspill.GameObjects
             if (other.Renderable != null)
                 this.Renderable = other.Renderable.clone();
         }
-
+        /// <summary>
+        /// Perform update of Physics belonging to this Entity.
+        /// </summary>
+        /// <param name="timedelta"></param>
         public void move(float timedelta)
         {
             Physics.Position += Physics.Velocity * Physics.Speed * Physics.SpeedModifier * timedelta;

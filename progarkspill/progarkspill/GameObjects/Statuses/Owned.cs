@@ -5,10 +5,9 @@ using System.Text;
 
 namespace progarkspill.GameObjects.Statuses
 {
-    /**
-     * This status class represents any entity owned by another (me.Source),
-     * and should have the same lifetime as its owner.
-     */
+    /// <summary>
+    /// Entities using this status have the same lifecycle as their owner.
+    /// </summary>
     public class Owned : IStatus
     {
         public bool isAlive(Entity me, float timedelta)

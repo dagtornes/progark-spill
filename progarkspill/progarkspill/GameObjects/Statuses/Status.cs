@@ -5,6 +5,10 @@ using System.Text;
 
 namespace progarkspill.GameObjects.Statuses
 {
+    /// <summary>
+    /// This default status checks whether the object has health left, and exists within
+    /// the current "interesting" area of the game.
+    /// </summary>
     public class Status : IStatus
     {
         Entity killer = null;

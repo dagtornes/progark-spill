@@ -8,6 +8,10 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill.GameObjects.Abilities
 {
+    /// <summary>
+    /// The default attack for creeps and players, this is typically a low cooldown low
+    /// damage attack that spawns projectiles.
+    /// </summary>
     public class AutoAttack : IAbility
     {
         public AbilityStats Stats { get; set; }

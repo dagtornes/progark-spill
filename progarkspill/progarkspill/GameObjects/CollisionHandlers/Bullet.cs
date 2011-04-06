@@ -5,6 +5,9 @@ using System.Text;
 
 namespace progarkspill.GameObjects.CollisionHandlers
 {
+    /// <summary>
+    /// Bullets do damage to what they collide with, and then die.
+    /// </summary>
     public class Bullet : ICollisionHandler
     {
         public void collide(Entity me, Entity hostile)

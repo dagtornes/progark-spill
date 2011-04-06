@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 namespace progarkspill.GameObjects.Abilities
 {
+    /// <summary>
+    /// Spawns a stationary GravityWell.
+    /// </summary>
     public class GravityWell : IAbility
     {
         public SharedContent.AbilityStats Stats { get; set; }

@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill.GameObjects.Behaviours
 {
+    /// <summary>
+    /// This class can be used to respawn players after a set amount of time.
+    /// </summary>
     public class RespawnPlayer : IBehaviour
     {
         Entity playerEntity;

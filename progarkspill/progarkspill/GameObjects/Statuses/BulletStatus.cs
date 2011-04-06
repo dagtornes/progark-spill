@@ -5,6 +5,10 @@ using System.Text;
 
 namespace progarkspill.GameObjects.Statuses
 {
+    /// <summary>
+    /// This status is used by bullets - they die when going out of the
+    /// relevant area of the game.
+    /// </summary>
     public class BulletStatus : IStatus
     {
         private float radius;

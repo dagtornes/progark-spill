@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace progarkspill.GameObjects.Behaviours
 {
+    /// <summary>
+    /// Crosshair is controlled by the player.
+    /// </summary>
     public class Crosshair : Player
     {
         private static float maxDelta = 750;

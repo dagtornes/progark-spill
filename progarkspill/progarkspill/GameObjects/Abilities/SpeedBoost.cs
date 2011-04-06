@@ -5,6 +5,9 @@ using System.Text;
 
 namespace progarkspill.GameObjects.Abilities
 {
+    /// <summary>
+    /// Boosts the speed of its entitiy for a short while.
+    /// </summary>
     public class SpeedBoost : GravityWell
     {
         private float remaining = 0;

@@ -6,6 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill.GameObjects.Collidables
 {
+    /// <summary>
+    /// Entities using this Collidable are treated as if they were circles
+    /// with a radius.
+    /// </summary>
     class HitCircle : ICollidable
     {
         public int Radius { get; set; }

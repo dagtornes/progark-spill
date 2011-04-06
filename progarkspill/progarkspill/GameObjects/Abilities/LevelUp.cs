@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace progarkspill.GameObjects.Abilities
 {
+    /// <summary>
+    /// This ability is used to level up other abilities through whatever controller it is bind()ed with.
+    /// </summary>
     public class LevelUp : IAbility
     {
         public SharedContent.AbilityStats Stats { get; set; }

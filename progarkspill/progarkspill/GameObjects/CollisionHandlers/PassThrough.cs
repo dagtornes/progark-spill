@@ -5,6 +5,10 @@ using System.Text;
 
 namespace progarkspill.GameObjects.CollisionHandlers
 {
+    /// <summary>
+    /// This collider crashes exactly once with Entities, but does not die when
+    /// it crashes.
+    /// </summary>
     public class PassThrough : Damage
     {
         ISet<Entity> collided = new HashSet<Entity>();

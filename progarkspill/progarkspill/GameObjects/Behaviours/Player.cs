@@ -8,6 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace progarkspill.GameObjects.Behaviours
 {
+    /// <summary>
+    /// This class is used for Entities that are controlled by a player using an Xbox 360 controller.
+    /// </summary>
     public class Player : DummyBehaviour
     {
         public PlayerIndex control;

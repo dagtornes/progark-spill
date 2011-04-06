@@ -5,6 +5,9 @@ using System.Text;
 
 namespace progarkspill.GameObjects.Statuses
 {
+    /// <summary>
+    /// Entities using this status die after a set amount of seconds.
+    /// </summary>
     public class ExpireCheck : IStatus
     {
         public float duration;

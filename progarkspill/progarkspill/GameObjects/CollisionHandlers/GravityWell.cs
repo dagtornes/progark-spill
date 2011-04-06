@@ -6,6 +6,11 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill.GameObjects.CollisionHandlers
 {
+    /// <summary>
+    /// Gravity wells pull at the objects that crash with their massive hitcircles.
+    /// They pull more strongly closer to their origin, causing objects stuck there to
+    /// be unable to move at all.
+    /// </summary>
     public class GravityWell : ICollisionHandler
     {
         private float radius;

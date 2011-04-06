@@ -6,6 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill.GameObjects.Abilities
 {
+    /// <summary>
+    /// This ability can be used to teleport some short distance in the direction the
+    /// entity is currently facing.
+    /// </summary>
     public class Blink : GravityWell
     {
         public override bool isReady(Entity me, GameState environment, float timedelta)

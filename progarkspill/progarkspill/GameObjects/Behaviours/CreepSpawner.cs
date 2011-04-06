@@ -5,6 +5,10 @@ using System.Text;
 
 namespace progarkspill.GameObjects.Behaviours
 {
+    /// <summary>
+    /// Creep spawners become active after Start seconds of a game,
+    /// and can spawn creeps until End seconds after the start of a game.
+    /// </summary>
     public class CreepSpawner : IBehaviour
     {
         private float Start;

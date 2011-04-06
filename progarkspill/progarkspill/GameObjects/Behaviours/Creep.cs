@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace progarkspill.GameObjects.Behaviours
 {
+    /// <summary>
+    /// Creeps go towards the current gameobjective, or player if the player is sufficiently close.
+    /// </summary>
     class Creep : IBehaviour
     {
         public void decide(Entity me, GameState environment, float timedelta, GameStateStack states)

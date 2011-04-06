@@ -5,6 +5,10 @@ using System.Text;
 
 namespace progarkspill.GameObjects.CollisionHandlers
 {
+    /// <summary>
+    /// Possibly redundant - does the same thing as Bullet but used by slightly different
+    /// entities.
+    /// </summary>
     public class Damage : ICollisionHandler
     {
         public virtual void collide(Entity me, Entity other)

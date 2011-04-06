@@ -5,6 +5,9 @@ using System.Text;
 
 namespace progarkspill.GameObjects.Abilities
 {
+    /// <summary>
+    /// Used for special missiles that pass through Entities after colliding.
+    /// </summary>
     public class LaserAttack : AutoAttack
     {
         public override void levelUp()
